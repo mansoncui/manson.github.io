@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="软中断123456789101112131415161718192021222324252627top -H -p XX 1 / pidstat -wut -p XX 1   #那个线程占用CPUperf report -g -p XX 是否可以定位到具体的系统调用函数.中断:系统用来响应硬件设备请求的一种机制，会打断进程的正常调度和执行，通过调用内核中的中断处理程序来响应设备的请求(中断是一种异">
+<meta name="keywords" content="python, shell, 运维, k8s, docker, 自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软中断">
+<meta property="og:url" content="https://manson.github.io/manson.github.io/2019/06/11/linux操作性能优化/软中断/index.html">
+<meta property="og:site_name" content="Apollo 运维之路">
+<meta property="og:description" content="软中断123456789101112131415161718192021222324252627top -H -p XX 1 / pidstat -wut -p XX 1   #那个线程占用CPUperf report -g -p XX 是否可以定位到具体的系统调用函数.中断:系统用来响应硬件设备请求的一种机制，会打断进程的正常调度和执行，通过调用内核中的中断处理程序来响应设备的请求(中断是一种异">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-18T07:14:49.897Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软中断">
+<meta name="twitter:description" content="软中断123456789101112131415161718192021222324252627top -H -p XX 1 / pidstat -wut -p XX 1   #那个线程占用CPUperf report -g -p XX 是否可以定位到具体的系统调用函数.中断:系统用来响应硬件设备请求的一种机制，会打断进程的正常调度和执行，通过调用内核中的中断处理程序来响应设备的请求(中断是一种异">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://manson.github.io/manson.github.io/2019/06/11/linux操作性能优化/软中断/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>软中断 | Apollo 运维之路</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Apollo 运维之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Apollo</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">10</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL21hbnNvbmN1aQ==" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://manson.github.io/manson.github.io/2019/06/11/linux操作性能优化/软中断/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="波波的博客">
+      <meta itemprop="image" content="/images/tx.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">软中断
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-11 08:46:46" itemprop="dateCreated datePublished" datetime="2019-06-11T08:46:46Z">2019-06-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-18 07:14:49" itemprop="dateModified" datetime="2019-06-18T07:14:49Z">2019-06-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux操作性能优化/" itemprop="url" rel="index"><span itemprop="name">linux操作性能优化</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/11/linux操作性能优化/软中断/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/06/11/linux操作性能优化/软中断/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="软中断"><a href="#软中断" class="headerlink" title="软中断"></a>软中断</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">top -H -p XX 1 / pidstat -wut -p XX 1   #那个线程占用CPU</span><br><span class="line"></span><br><span class="line">perf report -g -p XX 是否可以定位到具体的系统调用函数.</span><br><span class="line"></span><br><span class="line">中断:系统用来响应硬件设备请求的一种机制，会打断进程的正常调度和执行，通过调用内核中的中断处理程序来响应设备的请求(中断是一种异步的事件处理机制，用来提高系统的并发处理能力。中断事件发生，会触发执行中断处理程序，而中断处理程序被分为上半部和下半部这两个部分)</span><br><span class="line"></span><br><span class="line">上半部对应硬中断，用来快速处理中断</span><br><span class="line"></span><br><span class="line">下半部对应软中断，用来异步处理上半部未完成的工作</span><br><span class="line"></span><br><span class="line">1.中断是一种异步的事件处理机制，能提高系统的并发处理能力</span><br><span class="line"></span><br><span class="line">2.为了减少对正常进程运行进行影响，中断处理程序需要尽快运行。</span><br><span class="line"></span><br><span class="line">3.中断分为上下两个部分</span><br><span class="line">(1)上部分用来快速处理中断，在中断禁止模式下，主要处理跟硬件紧密相关的或时间敏感的工作</span><br><span class="line">(2)下部分用来延迟处理上半部分未完成的工作，通常以内核线程的方式运行。</span><br><span class="line"></span><br><span class="line">小结:</span><br><span class="line">上半部分直接处理硬件请求，即硬中断，特点是快速执行</span><br><span class="line">下部分由内核触发，即软中断，特点是延迟执行</span><br><span class="line">软中断除了上面的下部分，还包括一些内核自定义的事件，如:内核调度 RCU锁 网络收发 定时等</span><br><span class="line">软中断内核线程的名字:ksoftirq/cpu编号</span><br><span class="line"></span><br><span class="line">4.proc文件系统是一种内核空间和用户空间进行通信的机制，可以同时用来查看内核的数据结构又能用了动态修改内核的配置，如:</span><br><span class="line">/proc/softirqs 提供软中断的运行情况</span><br><span class="line">/proc/interrupts 提供硬中断的运行情况</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">当iowait升高时，进程很可能因为得不到硬件的响应，而长时间处于不可中断状态。从ps或者top命令的输出中，你可以发现它们都处于D状态，也就是不可中断状态(Uninterruptible Sleep)。</span><br><span class="line">进程状态有哪几种:</span><br><span class="line">R 是Running 或 Runnable 的缩写，表示进程CPU的就绪队列中，正在运行或者正在等待运行</span><br><span class="line"></span><br><span class="line">D 是Disk Sleep 的缩写，也就是不可中断状态睡眠（Uninterruptible Sleep）,一般表示进程正在跟硬件交互，并且交互过程中不允许被其他进程或中断打断</span><br><span class="line"></span><br><span class="line">Z 是Zombie的缩写，也就是可中断状态的睡眠，表示进程因为等待某个事件而被系统挂起，当进程等待的时间发生时，它会被唤醒并进入R状态</span><br><span class="line"></span><br><span class="line">I 是idle的缩写，也就是空闲状态，用在不可中断睡眠的内核线程上，前面说了，硬件交互导致的不可中断进程D表示，但对某些内核线程会导致平均负载升高，I状态的进程却不会。</span><br><span class="line"></span><br><span class="line">T或者t 也就是Stopped和Traced的缩写，表示进程处于暂停或者跟踪状态</span><br><span class="line">向一个进程发送SIGSTOP信号，它就会因为响应这个信号变成暂停状态(Stopped);再向它发送SIGCONF信号，进程又会恢复运行（如果进程是终端里直接启动的，则需要你用fg命令，恢复到前台运行）</span><br><span class="line"></span><br><span class="line">X 也是Dead的缩写，表示进程已经消亡，所以你不会再top或者ps命令中看到它</span><br><span class="line"></span><br><span class="line">总结:</span><br><span class="line">不可中断状态，表示进程正在跟硬件交互，为了保护进程数据和硬件的一致性，系统不允许其他进程或中断</span><br><span class="line">打断这个进程。进程长时间处于不可中断状态，通常表示系统I/O性能问题</span><br><span class="line"></span><br><span class="line">僵尸进程表示进程已经退出，但它的父进程还没有回收子进程占用的资源。短暂的僵尸状态我们通常不必理会</span><br><span class="line">但进程长时间处于僵尸状态，就应该注意了，可能有应用程序没有正常处理子进程的退出</span><br><span class="line"></span><br><span class="line">总结:分析系统等待I/O的CPU使用率(也就是iowait%)升高的情况</span><br><span class="line">iowait高并不一定代码I/O有性能瓶颈。当然系统中只有I/O类型的进程在运行时，iowait也会很高</span><br><span class="line">但是实际上，磁盘的读写远没有达到性能瓶颈的程度</span><br><span class="line">因此，碰到iowait升高时，需要先用dstat、pidstat等工具，确认是不是磁盘I/O问题，然后找是</span><br><span class="line">那些进程导致了I/O升高</span><br><span class="line"></span><br><span class="line">等待I/O的进程一般是不可中断状态，所以用ps命令找到的D状态（即不可中断状态）的进程，多为</span><br><span class="line">可以进程</span><br><span class="line"></span><br><span class="line">当一个进程执行到最后成僵尸进程，就不能用strace，因为当前进程已经不存在了</span><br><span class="line">用ps查看该进程是D状态是可以用strace进行追踪，否则用另外一种方法:</span><br><span class="line">perf record -g(执行15s)停止，用perf report 进行查看分析</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="某个应用cpu使用率居然达到100-，该怎么处理"><a href="#某个应用cpu使用率居然达到100-，该怎么处理" class="headerlink" title="某个应用cpu使用率居然达到100%，该怎么处理"></a>某个应用cpu使用率居然达到100%，该怎么处理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">1、linux并发(任务并行)的实质：linux作为一个多任务操作系统，将每个CPU的时间划分为很短站的时间片，再通过调度器轮流分配给各个任务使用，再通过调度器轮流分配给各个任务使用</span><br><span class="line"></span><br><span class="line">2、CPU的维护，通过实现定义的节拍率(内核用赫兹HZ标示)，触发时间判断(全局变量jiffes)记录。</span><br><span class="line"></span><br><span class="line">3、节拍率的内核态运行，属于内核空间节拍率：用户空间节拍率（USER_HZ）是一个固定值</span><br><span class="line"></span><br><span class="line">4、/proc/stat 提供的就是系统的CPU核任务统计系统信息: /proc/[pid]/stat展示进程的CPU核任务统计信息</span><br><span class="line"></span><br><span class="line">5、CPU的使用率=&#123;1-(idle_time/total_cpu_time)&#125;/sample_ti</span><br><span class="line"></span><br><span class="line">6、性能分析工具给出的都是间隔一段时间的平均CPU使用率，所以要注意间隔的设置。top默认为3s，ps使用的是进程运行时间</span><br><span class="line"></span><br><span class="line">7、top、vmstat、mpstat等命令关于CPU性能相关指标的含义</span><br><span class="line"></span><br><span class="line">8、pidstat命令指标的含义</span><br><span class="line"></span><br><span class="line">9、perf以前用到的一堆[n]trace分析工具，perf的直观易用，这是今天最大的收获，作为dba对数据库的分析很有用的</span><br><span class="line"></span><br><span class="line">perf top、perf record、perf report对进程进行跟踪分析其调用perf top -g -p &lt;mysqlpid&gt;</span><br><span class="line"></span><br><span class="line">10、今天用测试工具:ab (apache-utils centos安装包)</span><br><span class="line"></span><br><span class="line">如果碰到不好解释的CPU问题时，比如现象：</span><br><span class="line">通过top观察CPU使用率很高，但是看下面的进程的CPU使用率好像很正常，通过pidstat命令查看cpu也很正常。但通过top查看task数量不正常，处于R状态的进程是可疑点。</span><br><span class="line"></span><br><span class="line">首先要想到可能是短时间的应用导致的问题，如下面的两个：</span><br><span class="line">（1）应用里直接调用了其他二进制程序，这些程序通常运行时间比较短，通过top等工具发现不了</span><br><span class="line">（2）应用本身在不停地崩溃重启，而启动过程的资源初始化，很可能会占用很多CPU资源</span><br><span class="line"></span><br><span class="line">对于这类进程就需要 pstree 或execsnoop命令查找父进程，再从父进程的应用入手，找原因。</span><br><span class="line">我实战的问题：</span><br><span class="line">（1）centos的系统，发现通过 yum install pstress命令或其他命令，总是说没有匹配的软件包，这个很头疼</span><br><span class="line">①pstress装不上可以尝试 yum install psmisc</span><br><span class="line">②execsnoop这个命令我没有装上，想请教下老师如何解决这种yum install命令报没有匹配包的情况</span><br><span class="line">（2）然后就是通过perf命令只能看到十六进制符号，看不到具体函数名的问题，这个可以使用上篇文章中我的留言的方法，我在copy一份，供大家参考</span><br><span class="line">分析：当没有看到函数名，只看到十六进制时，说明perf无法找到待分析进程所依赖的库。</span><br><span class="line">解决办法：</span><br><span class="line">在容器外面把分析记录保存，到容器里面查看结果</span><br><span class="line">操作：</span><br><span class="line">（1）在centos系统上运行 perf record -g ，执行一会儿按ctrl+c停止</span><br><span class="line">（2）把生成的perf.data（通常文件生成在命令执行的当前目录下，当然可以通过find | grep perf.data或 find / -name perf.data查看路径）文件拷贝到容器里面分析：</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="CPU上下文切换"><a href="#CPU上下文切换" class="headerlink" title="CPU上下文切换"></a>CPU上下文切换</h2><h5 id="CPU上下文切换-上篇"><a href="#CPU上下文切换-上篇" class="headerlink" title="CPU上下文切换(上篇)"></a>CPU上下文切换(上篇)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">cpu上下文切换分为:进程上下文切换，线程上线文切换和中断上下文切换</span><br><span class="line">1、进程上线文切换</span><br><span class="line">   Linux安装特权等级，把进程的运行空间分为内核空间和用户空间</span><br><span class="line">   内核空间具有最高权限，可以直接访问所有资源</span><br><span class="line">   用户空间只能访问受限资源，不能直接访问内存等硬件设备，必须通过系统调用陷入到内核中才能访问这些特权资源</span><br><span class="line">   换个角度看，也就是说，进程既可以在用户空间运行，也可以在内核空间运行。进程在用户空间运行时，被称为进程的用户态，</span><br><span class="line">   而陷入内核空间的时候，被称为进程的内核态</span><br><span class="line">   从用户态和内核态的转变，需要通过系统调用来完成，比如：当我们查看文件内容时，就需要多次系统调用来完成，首先调用 </span><br><span class="line">   open()打开文件，然后调用read()读取文件内容，并调用write()将内容写到标准输出，最后调用close()关闭文件</span><br><span class="line">   CPU寄存器里原来用户态的指令的位置，需要先保存起来，接着，为了执行内核态代码，CPU寄存器需要更新为内核态指令的新位置</span><br><span class="line">   ，最后才跳转到内核态运行内核任务</span><br><span class="line">   而系统调用结束后，CPU寄存器需要恢复原来保存的用户态，然后再切到用户空间，继续运行进程，所以，一次系统调用的过程，其实时发生了两次cpu上线文切换，不过需要注意的是，系统调用过程中，并不会涉及到虚拟内存等进程用户态的资源，也不会切换进程，这跟我们通常所说的进程上线文切换时不一样的</span><br><span class="line">   (1) 进程上线文切换，是指一个进程切换到另一个进程运行</span><br><span class="line">   (2) 而系统调用过程中一直是同一个进程在运行</span><br><span class="line">   所以，系统调用过程通常为特权模式切换，而不是上下文切换。但实际上，系统调用过程中，CPU的上线文切换时无法避免的</span><br><span class="line">   进程上下文切换跟系统调用有什么区别呢?</span><br><span class="line">   首先，进程是由内核来管理和调度的，进程的切换只发生在内核。所以，进程的上下问不仅包括了虚拟内存、栈、全局变量等用户空间的资源，还包括了内核堆栈、寄存器等内核空间的状态</span><br><span class="line"> </span><br><span class="line">   因此，进程的上下问切换就比系统调用时多了一步:在保存当前进程的内核状态和CPU寄存器之前，需要先把该进程的虚拟内存、栈等保存下来；而加载了下一个进程的内核后。还需要新进程的虚拟内存和用户栈</span><br><span class="line">   </span><br><span class="line">   根据Tsuna测试报告，每次上下文切换都需要几十纳秒到数微妙的CPU的时间.这个时间还是相当可观的，特别是在进程上下文切换次数较多的情况下，很容易导致CPU将大量时间耗费在寄存器、内核栈以及虚拟内存等资源的保存和恢复上，进而大大缩短了真正运行进程的时间，这也正是上一节中我们所讲的，导致平均负载升高的一个重要因素</span><br><span class="line"></span><br><span class="line">另外 Linux是通过TLB(Translation Lookaside) 来管理虚拟内存到物理内存的映射关系。当虚拟内存更新后，TLB也需要刷新，内存的访问也会随之变慢，特别是在多处理器系统上，缓存是被多个处理器共享的，刷新缓存不仅会影响当前处理器的进程，还会影响共享缓存的其他处理器的进程</span><br><span class="line"></span><br><span class="line">进程在什么时候才会被调度到CPU上运行呢？</span><br><span class="line"></span><br><span class="line">最容易想到的一个时机，就是进程执行完终止了，它之前使用的CPU会释放出来，这个时候再从就绪队列，拿一个新的进程过来运行，其实还有很多其他场景，也会触发进程调度，如下:</span><br><span class="line">    (1) 为了保证所有进程可以得到公平调度，CPU时间被划分为一段段的时间片，这些时间片再被轮流分配给各个进程。这样当某个进程的时间片耗尽了，就会被系统挂起，切到其它正在等待CPU的进程运行</span><br><span class="line">    (2) 进程在系统资源不足(比如内存不足)时，要等到资源满足后才可以运行，这个时候进程也会被挂起，并由系统调度其他进程运行。</span><br><span class="line">    (3) 当进程通过睡眠函数sleep这样的方法将自己主动挂起时，自然也会重新调度</span><br><span class="line">    (4) 当有优先级更高的进程运行时，为了保证高优先级进程的运行，当前进程会被挂起，由高优先级进程运行</span><br><span class="line">    最后一个，发生硬件中断时，CPU上的进程会被中断挂起，转而执行内核中的中断服务程序</span><br><span class="line"></span><br><span class="line">2、线程上线文切换</span><br><span class="line">   线程和进程最大区别在于，线程是调度的基本单位，而进程则是资源拥有的基本单位。说白了，所谓内核中的任务调度，实际上的调度对象是线程；而进程只是给线程提供了虚拟内存、全局变量等资源。所以对于线程和进程，我们可以这样理解:</span><br><span class="line">   (1) 当进程只有一个线程时，可以认为进程就等于线程</span><br><span class="line">   (2) 当进程拥有多个线程时，这些线程会共享</span><br><span class="line"></span><br><span class="line">3、中断上下文切换</span><br><span class="line">   为了快速响应硬件的事件，中断处理会打断进程的正常调度和执行，转而调用中断处理程序，响应设备事件。而在打断其他进程时，就需要将进程当前的状态保存下来，这样在中断结束后，进程仍然可以从原来的状态恢复运行。</span><br><span class="line">   跟进程上下文不同，中断上下文切换并不涉及到进程的用户态。所以即便中断过程打断一个正处在用户态的进程，也不需要保存和恢复这个进程的虚拟内存、全局变量等用户态资源。中断上下文，其实只包括内核态中断服务程序执行所必须的状态，包括CPU寄存器、内核堆栈和硬件中断参数等。</span><br><span class="line">   对同一个CPU来说，中断处理比进程拥有更高的优先级，所以中断上下文切换并不会与进程上下文切换同时发生。同样道理，由于中断会打断正常进程的调度和执行，所以大部分中断处理程序都短小精悍，以便尽可能快的执行结束。</span><br><span class="line">  另外，跟进程上下文切换一样，中断上下文切换也需要消耗CPU，切换次数过多也会消耗大量CPU，甚至严重降低系统的整体性能，所以，当你发现中断次数过多时，就需要注意去排查它是否会给你的系统带来严重的性能问题</span><br><span class="line"></span><br><span class="line">场景:</span><br><span class="line">cpu上下文切换，是保证Linux系统正常工作的核心功能之一，一般情况下不需要我们特别关注</span><br><span class="line"></span><br><span class="line">但过多的上下文切换，会把CPU时间消耗在寄存器、内核栈以及虚拟内存等数据的保存和恢复上，从而缩短进程真正运行的时间，导致系统的整体性能答复下降</span><br><span class="line"></span><br><span class="line">总结:</span><br><span class="line">1、多任务竞争CPU，CPU变换任务时进行cpu上下文切换（context switch）。CPU执行任务4中方式:进程、线程、或者硬件通过触发信号导致cpu中断的调用</span><br><span class="line"></span><br><span class="line">2、当切换任务的时候，需要记得任务当前的状态和获取下一任务信息和地址(指针)，这就是上下文的内容，因此，上下文是指某一时间CPU寄存器(CPU register)和程序计数器(PC)的内容，广义上还包括内存中进程的虚拟地址映射信息</span><br><span class="line"></span><br><span class="line">3、上下文切换的过程</span><br><span class="line">   (1) 记录当前任务的上下文(即寄存器和计算器等所有的状态)</span><br><span class="line">   (2) 找到新任务的上下文并加载</span><br><span class="line">   (3) 切换到新任务的程序计算器位置，恢复期任务</span><br><span class="line">4、根据任务的执行形式，相互的下上文切换，有进程上下文切换、线程上下文切换以及中断上下文切换三类</span><br><span class="line">5、进程和线程区别：进程是资源分配合执行的基本单位；线程是任务调度和运行的基本单位。线程没有资源，进程给指针提供虚拟内存、栈和变量等共享资源，而线程可以共享进程的资源</span><br><span class="line"></span><br><span class="line">6、进程上线文切换:是指从一个进程切换到另一个进程。</span><br><span class="line">  (1) 进程运行态为内核运行态和进程运行态，内核空间态资源包括内核的堆栈、寄存器等；用户空间态资源包括虚拟内存、栈、变量、正文和数据等</span><br><span class="line">  (2) 系统调用(软中断)在内核态完成的，需要进行2次CPU上下文切换(用户空间-&gt;内核空间-&gt;用户空间)，不涉及用户资源，也不会切换进程</span><br><span class="line">  (3) 进程是由内核来管理和调度的，进程的切换只能发生在内核态，所以，进程的上下文切换不仅包括了用户空间的资源，也包括内核空间的资源</span><br><span class="line">  (4) 进程的上下文切换过程:</span><br><span class="line">      (a) 接收到切换信号，挂起进程，记录当前进程虚拟内存、栈等资源存储</span><br><span class="line">      (b) 将这个进程在CPU中的上下文状态存储起来</span><br><span class="line">      (c) 然后在内存中检索下一个进程的上下文</span><br><span class="line">      (d) 并将其加载到CPU的寄存器中恢复</span><br><span class="line">      (e) 还需要刷新新进程的虚拟内存和用户栈</span><br><span class="line">      (f) 最后跳转到程序计数器所指向的位置(即跳转搭配进程被中断时的代码行)，以恢复改进程</span><br><span class="line">  (5) 下列将会触发进程上下文切换的场景:</span><br><span class="line">      (a) 根据调度策略，将CPU时间划分为对应的时间片，当时间片耗尽时，当前进程必须挂起</span><br><span class="line">      (b) 资源不足的，在获取到足够资源之前进程挂起</span><br><span class="line">      (c) 进程sleep挂起进程</span><br><span class="line">      (d) 高优先级进程导致当前进度挂起</span><br><span class="line">      (e) 硬件中断，导致当前进程挂起</span><br><span class="line">7、线程上下文切换</span><br><span class="line">(1) 不通进程之前的线程上下文切换，其过程和进程上下文切换大致相同</span><br><span class="line">(2) 进程内部的线程上下文切换，不需要切换进程用户资源，只需要切换线程私有的数据和寄存器等，这会比进程上下文进程切换消耗的资源少，所以多线程相比多线程优势</span><br><span class="line"></span><br><span class="line">8、中断上下文切换</span><br><span class="line">快速响应硬件的事件，中断处理会打断进程的正常调度和执行，同一CPU内，硬件中断优先级高于进程。切换过程类似于系统调用，不涉及到用户运行态资源，但大量的中断上下文切换同样可能引发性能问题</span><br><span class="line">备注:系统调用属于上下文切换，分别是CPU用来存储指令和下一条要执行指令的寄存器</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="CPU上下文切换-下篇"><a href="#CPU上下文切换-下篇" class="headerlink" title="CPU上下文切换(下篇)"></a>CPU上下文切换(下篇)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">查看系统上下文切换情况:系统分析工具vmstat(vmstat是只给出了系统总体上下文切换情况，要想查看每个进程的详细情况，要向)</span><br><span class="line">![vmstat_5](https://i.loli.net/2019/03/05/5c7dd70b7cfc3.jpg)</span><br><span class="line"></span><br><span class="line">cs（context switch）是每秒上下文切换的次数。</span><br><span class="line">in（interrupt）则是每秒中断的次数。</span><br><span class="line">r（Running or Runnable）是就绪队列的长度，也就是正在运行和等待 CPU 的进程数。</span><br><span class="line">b（Blocked）则是处于不可中断睡眠状态的进程数。</span><br><span class="line"></span><br><span class="line">###pidstat是查看每个进程上下文切换情况:（-w）每隔5秒输出1组数据</span><br><span class="line">![pidstat_5.jpg](https://i.loli.net/2019/03/05/5c7e40eb19730.jpg)</span><br><span class="line"></span><br><span class="line">解释:一个是 cswch ，表示每秒自愿上下文切换（voluntary context switches）的次数，</span><br><span class="line">    另一个则是 nvcswch ，表示每秒非自愿上下文切换（non voluntary context switches）的次数。</span><br><span class="line">所谓自愿上下文切换，是指进程无法获取所需资源，导致的上下文切换。比如说， I/O、内存等系统资源不足时，就会发生自愿上下文切换。</span><br><span class="line">而非自愿上下文切换，则是指进程由于时间片已到等原因，被系统强制调度，进而发生的上下文切换。比如说，大量进程都在争抢 CPU 时，就容易发生非自愿上下文切换。</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Apollo</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://manson.github.io/manson.github.io/2019/06/11/linux操作性能优化/软中断/" title="软中断">https://manson.github.io/manson.github.io/2019/06/11/linux操作性能优化/软中断/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/25/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/12/docker/docker/" rel="prev" title="docker">
+                docker <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/tx.gif" alt="Apollo">
+            
+              <p class="site-author-name" itemprop="name">Apollo</p>
+              <div class="site-description motion-element" itemprop="description">波波的博客</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21hbnNvbmN1aQ==" title="GitHub &rarr; https://github.com/mansoncui"><i class="fa fa-fw fa-github"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOjIzMjIxNjYwMDZAcXEuY29t" title="E-Mail &rarr; mailto:2322166006@qq.com"><i class="fa fa-fw fa-envelope"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vMzI4MDkyMDk5NA==" title="Weibo &rarr; https://weibo.com/3280920994"><i class="fa fa-fw fa-weibo"></i></span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly93d3cueWlodWFpeXVhbi5jb20v" title="https://www.yihuaiyuan.com/">易大师的博客</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3d3dy5weTNzdHVkeS5jb20v" title="http://www.py3study.com/">祥哥</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9za3lyaW02MS5naXRodWIuaW8vc2t5cmltNjEuZ2l0aHVwLmlvLw==" title="https://skyrim61.github.io/skyrim61.githup.io/">许瑞</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0" title="https://github.com/theme-next/hexo-theme-next">next</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuLw==" title="https://hexo.io/zh-cn/">hexo</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#软中断"><span class="nav-number">1.</span> <span class="nav-text">软中断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程状态"><span class="nav-number">2.</span> <span class="nav-text">进程状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#某个应用cpu使用率居然达到100-，该怎么处理"><span class="nav-number">3.</span> <span class="nav-text">某个应用cpu使用率居然达到100%，该怎么处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU上下文切换"><span class="nav-number">4.</span> <span class="nav-text">CPU上下文切换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU上下文切换-上篇"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">CPU上下文切换(上篇)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU上下文切换-下篇"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">CPU上下文切换(下篇)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Apollo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Mist</span> v7.1.2</div>
+
+
+
+  <div class="footer-custom">Hosted by <a href="https://pages.coding.me" class="theme-link" rel="noopener" target="_blank">Coding Pages</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+  <script src="/js/exturl.js?v=7.1.2"></script>
+
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'jOw3kT1ByeM0KfiXxCtjwejC-gzGzoHsz',
+    appKey: 'icG72E1NjMQvR17QiwmRY3pO',
+    placeholder: 'Later get back to you',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+    <!-- LOCAL: You can save these files to your site and update links -->
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+<!-- END LOCAL -->
+
+<script>
+  function renderGitment() {
+    var gitment = new Gitmint({
+      id: window.location.pathname,
+      owner: 'mansoncui',
+      repo: 'github_blog_comment',
+      
+        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+      
+      oauth: {
+      
+      
+        client_secret: '0cb5979a8e8d6dcb5ce2996c733301cdbf9767fd',
+      
+        client_id: '23ebb61968957e3df94e'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    renderGitment();
+  
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
