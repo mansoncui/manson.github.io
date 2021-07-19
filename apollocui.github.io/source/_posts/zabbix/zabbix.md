@@ -64,7 +64,7 @@ cat /etc/zabbix/scripts/ssl_cert_list
 test.xxxxxx.com 443
 test1.xxxxxx.com 443
 ```
-4.配置zabbix
+## 配置zabbix
 ```
 把脚本上传:/etc/zabbix/scripts/下
 cat /etc/zabbix/zabbix_agentd.d/sslcert.conf 
@@ -81,5 +81,9 @@ systemctl restart zabbix-proxy
 
 ![](/images/zabbix/zabbix_agent_ssl.jpg)
 
-5.导入模板(下载链接)
-[https://www.aliyundrive.com/s/WFfnahYBeTC]
+## 导入模板(下载链接)
+```
+模板下载地址: https://www.aliyundrive.com/s/WFfnahYBeTC
+```
+## 告警结果
+![](/images/zabbix/ssl_warn_info.jpg)
