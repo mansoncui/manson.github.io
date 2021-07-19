@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;github.mansoncui.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:300,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12,&quot;onmobile&quot;:true},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="不要轻易给自己人生设限，努力就完事了。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Apollo 运维之路">
+<meta property="og:url" content="https://github.mansoncui.com/page/6/index.html">
+<meta property="og:site_name" content="Apollo 运维之路">
+<meta property="og:description" content="不要轻易给自己人生设限，努力就完事了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Apollo">
+<meta property="article:tag" content="python, shell, 运维, k8s, docker, 自动化">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.mansoncui.com/page/6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;page&#x2F;6&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Apollo 运维之路</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Apollo 运维之路" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Apollo 运维之路</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Apollo 博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">40</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Apollo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Apollo</p>
+  <div class="site-description" itemprop="description">不要轻易给自己人生设限，努力就完事了。
+</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mansoncui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mansoncui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mansoncui@163.com" title="E-Mail → mailto:mansoncui@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zhangguanzhang.github.io/" title="https:&#x2F;&#x2F;zhangguanzhang.github.io&#x2F;" rel="noopener" target="_blank">张馆长</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kuboard.cn/" title="https:&#x2F;&#x2F;kuboard.cn&#x2F;" rel="noopener" target="_blank">邵欢庆</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://yangcs.net/" title="https:&#x2F;&#x2F;yangcs.net&#x2F;" rel="noopener" target="_blank">云原生实验室</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+  <a href="https://github.com/mansoncui" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/go/go/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/go/go/" class="post-title-link" itemprop="url">go</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:43:11" itemprop="dateCreated datePublished" datetime="2019-06-11T16:43:11Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+
+  
+    <span id="/2019/06/12/go/go/" class="post-meta-item leancloud_visitors" data-flag-title="go" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/go/go/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/go/go/" class="cy_cmt_count" data-xid="2019/06/12/go/go/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" class="post-title-link" itemprop="url">自动化运维</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:42:21" itemprop="dateCreated datePublished" datetime="2019-06-11T16:42:21Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">自动化运维</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" class="post-meta-item leancloud_visitors" data-flag-title="自动化运维" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" class="cy_cmt_count" data-xid="2019/06/12/自动化运维/自动化运维/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Saltstack-部署安装"><a href="#Saltstack-部署安装" class="headerlink" title="Saltstack 部署安装"></a>Saltstack 部署安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">环境:关闭firewalld，iptables，selinux,设置dns或者hosts解析</span><br><span class="line">     python 版本: 2.7 &lt;= python &lt; 3</span><br><span class="line">     master和slave设置hosts解析:</span><br><span class="line">     192.168.1.117 saltstack-master</span><br><span class="line">     192.168.1.118 saltstack-slave</span><br><span class="line"></span><br><span class="line">####安装saltstack</span><br><span class="line"></span><br><span class="line">服务端安装:</span><br><span class="line">yum  -y  install  epel-release</span><br><span class="line">yum  -y  install  salt-master salt-minion </span><br><span class="line"></span><br><span class="line">服务端配置修改:</span><br><span class="line"># vim /etc/salt/minion                   //在第16行添加，冒号后有一个空格</span><br><span class="line">master: saltstack-master</span><br><span class="line"></span><br><span class="line">客户端安装:</span><br><span class="line">yum  -y  install  epel-release</span><br><span class="line">yum  -y  install  salt-minion</span><br><span class="line"></span><br><span class="line">客户端配置修改:</span><br><span class="line"># vim /etc/salt/minion                   //在第16行添加，冒号后有一个空格</span><br><span class="line">master: saltstack-master</span><br><span class="line"></span><br><span class="line">客户端和服务端启动服务:</span><br><span class="line">service salt-master start #只有服务端安装了该服务</span><br><span class="line">service salt-minion start #服务端和客户端都安装此服务</span><br><span class="line"></span><br><span class="line">配置认证:</span><br><span class="line">服务端操作:</span><br><span class="line">salt-key -a  saltstack-master</span><br><span class="line">salt-key -a  saltstack-slave</span><br><span class="line">salt-key</span><br><span class="line"></span><br><span class="line">说明：-a ：accept ，-A：accept-all，-d：delete，-D：delete-all。可以使用 salt-key 命令查看到已经签名的客户端。此时我们在客户端的 /etc/salt/pki/minion 目录下面会多出一个minion_master.pub 文件</span><br><span class="line"></span><br><span class="line">测试验证:</span><br><span class="line">示例1： salt &#x27;*&#x27; test.ping                  //检测通讯是否正常，也可以指定其中一个 &#x27;saltstack-master&#x27;</span><br><span class="line"></span><br><span class="line">示例2:  salt &#x27;*&#x27; cmd.run   &#x27;df -h&#x27;        //远程执行命令</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Saltstack-错误总结"><a href="#Saltstack-错误总结" class="headerlink" title="Saltstack 错误总结"></a>Saltstack 错误总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、错误信息 Minion did not return. [Not connected]</span><br><span class="line">删除客户端公钥:rm -rf /etc/salt/pki/minion/minion_master.pub</span><br><span class="line">service salt-minion restart #重启client服务  </span><br><span class="line"></span><br><span class="line">2、错误信息:Failed building wheel for uwsgi</span><br><span class="line">yum -y install python-devel（python2.7）</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Pdsh"><a href="#Pdsh" class="headerlink" title="Pdsh"></a>Pdsh</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">##pdsh安装##</span><br><span class="line">yum  -y  install  gcc gcc-c++ perl-devel readline-devel bzip2 #安装依赖</span><br><span class="line"></span><br><span class="line">下载源码包:https://sourceforge.net/projects/pdsh/files/latest/download</span><br><span class="line"></span><br><span class="line">tar -xjvf pdsh-2.26.tar.bz2</span><br><span class="line"></span><br><span class="line">cd  pdsh-2.26 </span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/globle/softs/tools/pdsh/2.26/ --with-timeout=60 --with-ssh --with-exec --with-nodeupdown --with-readline --with-machines=/etc/pdsh/machines  --with-dshgroups </span><br><span class="line"></span><br><span class="line">make  &amp;&amp;  make  install</span><br><span class="line"></span><br><span class="line">参数详解:</span><br><span class="line">   选项	                    解释</span><br><span class="line">--prefix	            指定安装目录</span><br><span class="line">--with-timeout=60	    指定pdsh默认执行超时时间</span><br><span class="line">--with-ssh	            编译ssh模块</span><br><span class="line">--with-exec	            编译exec模块</span><br><span class="line">--with-nodeupdown	    编译节点宕机功能</span><br><span class="line">--with-readline	            编译readline功能</span><br><span class="line">--with-rcmd-rank-list	    指定默认模式为ssh</span><br><span class="line">--with-machines	            指定默认主机列表</span><br><span class="line">--with-dshgroups            调用组-g选项(默认文件位置:/root/.dsh/group/userhosts or /etc/dsh/group/userhosts)</span><br><span class="line"></span><br><span class="line">把pdsh安装机器公钥存放到个远端服务器/root/.ssh/authorized_keys </span><br><span class="line"></span><br><span class="line">ln -s /usr/local/pdsh/bin/pdsh /usr/sbin/pdsh #设置软连接</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/kubernetes/k8s/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/kubernetes/k8s/" class="post-title-link" itemprop="url">kubernetes</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:42:04" itemprop="dateCreated datePublished" datetime="2019-06-11T16:42:04Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/12/kubernetes/k8s/" class="post-meta-item leancloud_visitors" data-flag-title="kubernetes" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/kubernetes/k8s/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/kubernetes/k8s/" class="cy_cmt_count" data-xid="2019/06/12/kubernetes/k8s/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="kubernetes-工作原理"><a href="#kubernetes-工作原理" class="headerlink" title="kubernetes 工作原理"></a>kubernetes 工作原理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、Master节点包括API Server、Scheduler、Controller manager、etcd</span><br><span class="line"></span><br><span class="line">API Server是整个系统的对外接口，供客户端和其它组件调用，相当于“营业厅”</span><br><span class="line">Scheduler负责对集群内部的资源进行调度，相当于“调度室”</span><br><span class="line">Controller manager负责管理控制器，相当于“大总管</span><br><span class="line"></span><br><span class="line">2、Node节点包括Docker、kubelet、kube-proxy、Fluentd、kube-dns（可选）、pod</span><br><span class="line"></span><br><span class="line">Pod是Kubernetes最基本的操作单元。一个Pod代表着集群中运行的一个进程，它内部封装了一个或多个紧密相关的容器。除了Pod之外，K8S还有一个Service的概念，一个Service可以看作一组提供相同服务的Pod的对外访问接口</span><br><span class="line"></span><br><span class="line">Docker 创建容器的</span><br><span class="line">Kubelet，主要负责监视指派到它所在Node上的Pod，包括创建、修改、监控、删除等</span><br><span class="line">Kube-proxy，主要负责为Pod对象提供代理</span><br><span class="line">Fluentd，主要负责日志收集、存储与查询</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="kubernetes-kubeadm-部署"><a href="#kubernetes-kubeadm-部署" class="headerlink" title="kubernetes kubeadm 部署"></a>kubernetes kubeadm 部署</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">[镜像地址](https://download.csdn.net/download/qq_33432713/10775173) :https://download.csdn.net/download/qq_33432713/10775173</span><br><span class="line"></span><br><span class="line">系统环境:CentOS Linux release 7.3.1611 (Core)</span><br><span class="line"></span><br><span class="line">1、关闭selinux，关闭firewalld，关闭swap</span><br><span class="line">systemctl  stop   firewalld  `&amp;&amp;`   systemctl  disable   firewalld</span><br><span class="line"></span><br><span class="line">swapoff  -a</span><br><span class="line"></span><br><span class="line">2、配置主机映射和修改主机名</span><br><span class="line"></span><br><span class="line">hostnamectl   set-hostname  k8s-master</span><br><span class="line"></span><br><span class="line">3、yum  -y  install   docker   `&amp;&amp;`  systemctl  start  docker  `&amp;&amp;`  systemctl enable docker </span><br><span class="line"></span><br><span class="line">4、 yum  -y  install   kubectl kubelet kubernetes-cni kubeadm    (这几个软件需要去google的yum源下载，建议下本地vpnFQ，把软件包下载下来)</span><br><span class="line"></span><br><span class="line">5、systemctl  start  kubelet  `&amp;&amp;`    systemctl  enable  kubelet</span><br><span class="line"></span><br><span class="line">6、master端导入需要镜像（详细见软件包）</span><br><span class="line"></span><br><span class="line">7、kubeadm进行初始化：</span><br><span class="line"></span><br><span class="line">kubeadm init --kubernetes-version=v1.9.1 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=0.0.0.0 --apiserver-cert-extra-sans=10.2.0.35,127.0.0.1,k8s-master </span><br><span class="line"></span><br><span class="line"> --apiserver-cert-extra-sans   #该参数指定自己内网地址和映射</span><br><span class="line"></span><br><span class="line">在执行过程中，要等几分钟,然后执行以下命令：</span><br><span class="line"></span><br><span class="line">然后执行如下命令：</span><br><span class="line">  mkdir -p $HOME/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line">成功以后可以指定一下命令进行查看：</span><br><span class="line"></span><br><span class="line">kubectl  get  cs</span><br><span class="line"></span><br><span class="line">kubectl  get nodes</span><br><span class="line"></span><br><span class="line">8、注意：</span><br><span class="line"></span><br><span class="line">记住该条命令：kubeadm join --token d506ef.63c05fa829529565 10.2.0.37:6443 --discovery-token-ca-cert-hash sha256:4cd1954bf2a1c0904f92328d33bc25471604abd918e019b3c1905289fb8130f2   #在node节点执行该条命令，--token是有有效期的，默认是24小时</span><br><span class="line"></span><br><span class="line"> 9、部署 flannel</span><br><span class="line"></span><br><span class="line">mkdir -p ~/k8s/</span><br><span class="line">wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</span><br><span class="line">kubectl apply -f kube-flannel.yml   #执行会输出一下内容：</span><br><span class="line"></span><br><span class="line">10、kubectl  get pod -n kube-system   #注意红框内出现Running状态然后在node节点</span><br><span class="line"></span><br><span class="line">在node节点部署</span><br><span class="line"></span><br><span class="line">1、同master节点前五步一样部署</span><br><span class="line"></span><br><span class="line">2、导入镜像：其实我导入多了，只需要导入一下几个就可以了:gcr.io/google_containers/kube-apiserver-amd64、gcr.io/google_containers/etcd-amd64、quay.io/coreos/flannel、gcr.io/google_containers/etcd-amd64</span><br><span class="line"></span><br><span class="line">3、执行master的第8步，就可以了，然后在master上执行：kubectl  get  nodes,看到如下图：</span><br><span class="line"></span><br><span class="line">注意：要想在node节点执行该条命令，需要再node上执行以下命令：</span><br><span class="line"></span><br><span class="line">sudo cp /etc/kubernetes/admin.conf $HOME/</span><br><span class="line"></span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/admin.conf</span><br><span class="line"></span><br><span class="line">export KUBECONFIG=$HOME/admin.conf</span><br><span class="line">不然会出现以下错误:The connection to the server localhost:8080 was refused - did you specify the right host or port?(单独开终端也会出现）</span><br><span class="line">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">最后是版本对应:</span><br><span class="line">master:</span><br><span class="line">REPOSITORY                                                         TAG             IMAGE ID           CREATED      SIZE</span><br><span class="line">gcr.io/google_containers/kube-apiserver-amd64     v1.9.1       e313a3e9d78d     7 days ago     210.4 MB</span><br><span class="line">gcr.io/google_containers/kube-scheduler-amd64    v1.9.1       677911f7ae8f        7 days ago     62.7 MB</span><br><span class="line">gcr.io/google_containers/kube-proxy-amd64           v1.9.1       e470f20528f9        7 days ago     109.1 MB</span><br><span class="line">gcr.io/google_containers/kube-controller-manager-amd64     v1.9.1    4978f9a64966    7 days ago    137.8 MB</span><br><span class="line">quay.io/coreos/flannel     v0.9.1-amd64     2b736d06ca4c     8 weeks ago     51.31 MB</span><br><span class="line">gcr.io/google_containers/k8s-dns-sidecar-amd64   1.14.7       db76ee297b85      11 weeks ago   42.03 MB</span><br><span class="line">gcr.io/google_containers/k8s-dns-kube-dns-amd64   1.14.7    5d049a8c4eec      11 weeks ago          50.27 MB</span><br><span class="line">gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64      1.14.7    5feec37454f4    11 weeks ago    40.95 MB</span><br><span class="line">gcr.io/google_containers/etcd-amd64    3.1.10    1406502a6459          4 months ago    192.7 MB</span><br><span class="line">gcr.io/google_containers/pause-amd64   3.0     99e59f495ffa     20 months ago     746.9 kB</span><br><span class="line"></span><br><span class="line">node节点对应:</span><br><span class="line"></span><br><span class="line">REPOSITORY                                               TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"></span><br><span class="line">gcr.io/google_containers/kube-apiserver-amd64            v1.9.1              e313a3e9d78d        7 days ago          210.4 MB</span><br><span class="line"></span><br><span class="line">quay.io/coreos/flannel                                   v0.9.1-amd64        2b736d06ca4c        8 weeks ago         51.31 MB</span><br><span class="line"></span><br><span class="line">gcr.io/google_containers/etcd-amd64                      3.1.10              1406502a6459        4 months ago        192.7 MB</span><br><span class="line"></span><br><span class="line">gcr.io/google_containers/pause-amd64                     3.0                 99e59f495ffa        20 months ago       746.9 kB</span><br><span class="line"></span><br><span class="line">#以下是另一种网络版本对应:</span><br><span class="line"></span><br><span class="line">REPOSITORY                                               TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"></span><br><span class="line">quay.io/calico/node                                      v2.6.2              6763a667e3ba        12 weeks ago        281.6 MB</span><br><span class="line"></span><br><span class="line">quay.io/calico/cni                                       v1.11.0             c3482541970f        3 months ago        70.88 MB</span><br><span class="line"></span><br><span class="line">错误信息总结:</span><br><span class="line"></span><br><span class="line">1、错误:Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of &quot;crypto/rsa: verification error&quot; while trying to verify candidate authority certificate &quot;kubernetes&quot;)</span><br><span class="line"></span><br><span class="line">解决方案：设置环境变量：</span><br><span class="line"></span><br><span class="line">sudo cp /etc/kubernetes/admin.conf $HOME/</span><br><span class="line"></span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/admin.conf</span><br><span class="line">export $KUBECONFIG=$HOME/.kube/admin.conf</span><br><span class="line"></span><br><span class="line">2、错误：[ERROR FileContent--proc-sys-net-bridge-bridge-nf-call-iptables]: /proc/sys/net/bridge/bridge-nf-call-iptables contents are not set to 1</span><br><span class="line"></span><br><span class="line">解决方案：cat /etc/sysctl.conf　　　　</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line"></span><br><span class="line">3、获取登录token</span><br><span class="line">kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk &#x27;/dashboard-admin/&#123;print $1&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/python/python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/python/python/" class="post-title-link" itemprop="url">python</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:41:36" itemprop="dateCreated datePublished" datetime="2019-06-11T16:41:36Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+
+  
+    <span id="/2019/06/12/python/python/" class="post-meta-item leancloud_visitors" data-flag-title="python" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/python/python/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/python/python/" class="cy_cmt_count" data-xid="2019/06/12/python/python/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/docker/docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/docker/docker/" class="post-title-link" itemprop="url">docker</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:41:23" itemprop="dateCreated datePublished" datetime="2019-06-11T16:41:23Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/12/docker/docker/" class="post-meta-item leancloud_visitors" data-flag-title="docker" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/docker/docker/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/docker/docker/" class="cy_cmt_count" data-xid="2019/06/12/docker/docker/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h5 id="docker常识积累"><a href="#docker常识积累" class="headerlink" title="docker常识积累"></a>docker常识积累</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">docker CE社区版官方免费支持(7个月)</span><br><span class="line">docker EE企业版官方免费支持(24个月)</span><br><span class="line"></span><br><span class="line">国内支持仓库云服务商: 时速云镜像仓库、网易云镜像服务、DaoCloud 镜像市场、阿里云镜像</span><br><span class="line"></span><br><span class="line">###centos 安装docker-ce</span><br><span class="line"></span><br><span class="line">$ sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-selinux \</span><br><span class="line">                  docker-engine-selinux \</span><br><span class="line">                  docker-engine</span><br><span class="line">安装依赖包:</span><br><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">           device-mapper-persistent-data \</span><br><span class="line">           lvm2</span><br><span class="line"></span><br><span class="line">添加yum源:</span><br><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line">官网源:</span><br><span class="line"># $ sudo yum-config-manager \</span><br><span class="line">#     --add-repo \</span><br><span class="line">#     https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line">如果需要测试版本的 Docker CE 请使用以下命令：</span><br><span class="line">$ sudo yum-config-manager --enable docker-ce-test</span><br><span class="line"></span><br><span class="line">如果需要每日构建版本的 Docker CE 请使用以下命令：</span><br><span class="line">$ sudo yum-config-manager --enable docker-ce-nightly</span><br><span class="line"></span><br><span class="line">更新 yum 软件源缓存，并安装 docker-ce</span><br><span class="line">$ sudo yum makecache fast</span><br><span class="line">$ sudo yum install docker-ce</span><br><span class="line"></span><br><span class="line">使用脚本自动安装</span><br><span class="line">$ curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">$ sudo sh get-docker.sh --mirror Aliyun</span><br><span class="line"></span><br><span class="line">启动 Docker CE</span><br><span class="line">$ sudo systemctl enable docker</span><br><span class="line">$ sudo systemctl start docker</span><br><span class="line"></span><br><span class="line">添加内核参数</span><br><span class="line">如果在 CentOS 使用 Docker CE 看到下面的这些警告信息：</span><br><span class="line"></span><br><span class="line">WARNING: bridge-nf-call-iptables is disabled</span><br><span class="line">WARNING: bridge-nf-call-ip6tables is disabled</span><br><span class="line">请添加内核配置参数以启用这些功能。</span><br><span class="line"></span><br><span class="line">$ sudo tee -a /etc/sysctl.conf &lt;&lt;-EOF</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">然后重新加载 sysctl.conf 即可</span><br><span class="line">$ sudo sysctl -p</span><br><span class="line"></span><br><span class="line">查看镜像大小</span><br><span class="line"></span><br><span class="line">docker system df   #查看镜像、容器、数据卷所占用的空间</span><br><span class="line"></span><br><span class="line">docker images 等于 docker image ls  #查看镜像实际占用磁盘空间</span><br><span class="line"></span><br><span class="line">docker image ls -f dangling=true  #显示虚悬镜像(虚悬镜像:是指没有仓库名和标签的镜像)</span><br><span class="line"></span><br><span class="line">docker image prune  #删除虚悬镜像</span><br><span class="line"></span><br><span class="line"># docker image ls -f before=crond_new:1.0.1  #查看crond_new:1.0.1之前建立镜像</span><br><span class="line"></span><br><span class="line"># docker image ls -f since=crond_dev:1.0.0   #查看crond_dev:1.0.0之后建立镜像</span><br><span class="line"></span><br><span class="line"># docker image ls -q  #只列出镜像ID</span><br><span class="line"></span><br><span class="line"># docker image ls --format &quot;&#123;&#123;.ID&#125;&#125;: &#123;&#123;.Repository&#125;&#125;&quot; #只列出镜像ID和仓库名</span><br><span class="line"></span><br><span class="line"># docker image ls --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Repository&#125;&#125;\t&#123;&#123;.Tag&#125;&#125;&quot;  #指定间隔符号</span><br><span class="line"></span><br><span class="line"># docker image ls --digests  #获取精确镜像摘要 </span><br><span class="line"></span><br><span class="line"># docker rm node@sha256:b4f0e0bdeb578043c1ea6862f0d40cc4afe32a4a582f3be235a3b164422be228  #根据镜像摘要进行删除</span><br><span class="line"></span><br><span class="line"># docker image rm $(docker image ls -q redis)  #删除redis实列</span><br></pre></td></tr></table></figure>
+
+<h5 id="docker-volume"><a href="#docker-volume" class="headerlink" title="docker volume"></a>docker volume</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">docker volume ls</span><br><span class="line"></span><br><span class="line">docker volume inspect my-vol</span><br><span class="line"></span><br><span class="line">docker run -d -P --name web --mount source=my-vol,target=/webapp training/webapp python app.py  #挂载实列</span><br><span class="line"></span><br><span class="line">docker inspect web  #查看逻辑卷信息</span><br><span class="line"></span><br><span class="line">docker volume rm my-vol  #删除逻辑卷</span><br><span class="line"></span><br><span class="line">docker volume prune  #删除无主逻辑卷</span><br><span class="line"></span><br><span class="line">docker run -itd --name test_local --restart=always --mount type=bind,source=/opt/app,target=/kuaibao/www alpine /bin/sh  #挂载本地目录至容器中，和-v选项区别是:本地目录不存在时会报错，而-v则会自己创建</span><br><span class="line"></span><br><span class="line">docker run -itd --name test --restart=always --mount source=my-vol,target=/kuaibao/www alpine /bin/sh  #挂载本地创建的volume挂载至容器中</span><br><span class="line"></span><br><span class="line">Docker 挂载主机目录的默认权限是 读写，用户也可以通过增加 readonly 指定为 只读。</span><br><span class="line"></span><br><span class="line">docker run -itd --name test_read --restart=always --mount type=bind,source=/opt/app,target=/kuaibao/www,readonly alpine /bin/sh  #只读模式,如下测试</span><br><span class="line">[root@k8s-slave ~]# docker exec -it test_read touch /kuaibao/www/1.txt</span><br><span class="line">touch: /kuaibao/www/1.txt: Read-only file system</span><br><span class="line"></span><br><span class="line">docker run -itd --name test_file --restart=always --mount type=bind,source=$HOME/.bash_history,target=/root/.bash_history alpine /bin/sh  #挂载文件至容器中</span><br></pre></td></tr></table></figure>
+
+<h5 id="docker-选项"><a href="#docker-选项" class="headerlink" title="docker 选项"></a>docker 选项</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">EXPOSE  记录服务可用端口，但是并不创建喝宿主机之间的映射</span><br><span class="line">--export 运行时暴露端口，但是并不创建喝宿主机之间的映射</span><br><span class="line">-p  创建端口映射规则，比如 -p ip:hostPort:containerPort| ip::containerPort | hostPort:containerPort | containerPort </span><br><span class="line">    必须指定containerPort,如果没有指定hostPort，Docker 会自动分配端口</span><br><span class="line">	</span><br><span class="line">-P  将Dockerfile里暴露的所有容器端口映射到动态分配的宿主机端口上</span><br><span class="line"></span><br><span class="line">--link 在消费和服务容器之间创建链接，比如 --link name:alias</span><br><span class="line">       这会创建一系列环境变量，并在消费者容器的/etc/hosts文件里添加入口项</span><br><span class="line">	   必须暴露或发布端口</span><br></pre></td></tr></table></figure>
+
+<h5 id="docker-log"><a href="#docker-log" class="headerlink" title="docker log"></a>docker log</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">docker logs [OPTIONS] CONTAINER</span><br><span class="line">  Options:</span><br><span class="line">        --details        显示更多的信息</span><br><span class="line">    -f, --follow         跟踪实时日志</span><br><span class="line">        --since string   显示自某个timestamp之后的日志，或相对时间，如42m（即42分钟）</span><br><span class="line">        --tail string    从日志末尾显示多少行日志， 默认是all</span><br><span class="line">    -t, --timestamps     显示时间戳</span><br><span class="line">        --until string   显示自某个timestamp之前的日志，或相对时间，如42m（即42分钟）</span><br><span class="line"></span><br><span class="line">案列:</span><br><span class="line">#查看指定时间后的日志，只显示最后100行：</span><br><span class="line">docker logs -f -t --since=&quot;2018-02-08&quot; --tail=100 CONTAINER_ID</span><br><span class="line"></span><br><span class="line">#查看最近30分钟的日志</span><br><span class="line">docker logs --since 30m CONTAINER_ID</span><br><span class="line"></span><br><span class="line">#查看某时间之后的日志：</span><br><span class="line">docker logs -t --since=&quot;2018-02-08T13:23:37&quot; CONTAINER_ID</span><br><span class="line"></span><br><span class="line">#查看某时间段日志</span><br><span class="line">docker logs -t --since=&quot;2018-02-08T13:23:37&quot; --until &quot;2018-02-09T12:23:37&quot; CONTAINER_ID</span><br></pre></td></tr></table></figure>
+
+<h5 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">docker-compose create	创建所有的服务</span><br><span class="line"></span><br><span class="line">docker-compose start	启动被停止或未启动的服务</span><br><span class="line"></span><br><span class="line">docker-compose up	    创建所有服务并且启动服务，即同时执行了create和start命令</span><br><span class="line"></span><br><span class="line">docker-compose stop	    停止所有服务</span><br><span class="line"></span><br><span class="line">docker-compose kill	    强行停止所有服务</span><br><span class="line"></span><br><span class="line">docker-compose rm	    删除停止的服务</span><br><span class="line"></span><br><span class="line">docker-compose restart	重启所有服务</span><br><span class="line"></span><br><span class="line">docker-compose down	    停止、删除所有的服务以及网络、镜像</span><br><span class="line"></span><br><span class="line">docker-compose up -d nginx   #构建建启动nignx容器</span><br><span class="line"></span><br><span class="line">docker-compose exec nginx bash  #登录到nginx容器中</span><br><span class="line"></span><br><span class="line">docker-compose down  #删除所有nginx容器,镜像</span><br><span class="line"></span><br><span class="line">docker-compose ps  #显示所有容器</span><br><span class="line"></span><br><span class="line">docker-compose restart ngin  #重新启动nginx容器</span><br><span class="line"></span><br><span class="line">docker-compose run --no-deps --rm php-fpm php -v  #在php-fpm中不启动关联容器，并容器执行php -v 执行完成后删除容器</span><br><span class="line"></span><br><span class="line">docker-compose build nginx  #构建镜像</span><br><span class="line"></span><br><span class="line">docker-compose build --no-cache nginx  #不带缓存的构建</span><br><span class="line"></span><br><span class="line">docker-compose logs nginx  #查看nginx的日志</span><br><span class="line"></span><br><span class="line">docker-compose logs -f nginx  #验证（docker-compose.yml）文件配置，当配置正确时，不输出任何内容，当文件配置错误，输出错误信息</span><br><span class="line"></span><br><span class="line">docker-compose pause nginx  #暂停nignx容器</span><br><span class="line"></span><br><span class="line">docker-compose unpause nginx #恢复ningx容器</span><br><span class="line"></span><br><span class="line">docker-compose rm nginx  #删除容器（删除前必须关闭容器）</span><br><span class="line"></span><br><span class="line">docker-compose stop nginx  #停止nignx容器</span><br><span class="line"></span><br><span class="line">docker-compose start nginx  #启动nignx容器</span><br></pre></td></tr></table></figure>
+
+<h5 id="说明-以下是制作php的crond计划任务镜像"><a href="#说明-以下是制作php的crond计划任务镜像" class="headerlink" title="说明:以下是制作php的crond计划任务镜像"></a>说明:以下是制作php的crond计划任务镜像</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">命令:docker run -d --name crond  -v  /www/:/www/ web:1.0.0</span><br><span class="line"></span><br><span class="line">FROM alpine:edge</span><br><span class="line">MAINTAINER Cuibobo &lt;cuibobo@kuaidihelp.com&gt;</span><br><span class="line"></span><br><span class="line">ENV LANG=C.UTF-8</span><br><span class="line">ENV PHP_FPM_USER=&quot;www&quot; </span><br><span class="line">ENV PHP_FPM_GROUP=&quot;www&quot; </span><br><span class="line">ENV PHP_FPM_LISTEN_MODE=&quot;0660&quot;</span><br><span class="line">ENV PHP_MEMORY_LIMIT=&quot;512M&quot;</span><br><span class="line">ENV PHP_MAX_UPLOAD=&quot;50M&quot;</span><br><span class="line">ENV PHP_MAX_FILE_UPLOAD=&quot;200&quot;</span><br><span class="line">ENV PHP_MAX_POST=&quot;100M&quot;</span><br><span class="line">ENV PHP_DISPLAY_ERRORS=&quot;On&quot;</span><br><span class="line">ENV PHP_DISPLAY_STARTUP_ERRORS=&quot;On&quot;</span><br><span class="line">ENV PHP_ERROR_REPORTING=&quot;E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_ERROR&quot;</span><br><span class="line">ENV PHP_CGI_FIX_PATHINFO=0</span><br><span class="line">ENV TIMEZONE=&quot;Asia/Shanghai&quot;</span><br><span class="line"></span><br><span class="line">COPY ./service.sh /root/</span><br><span class="line">COPY ./ErrorLogWriterDev.phar /root/</span><br><span class="line">COPY ./rsyslog.conf /opt/</span><br><span class="line"></span><br><span class="line">RUN  apk update &amp;&amp; \</span><br><span class="line">     apk add --no-cache tzdata  &amp;&amp; \</span><br><span class="line">	apk add --no-cache php7-fpm \</span><br><span class="line">		       php7 \</span><br><span class="line">                       php7-mcrypt \</span><br><span class="line">                       php7-soap  \</span><br><span class="line">                       php7-openssl \</span><br><span class="line">                       php7-gmp \</span><br><span class="line">                       php7-pdo_odbc \</span><br><span class="line">                       php7-json \</span><br><span class="line">                       php7-dom \</span><br><span class="line">                       php7-pdo \</span><br><span class="line">                       php7-zip \</span><br><span class="line">		       php7-mysqli \</span><br><span class="line">		       php7-phar \</span><br><span class="line">                       php7-sqlite3 \</span><br><span class="line">                       php7-apcu \</span><br><span class="line">		       php7-pdo_pgsql \</span><br><span class="line">                       php7-bcmath \</span><br><span class="line">                       php7-gd \</span><br><span class="line">                       php7-odbc \</span><br><span class="line">                       php7-pdo_mysql \</span><br><span class="line">                       php7-pdo_sqlite \</span><br><span class="line">                       php7-gettext \</span><br><span class="line">                       php7-xmlreader \</span><br><span class="line">                       php7-xmlrpc \</span><br><span class="line">                       php7-bz2 \</span><br><span class="line">                       php7-sockets \</span><br><span class="line">                       php7-xmlwriter \</span><br><span class="line">		       php7-xsl \</span><br><span class="line">		       php7-tokenizer \</span><br><span class="line">		       php7-ftp \</span><br><span class="line">		       php7-posix \</span><br><span class="line">                       php7-fileinfo \</span><br><span class="line">		       php7-shmop \</span><br><span class="line">		       php7-mbstring \</span><br><span class="line">                       php7-iconv \</span><br><span class="line">                       php7-pdo_dblib \</span><br><span class="line">                       php7-curl \</span><br><span class="line">		       php7-session \</span><br><span class="line">                       php7-ctype \</span><br><span class="line">		       php7-simplexml \</span><br><span class="line">                       php7-redis &amp;&amp; \</span><br><span class="line">		sed -i &quot;s|;listen.owner\s*=\s*nobody|listen.owner = $&#123;PHP_FPM_USER&#125;|g&quot; /etc/php7/php-fpm.d/www.conf &amp;&amp; \</span><br><span class="line">sed -i -e &quot;s/;daemonize\s*=\s*yes/daemonize = no/g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i -e &quot;s/;slowlog/slowlog/g&quot; /etc/php7/php-fpm.d/www.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;listen.group\s*=\s*nobody|listen.group = $&#123;PHP_FPM_GROUP&#125;|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;listen.mode\s*=\s*0660|listen.mode = $&#123;PHP_FPM_LISTEN_MODE&#125;|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|user\s*=\s*nobody|user = $&#123;PHP_FPM_USER&#125;|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|group\s*=\s*nobody|group = $&#123;PHP_FPM_GROUP&#125;|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;log_level\s*=\s*notice|log_level = notice|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|display_errors\s*=\s*Off|display_errors = $&#123;PHP_DISPLAY_ERRORS&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|display_startup_errors\s*=\s*Off|display_startup_errors = $&#123;PHP_DISPLAY_STARTUP_ERRORS&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|error_reporting\s*=\s*E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT|error_reporting = $&#123;PHP_ERROR_REPORTING&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*memory_limit =.*|memory_limit = $&#123;PHP_MEMORY_LIMIT&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*upload_max_filesize =.*|upload_max_filesize = $&#123;PHP_MAX_UPLOAD&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*max_file_uploads =.*|max_file_uploads = $&#123;PHP_MAX_FILE_UPLOAD&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*post_max_size =.*|post_max_size = $&#123;PHP_MAX_POST&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= $&#123;PHP_CGI_FIX_PATHINFO&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">cp /usr/share/zoneinfo/$&#123;TIMEZONE&#125; /etc/localtime &amp;&amp; \</span><br><span class="line">echo &quot;$&#123;TIMEZONE&#125;&quot; &gt; /etc/timezone &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*date.timezone =.*|date.timezone = $&#123;TIMEZONE&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">        mkdir /www &amp;&amp; \</span><br><span class="line">        apk del tzdata curl &amp;&amp; \</span><br><span class="line">	adduser -D -g &#x27;www&#x27; www &amp;&amp; \</span><br><span class="line">        chown -R www:www /www &amp;&amp; \</span><br><span class="line">	apk add rsyslog logrotate &amp;&amp; \</span><br><span class="line">	rm -f /etc/rsyslog.conf &amp;&amp; \</span><br><span class="line">	mv /opt/rsyslog.conf /etc/ &amp;&amp; \</span><br><span class="line">        apk add --no-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing gnu-libiconv &amp;&amp; \</span><br><span class="line">	rm -rf /var/cache/apk/*</span><br><span class="line">ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php</span><br><span class="line"></span><br><span class="line">WORKDIR /www</span><br><span class="line">VOLUME [&quot;/www&quot;]</span><br><span class="line"></span><br><span class="line">EXPOSE 80</span><br><span class="line">CMD [&quot;/root/service.sh&quot;]</span><br><span class="line"></span><br><span class="line">Alpine操作系统</span><br><span class="line">源码安装swoole需要依赖</span><br><span class="line">apk add  gcc g++ make php7-dev php7-pear </span><br><span class="line">php7-dev  #phpize</span><br><span class="line">php7-pear #pecl </span><br><span class="line">pecl install swoole-4.2.8.tgz  #选择mysqld和socket</span><br></pre></td></tr></table></figure>
+<h5 id="php-openresty-alpine"><a href="#php-openresty-alpine" class="headerlink" title="php+openresty(alpine)"></a>php+openresty(alpine)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br></pre></td><td class="code"><pre><span class="line">server.sh 可以根据自己情况编写，但是要以php7-fpm结尾</span><br><span class="line">打包镜像</span><br><span class="line">docker built -t web:1.0.0 -f Dockerfile . --no-cache</span><br><span class="line">docker 运行实例</span><br><span class="line">docker run -d --privileged=true --name test --restart=always  -p 80:80 -v /data/:/www/  web:1.0.0</span><br><span class="line"></span><br><span class="line">FROM alpine:edge</span><br><span class="line">MAINTAINER Cuibobo &lt;cuibobo@kuaidihelp.com&gt;</span><br><span class="line"></span><br><span class="line">ENV PHP_FPM_USER=&quot;www&quot; </span><br><span class="line">ENV PHP_FPM_GROUP=&quot;www&quot; </span><br><span class="line">ENV PHP_FPM_LISTEN_MODE=&quot;0660&quot;</span><br><span class="line">ENV PHP_MEMORY_LIMIT=&quot;512M&quot;</span><br><span class="line">ENV PHP_MAX_UPLOAD=&quot;50M&quot;</span><br><span class="line">ENV PHP_MAX_FILE_UPLOAD=&quot;200&quot;</span><br><span class="line">ENV PHP_MAX_POST=&quot;100M&quot;</span><br><span class="line">ENV PHP_DISPLAY_ERRORS=&quot;On&quot;</span><br><span class="line">ENV PHP_DISPLAY_STARTUP_ERRORS=&quot;On&quot;</span><br><span class="line">ENV PHP_ERROR_REPORTING=&quot;E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_ERROR&quot;</span><br><span class="line">ENV PHP_CGI_FIX_PATHINFO=0</span><br><span class="line">ENV TIMEZONE=&quot;Asia/Shanghai&quot;</span><br><span class="line"></span><br><span class="line">ARG RESTY_VERSION=&quot;1.13.6.2&quot;</span><br><span class="line">ARG RESTY_OPENSSL_VERSION=&quot;1.0.2p&quot;</span><br><span class="line">ARG RESTY_PCRE_VERSION=&quot;8.42&quot;</span><br><span class="line">ARG RESTY_J=&quot;3&quot;</span><br><span class="line">ARG RESTY_CONFIG_OPTIONS=&quot;\</span><br><span class="line">    --with-file-aio \</span><br><span class="line">    --with-http_addition_module \</span><br><span class="line">    --with-http_auth_request_module \</span><br><span class="line">    --with-http_dav_module \</span><br><span class="line">    --with-http_flv_module \</span><br><span class="line">    --with-http_geoip_module=dynamic \</span><br><span class="line">    --with-http_gunzip_module \</span><br><span class="line">    --with-http_gzip_static_module \</span><br><span class="line">    --with-http_image_filter_module=dynamic \</span><br><span class="line">    --with-http_mp4_module \</span><br><span class="line">    --with-http_random_index_module \</span><br><span class="line">    --with-http_realip_module \</span><br><span class="line">    --with-http_secure_link_module \</span><br><span class="line">    --with-http_slice_module \</span><br><span class="line">    --with-http_ssl_module \</span><br><span class="line">    --with-http_stub_status_module \</span><br><span class="line">    --with-http_sub_module \</span><br><span class="line">    --with-http_v2_module \</span><br><span class="line">    --with-http_xslt_module=dynamic \</span><br><span class="line">    --with-ipv6 \</span><br><span class="line">    --with-mail \</span><br><span class="line">    --with-mail_ssl_module \</span><br><span class="line">    --with-md5-asm \</span><br><span class="line">    --with-pcre-jit \</span><br><span class="line">    --with-sha1-asm \</span><br><span class="line">    --with-stream \</span><br><span class="line">    --add-dynamic-module=/opt/ngx_http_substitutions_filter_module-master \</span><br><span class="line">    --with-stream_ssl_module \</span><br><span class="line">    --with-pcre=/tmp/pcre-$&#123;RESTY_PCRE_VERSION&#125; \</span><br><span class="line">    --with-openssl=/tmp/openssl-$&#123;RESTY_OPENSSL_VERSION&#125; \</span><br><span class="line">    --with-threads \</span><br><span class="line">    &quot;</span><br><span class="line">ARG RESTY_CONFIG_OPTIONS_MORE=&quot;&quot;</span><br><span class="line">ARG RESTY_ADD_PACKAGE_BUILDDEPS=&quot;&quot;</span><br><span class="line">ARG RESTY_ADD_PACKAGE_RUNDEPS=&quot;&quot;</span><br><span class="line">ARG RESTY_EVAL_PRE_CONFIGURE=&quot;&quot;</span><br><span class="line">ARG RESTY_EVAL_POST_MAKE=&quot;&quot;</span><br><span class="line"></span><br><span class="line">LABEL resty_version=&quot;$&#123;RESTY_VERSION&#125;&quot;</span><br><span class="line">LABEL resty_openssl_version=&quot;$&#123;RESTY_OPENSSL_VERSION&#125;&quot;</span><br><span class="line">LABEL resty_pcre_version=&quot;$&#123;RESTY_PCRE_VERSION&#125;&quot;</span><br><span class="line">LABEL resty_config_options=&quot;$&#123;RESTY_CONFIG_OPTIONS&#125;&quot;</span><br><span class="line">LABEL resty_config_options_more=&quot;$&#123;RESTY_CONFIG_OPTIONS_MORE&#125;&quot;</span><br><span class="line">LABEL resty_add_package_builddeps=&quot;$&#123;RESTY_ADD_PACKAGE_BUILDDEPS&#125;&quot;</span><br><span class="line">LABEL resty_add_package_rundeps=&quot;$&#123;RESTY_ADD_PACKAGE_RUNDEPS&#125;&quot;</span><br><span class="line">LABEL resty_eval_pre_configure=&quot;$&#123;RESTY_EVAL_PRE_CONFIGURE&#125;&quot;</span><br><span class="line">LABEL resty_eval_post_make=&quot;$&#123;RESTY_EVAL_POST_MAKE&#125;&quot;</span><br><span class="line">	</span><br><span class="line">COPY ./ngx_http_substitutions_filter_module-master /opt/ngx_http_substitutions_filter_module-master</span><br><span class="line">COPY ./echo-nginx-module /opt/echo-nginx-module</span><br><span class="line">COPY ./service.sh /root/</span><br><span class="line">COPY ./old /opt/old</span><br><span class="line">COPY ./host /opt/host</span><br><span class="line">COPY ./rsyslog.conf /opt/rsyslog.conf</span><br><span class="line"></span><br><span class="line">RUN  apk update &amp;&amp; \</span><br><span class="line">     apk add --no-cache tzdata  &amp;&amp; \</span><br><span class="line">	apk add --no-cache php7-fpm \</span><br><span class="line">		       php7 \</span><br><span class="line">                       php7-mcrypt \</span><br><span class="line">                       php7-soap  \</span><br><span class="line">                       php7-openssl \</span><br><span class="line">                       php7-gmp \</span><br><span class="line">                       php7-pdo_odbc \</span><br><span class="line">                       php7-json \</span><br><span class="line">                       php7-dom \</span><br><span class="line">                       php7-pdo \</span><br><span class="line">                       php7-zip \</span><br><span class="line">		       php7-mysqli \</span><br><span class="line">                       php7-sqlite3 \</span><br><span class="line">                       php7-apcu \</span><br><span class="line">		       php7-pdo_pgsql \</span><br><span class="line">                       php7-bcmath \</span><br><span class="line">                       php7-gd \</span><br><span class="line">                       php7-odbc \</span><br><span class="line">                       php7-pdo_mysql \</span><br><span class="line">                       php7-pdo_sqlite \</span><br><span class="line">                       php7-gettext \</span><br><span class="line">                       php7-xmlreader \</span><br><span class="line">                       php7-xmlrpc \</span><br><span class="line">                       php7-bz2 \</span><br><span class="line">                       php7-sockets \</span><br><span class="line">                       php7-xmlwriter \</span><br><span class="line">		       php7-xsl \</span><br><span class="line">		       php7-tokenizer \</span><br><span class="line">		       php7-ftp \</span><br><span class="line">		       php7-posix \</span><br><span class="line">                       php7-fileinfo \</span><br><span class="line">		       php7-shmop \</span><br><span class="line">		       php7-mbstring \</span><br><span class="line">                       php7-iconv \</span><br><span class="line">                       php7-pdo_dblib \</span><br><span class="line">                       php7-curl \</span><br><span class="line">		       php7-session \</span><br><span class="line">                       php7-ctype \</span><br><span class="line">                       php7-redis &amp;&amp; \</span><br><span class="line">		sed -i &quot;s|;listen.owner\s*=\s*nobody|listen.owner = $&#123;PHP_FPM_USER&#125;|g&quot; /etc/php7/php-fpm.d/www.conf &amp;&amp; \</span><br><span class="line">sed -i -e &quot;s/;daemonize\s*=\s*yes/daemonize = no/g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i -e &quot;s/;slowlog/slowlog/g&quot; /etc/php7/php-fpm.d/www.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;listen.group\s*=\s*nobody|listen.group = $&#123;PHP_FPM_GROUP&#125;|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;listen.mode\s*=\s*0660|listen.mode = $&#123;PHP_FPM_LISTEN_MODE&#125;|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|user\s*=\s*nobody|user = $&#123;PHP_FPM_USER&#125;|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|group\s*=\s*nobody|group = $&#123;PHP_FPM_GROUP&#125;|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;log_level\s*=\s*notice|log_level = notice|g&quot; /etc/php7/php-fpm.conf &amp;&amp; \</span><br><span class="line">sed -i &quot;s|display_errors\s*=\s*Off|display_errors = $&#123;PHP_DISPLAY_ERRORS&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|display_startup_errors\s*=\s*Off|display_startup_errors = $&#123;PHP_DISPLAY_STARTUP_ERRORS&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|error_reporting\s*=\s*E_ALL &amp; ~E_DEPRECATED &amp; ~E_STRICT|error_reporting = $&#123;PHP_ERROR_REPORTING&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*memory_limit =.*|memory_limit = $&#123;PHP_MEMORY_LIMIT&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*upload_max_filesize =.*|upload_max_filesize = $&#123;PHP_MAX_UPLOAD&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*max_file_uploads =.*|max_file_uploads = $&#123;PHP_MAX_FILE_UPLOAD&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*post_max_size =.*|post_max_size = $&#123;PHP_MAX_POST&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= $&#123;PHP_CGI_FIX_PATHINFO&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">cp /usr/share/zoneinfo/$&#123;TIMEZONE&#125; /etc/localtime &amp;&amp; \</span><br><span class="line">echo &quot;$&#123;TIMEZONE&#125;&quot; &gt; /etc/timezone &amp;&amp; \</span><br><span class="line">sed -i &quot;s|;*date.timezone =.*|date.timezone = $&#123;TIMEZONE&#125;|i&quot; /etc/php7/php.ini &amp;&amp; \</span><br><span class="line">		apk add --no-cache --virtual .build-deps \</span><br><span class="line">        build-base \</span><br><span class="line">        curl \</span><br><span class="line">        gd-dev \</span><br><span class="line">        geoip-dev \</span><br><span class="line">        libxslt-dev \</span><br><span class="line">        linux-headers \</span><br><span class="line">        make \</span><br><span class="line">        perl-dev \</span><br><span class="line">        readline-dev \</span><br><span class="line">        zlib-dev \</span><br><span class="line">        $&#123;RESTY_ADD_PACKAGE_BUILDDEPS&#125; \</span><br><span class="line">    &amp;&amp; apk add --no-cache \</span><br><span class="line">        gd \</span><br><span class="line">        geoip \</span><br><span class="line">        libgcc \</span><br><span class="line">        libxslt \</span><br><span class="line">        zlib \</span><br><span class="line">        $&#123;RESTY_ADD_PACKAGE_RUNDEPS&#125; \</span><br><span class="line">    &amp;&amp; cd /tmp \</span><br><span class="line">    &amp;&amp; if [ -n &quot;$&#123;RESTY_EVAL_PRE_CONFIGURE&#125;&quot; ]; then eval $(echo $&#123;RESTY_EVAL_PRE_CONFIGURE&#125;); fi \</span><br><span class="line">    &amp;&amp; curl -fSL https://www.openssl.org/source/openssl-$&#123;RESTY_OPENSSL_VERSION&#125;.tar.gz -o openssl-$&#123;RESTY_OPENSSL_VERSION&#125;.tar.gz \</span><br><span class="line">    &amp;&amp; tar xzf openssl-$&#123;RESTY_OPENSSL_VERSION&#125;.tar.gz \</span><br><span class="line">    &amp;&amp; curl -fSL https://ftp.pcre.org/pub/pcre/pcre-$&#123;RESTY_PCRE_VERSION&#125;.tar.gz -o pcre-$&#123;RESTY_PCRE_VERSION&#125;.tar.gz \</span><br><span class="line">    &amp;&amp; tar xzf pcre-$&#123;RESTY_PCRE_VERSION&#125;.tar.gz \</span><br><span class="line">    &amp;&amp; curl -fSL https://openresty.org/download/openresty-$&#123;RESTY_VERSION&#125;.tar.gz -o openresty-$&#123;RESTY_VERSION&#125;.tar.gz \</span><br><span class="line">    &amp;&amp; tar xzf openresty-$&#123;RESTY_VERSION&#125;.tar.gz \</span><br><span class="line">    &amp;&amp; cd /tmp/openresty-$&#123;RESTY_VERSION&#125; \</span><br><span class="line">    &amp;&amp; ./configure -j$&#123;RESTY_J&#125; $&#123;_RESTY_CONFIG_DEPS&#125; $&#123;RESTY_CONFIG_OPTIONS&#125; $&#123;RESTY_CONFIG_OPTIONS_MORE&#125; \</span><br><span class="line">    &amp;&amp; make -j$&#123;RESTY_J&#125; \</span><br><span class="line">    &amp;&amp; make -j$&#123;RESTY_J&#125; install \</span><br><span class="line">    &amp;&amp; cd /tmp \</span><br><span class="line">    &amp;&amp; if [ -n &quot;$&#123;RESTY_EVAL_POST_MAKE&#125;&quot; ]; then eval $(echo $&#123;RESTY_EVAL_POST_MAKE&#125;); fi \</span><br><span class="line">    &amp;&amp; rm -rf \</span><br><span class="line">        openssl-$&#123;RESTY_OPENSSL_VERSION&#125; \</span><br><span class="line">        openssl-$&#123;RESTY_OPENSSL_VERSION&#125;.tar.gz \</span><br><span class="line">        openresty-$&#123;RESTY_VERSION&#125;.tar.gz openresty-$&#123;RESTY_VERSION&#125; \</span><br><span class="line">        pcre-$&#123;RESTY_PCRE_VERSION&#125;.tar.gz pcre-$&#123;RESTY_PCRE_VERSION&#125; \</span><br><span class="line">    &amp;&amp; apk del .build-deps \</span><br><span class="line">    &amp;&amp; rm -rf /opt/ngx_http_substitutions_filter_module-master \</span><br><span class="line">    &amp;&amp; rm -rf /opt/echo-nginx-module \</span><br><span class="line">    &amp;&amp; ln -sf /dev/stdout /usr/local/openresty/nginx/logs/access.log \</span><br><span class="line">    &amp;&amp; ln -sf /dev/stderr /usr/local/openresty/nginx/logs/error.log &amp;&amp; \</span><br><span class="line">        mkdir /www &amp;&amp; \</span><br><span class="line">        apk del tzdata curl &amp;&amp; \</span><br><span class="line">	adduser -D -g &#x27;www&#x27; www &amp;&amp; \</span><br><span class="line">        chown -R www:www /www &amp;&amp; \</span><br><span class="line">	mkdir /run/nginx/ &amp;&amp; \</span><br><span class="line">	mv /opt/old/* /usr/local/openresty/nginx/conf/ &amp;&amp; \</span><br><span class="line">	apk add rsyslog &amp;&amp; \</span><br><span class="line">        apk add --no-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing gnu-libiconv &amp;&amp; \</span><br><span class="line">	rm -rf /var/cache/apk/*</span><br><span class="line"></span><br><span class="line"># Add additional binaries into PATH for convenience</span><br><span class="line">ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php</span><br><span class="line">ENV PATH=$PATH:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin</span><br><span class="line"></span><br><span class="line"># Copy nginx configuration files</span><br><span class="line">COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf</span><br><span class="line">COPY vhosts /usr/local/openresty/nginx/conf/vhosts	</span><br><span class="line">#COPY key /usr/local/openresty/nginx/conf/key</span><br><span class="line"></span><br><span class="line">WORKDIR /www</span><br><span class="line">VOLUME [&quot;/www&quot;]</span><br><span class="line"></span><br><span class="line">EXPOSE 80</span><br><span class="line">CMD [&quot;/root/service.sh&quot;]</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019-2021 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Apollo运维之路 沪ICP备18003764号</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{&quot;enable&quot;:true,&quot;app_id&quot;:&quot;60FhJz0dwC9abRffuc3Vxx8C-gzGzoHsz&quot;,&quot;app_key&quot;:&quot;cNv2qm5Kf2d0a7WcmwTAt3kN&quot;,&quot;server_url&quot;:&quot;https:&#x2F;&#x2F;github.mansoncui.com&quot;,&quot;security&quot;:true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="changyan" type="application/json">{&quot;enable&quot;:true,&quot;appid&quot;:&quot;cyvygPryP&quot;,&quot;appkey&quot;:&quot;7b3cae28f8dd04a93996dedcf63bb59d&quot;}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

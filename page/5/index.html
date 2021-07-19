@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;github.mansoncui.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:300,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12,&quot;onmobile&quot;:true},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="不要轻易给自己人生设限，努力就完事了。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Apollo 运维之路">
+<meta property="og:url" content="https://github.mansoncui.com/page/5/index.html">
+<meta property="og:site_name" content="Apollo 运维之路">
+<meta property="og:description" content="不要轻易给自己人生设限，努力就完事了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Apollo">
+<meta property="article:tag" content="python, shell, 运维, k8s, docker, 自动化">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.mansoncui.com/page/5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;page&#x2F;5&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Apollo 运维之路</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Apollo 运维之路" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Apollo 运维之路</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Apollo 博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">40</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Apollo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Apollo</p>
+  <div class="site-description" itemprop="description">不要轻易给自己人生设限，努力就完事了。
+</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mansoncui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mansoncui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mansoncui@163.com" title="E-Mail → mailto:mansoncui@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zhangguanzhang.github.io/" title="https:&#x2F;&#x2F;zhangguanzhang.github.io&#x2F;" rel="noopener" target="_blank">张馆长</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kuboard.cn/" title="https:&#x2F;&#x2F;kuboard.cn&#x2F;" rel="noopener" target="_blank">邵欢庆</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://yangcs.net/" title="https:&#x2F;&#x2F;yangcs.net&#x2F;" rel="noopener" target="_blank">云原生实验室</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+  <a href="https://github.com/mansoncui" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/17/git/git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/17/git/git/" class="post-title-link" itemprop="url">git</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-17 15:50:21" itemprop="dateCreated datePublished" datetime="2019-06-17T15:50:21Z">2019-06-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/17/git/git/" class="post-meta-item leancloud_visitors" data-flag-title="git" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/17/git/git/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/17/git/git/" class="cy_cmt_count" data-xid="2019/06/17/git/git/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">1、解决文件已经添加到暂存区进行回退</span><br><span class="line"></span><br><span class="line">   git reset HEAD readme.txt(文件)  #取消暂存区文件修改</span><br><span class="line">   git status  #查看当前文件状态</span><br><span class="line">   git checkout -- readme.txt #回退到git add之前状态</span><br><span class="line"></span><br><span class="line">   git log -n10 --oneline  #显示最近十次提交日志</span><br><span class="line">   git diff old_id new_id --name-status #对比两次提交和文件修改及状态</span><br><span class="line"></span><br><span class="line">2、查看git提交日志</span><br><span class="line"></span><br><span class="line">   git log参数详解:</span><br><span class="line">   -p  按补丁格式显示每个更新之间的差异。</span><br><span class="line"></span><br><span class="line">   --stat   显示每次更新的文件修改统计信息。</span><br><span class="line"></span><br><span class="line">   --shortstat   只显示 --stat 中最后的行数修改添加移除统计。</span><br><span class="line"></span><br><span class="line">   --name-only   仅在提交信息后显示已修改的文件清单。</span><br><span class="line"></span><br><span class="line">   --name-status   显示新增、修改、删除的文件清单。</span><br><span class="line"></span><br><span class="line">   --abbrev-commit   仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。</span><br><span class="line"></span><br><span class="line">   --relative-date  使用较短的相对时间显示（比如，“2 weeks ago”）。</span><br><span class="line"></span><br><span class="line">   --graph    显示 ASCII 图形表示的分支合并历史。</span><br><span class="line"></span><br><span class="line">   --pretty  使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。</span><br><span class="line"></span><br><span class="line">   -(n)   仅显示最近的 n 条提交</span><br><span class="line"></span><br><span class="line">   --since, --after   仅显示指定时间之后的提交。</span><br><span class="line"></span><br><span class="line">   --until, --before   仅显示指定时间之前的提交。</span><br><span class="line"></span><br><span class="line">   --author   仅显示指定作者相关的提交。</span><br><span class="line"></span><br><span class="line">   --committer  仅显示指定提交者相关的提交。</span><br><span class="line"></span><br><span class="line">   --grep  仅显示含指定关键字的提交</span><br><span class="line"></span><br><span class="line">   -S  仅显示添加或移除了某个关键字的提交</span><br><span class="line">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">   git log filename  #查看filename文件commit记录</span><br><span class="line"></span><br><span class="line">   git log -p filename  #显示每次提交的diff</span><br><span class="line"></span><br><span class="line">   git log  --pretty=format:&quot;%cn committed %h on %cd&quot;  #指定日志格式(%cn作者名字，%h缩略标识，%cd提交日期)</span><br><span class="line"></span><br><span class="line">   git log  --author=&quot;manson&quot;</span><br><span class="line"></span><br><span class="line">   git log --pretty=&quot;%an - %s&quot; --author=cuibobo --since=&quot;2018-10-01&quot; --before=&quot;2018-12-27&quot; --oneline #指定格式和日期进行日志查询</span><br><span class="line"> </span><br><span class="line">   git log #命令显示从最近到最远的提交日志，如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline</span><br><span class="line"></span><br><span class="line">   git reset --hard HEAD^ #用HEAD表示当前版本（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100</span><br><span class="line"></span><br><span class="line">  git reset --hard commit_id   #通过commit id来回溯</span><br><span class="line"></span><br><span class="line">  git reflog #Git提供了一个命令git reflog用来记录你的每一次命令</span><br><span class="line"></span><br><span class="line">  HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。</span><br><span class="line"></span><br><span class="line">  穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</span><br><span class="line"></span><br><span class="line">  要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</span><br><span class="line"></span><br><span class="line">  git remote add origin git@server-name:path/repo-name.git  #添加远程仓库</span><br><span class="line"> </span><br><span class="line">  git push -u origin master #第一次推送master分支的所有内容；</span><br><span class="line"></span><br><span class="line">  git push origin master #提交以后，推送最新修改</span><br><span class="line"></span><br><span class="line">3、git使用分支</span><br><span class="line"></span><br><span class="line">  Git鼓励大量使用分支：</span><br><span class="line"></span><br><span class="line">  查看分支：git branch</span><br><span class="line"></span><br><span class="line">  创建分支：git branch &lt;name&gt;</span><br><span class="line"></span><br><span class="line">  切换分支：git checkout &lt;name&gt;</span><br><span class="line"></span><br><span class="line">  创建+切换分支：git checkout -b &lt;name&gt;</span><br><span class="line"></span><br><span class="line">  合并某分支到当前分支：git merge &lt;name&gt;</span><br><span class="line"></span><br><span class="line">  删除分支：git branch -d &lt;name&gt;</span><br><span class="line"></span><br><span class="line">4、合并和解决冲突</span><br><span class="line"></span><br><span class="line">  git log —-graph —-pretty=oneline —abbrev-commit #查看执行日志</span><br><span class="line"></span><br><span class="line">  git merge abort #放弃合并</span><br><span class="line"></span><br><span class="line">  git merge —-no-ff -m “描述信息” 分支名  #解决Fast forward删除分支会丢失commit id信息，加-m选项描述信息，因为会产生新commit id</span><br><span class="line"></span><br><span class="line">  总结:合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</span><br><span class="line"></span><br><span class="line">5、解决bug分支前隐藏当前工作目录</span><br><span class="line"></span><br><span class="line">  工作场景:当前某个分支还未提交，需要解决线上bug:</span><br><span class="line">  git stash  #把当前工作现场&quot;储藏&quot;起来,然后就可以修改bug</span><br><span class="line"></span><br><span class="line">  git stash  list  #查看工作现场</span><br><span class="line"></span><br><span class="line">  git stash apply  #恢复工作现场，恢复以后stash内容不删除，使用git stash drop来删除</span><br><span class="line"></span><br><span class="line">  git stash pop #恢复工作目录同时并把stash内容也删除</span><br><span class="line"></span><br><span class="line">  git stash apply stash@&#123;0&#125; #恢复指定stash</span><br><span class="line"> </span><br><span class="line">6、git log --pretty=format:&quot;%h - %an, %ar : %s&quot;</span><br><span class="line"></span><br><span class="line">   %H		提交对象（commit）的完整哈希字串</span><br><span class="line">   %h		提交对象的简短哈希字串</span><br><span class="line">   %T		树对象（tree）的完整哈希字串</span><br><span class="line">   %t		树对象的简短哈希字串</span><br><span class="line">   %P		父对象（parent）的完整哈希字串</span><br><span class="line">   %p		父对象的简短哈希字串</span><br><span class="line">   %an		作者（author）的名字</span><br><span class="line">   %ae		作者的电子邮件地址</span><br><span class="line">   %ad		作者修订日期（可以用 -date= 选项定制格式）</span><br><span class="line">   %ar		作者修订日期，按多久以前的方式显示</span><br><span class="line">   %cn		提交者(committer)的名字</span><br><span class="line">   %ce		提交者的电子邮件地址</span><br><span class="line">   %cd		提交日期</span><br><span class="line">   %cr		提交日期，按多久以前的方式显示</span><br><span class="line">   %s		提交说明</span><br><span class="line"></span><br><span class="line">   -(n)	仅显示最近的 n 条提交</span><br><span class="line">   --since, --after	仅显示指定时间之后的提交。</span><br><span class="line">   --until, --before	仅显示指定时间之前的提交。</span><br><span class="line">   --author	仅显示指定作者相关的提交。</span><br><span class="line">   --committer	仅显示指定提交者相关的提交。</span><br><span class="line"></span><br><span class="line">   git log --pretty=&quot;%h - %s&quot; --author=gitster --since=&quot;2008-10-01&quot; --before=&quot;2008-12-27&quot; --no-merges -- t/</span><br><span class="line">   git log  --pretty=format:&quot;%cn committed %h on %cd&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">7、分支作用</span><br><span class="line"></span><br><span class="line">  分支策略</span><br><span class="line"></span><br><span class="line">  在实际开发中，我们应该按照几个基本原则进行分支管理：</span><br><span class="line"></span><br><span class="line">  首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</span><br><span class="line"></span><br><span class="line">  那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；</span><br><span class="line"></span><br><span class="line">  你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</span><br><span class="line"></span><br><span class="line">8、tags创建和推送</span><br><span class="line"></span><br><span class="line">git tag &lt;tagname&gt;用于新建一个标签，默认为HEAD，也可以指定一个commit id；</span><br><span class="line"></span><br><span class="line">git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;可以指定标签信息；</span><br><span class="line"></span><br><span class="line">git tag可以查看所有标签。</span><br><span class="line"></span><br><span class="line">git push origin &lt;tagname&gt;可以推送一个本地标签；</span><br><span class="line"></span><br><span class="line">git push origin --tags可以推送全部未推送过的本地标签；</span><br><span class="line"></span><br><span class="line">git tag -d &lt;tagname&gt;可以删除一个本地标签；</span><br><span class="line"></span><br><span class="line">git push origin :refs/tags/&lt;tagname&gt;可以删除一个远程标签</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:47:00" itemprop="dateCreated datePublished" datetime="2019-06-11T16:47:00Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">正则表达式</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-meta-item leancloud_visitors" data-flag-title="正则表达式" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="cy_cmt_count" data-xid="2019/06/12/正则表达式/正则表达式/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h5 id="基本语法和案列"><a href="#基本语法和案列" class="headerlink" title="基本语法和案列"></a>基本语法和案列</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">正则就是规则，正则表达式就是能够让我们表达出自己想法的规则</span><br><span class="line"></span><br><span class="line">grep命令:</span><br><span class="line">选项详解:</span><br><span class="line">-i  区分大小写匹配</span><br><span class="line">-n  显示行号</span><br><span class="line">--color 或 --color=auto 高亮显示关键字</span><br><span class="line">可以设置别名:alias grep=&#x27;grep --color=auto&#x27;</span><br><span class="line">-c 统计符合条件的总行数，而不打印出行</span><br><span class="line">-o 只显示被匹配到的关键字，而不是讲整行内容都输出，一行匹配多个关键字会换行显示</span><br><span class="line">-B 显示符合条件的行之前的行，“B” 有before之意</span><br><span class="line">-B1 表示显示符合条件的同时还显示之前的1行</span><br><span class="line">-B3 表示显示符合条件的同时还显示之前的3行</span><br><span class="line"></span><br><span class="line">-A 和-B恰恰相反，-A有After之意</span><br><span class="line">-w 有word之意，表示搜索的字符串作为一个独立的单词时才会被匹配到</span><br><span class="line">-v 和匹配字符串取反的意思</span><br><span class="line">-q 表示时静默模式，静默模式下grep不会输出任何信息，无论是否匹配到指定字符串，都不会</span><br><span class="line">输出任何字符串，都不会输出任何信息</span><br><span class="line">-E 扩展正则表达式</span><br><span class="line"></span><br><span class="line">&quot;^&quot; 在正则中表示锚定行首</span><br><span class="line">&quot;$&quot; 在正则中表示锚定行尾</span><br><span class="line">&quot;^$&quot; 在正则中表示空行</span><br><span class="line"></span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# grep &quot;^hello&quot; --color  test2 #显示已hello开头行</span><br><span class="line">hello world</span><br><span class="line">hello.cbb</span><br><span class="line">hello</span><br><span class="line">[root@test-service ~]# grep -n &quot;^hello&quot; --color  test2 #显示已hello开头的行并显示行号</span><br><span class="line">1:hello world</span><br><span class="line">3:hello.cbb</span><br><span class="line">4:hello</span><br><span class="line">[root@test-service ~]# grep -n  &quot;^$&quot; --color  test2  #显示空行和空行行号</span><br><span class="line">4:</span><br><span class="line">6:</span><br><span class="line"></span><br><span class="line">&quot;\&lt;&quot;表示锚定词首，&quot;\&gt;&quot;表示锚定词尾</span><br><span class="line">&quot;\&lt;与\&gt;&quot; 一起使用,也可以使用\b 锚定词首和词尾</span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# cat test3 </span><br><span class="line">hello world</span><br><span class="line">hi		hello111111</span><br><span class="line">hello.cbb</span><br><span class="line"></span><br><span class="line">11111hello</span><br><span class="line"></span><br><span class="line">[root@test-service ~]# grep --color &quot;\&lt;hello&quot; test3</span><br><span class="line">hello world</span><br><span class="line">hi		hello111111</span><br><span class="line">hello.cbb</span><br><span class="line">[root@test-service ~]# grep --color &quot;hello\&gt;&quot; test3</span><br><span class="line">hello world</span><br><span class="line">hello.cbb</span><br><span class="line">11111hello</span><br><span class="line">[root@test-service ~]# grep --color &quot;\&lt;hello\&gt;&quot; test3</span><br><span class="line">hello world</span><br><span class="line">hello.cbb</span><br><span class="line"></span><br><span class="line">使用\b 锚定词首和词尾</span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# grep --color &quot;\bhello&quot; test3</span><br><span class="line">hello world</span><br><span class="line">hi		hello111111</span><br><span class="line">hello.cbb</span><br><span class="line">[root@test-service ~]# grep --color &quot;hello\b&quot; test3</span><br><span class="line">hello world</span><br><span class="line">hello.cbb</span><br><span class="line">11111hello</span><br><span class="line">[root@test-service ~]# grep --color &quot;\bhello\b&quot; test3</span><br><span class="line">hello world</span><br><span class="line">hello.cbb</span><br><span class="line"></span><br><span class="line">\B 是用来匹配非单词边界的</span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# grep --color &quot;\Bhello&quot; test3  #只要hello不是词首，就会被匹配到,和&quot;\bhello&quot;恰恰相反</span><br><span class="line">11111hello</span><br><span class="line">[root@test-service ~]# grep --color &quot;hello\B&quot; test3  #只要hello不是词尾就匹配</span><br><span class="line">hi		hello111111</span><br><span class="line">[root@test-service ~]# grep --color &quot;\Bhello\B&quot; test3 #既不是词首也不是词尾，就匹配</span><br><span class="line">1111hellocbb</span><br><span class="line"></span><br><span class="line">总结:</span><br><span class="line">^: 表示锚定行首,此字符后面的任意内容必须出现在行首，才能匹配</span><br><span class="line">$: 表示锚定行尾,此字符前面的任意内容必须出现在行尾，才能匹配</span><br><span class="line">^$: 表示匹配空行,这里所描述的空行表示“回车”，而“空格”或&quot;tab&quot;等都不能算此处所描述的空行</span><br><span class="line">^abc$: 表示abc独占一行，会被匹配到</span><br><span class="line">\&lt;h或者\b :匹配单词边界，表示锚定词首，其后面的字符必须作为单词首部出现</span><br><span class="line">\&gt;或者\b ：匹配单词边界，表示锚定词尾，其前面的字符必须作为单词尾部出现</span><br><span class="line">\B: 匹配非单词边界，与\b 正好相反</span><br></pre></td></tr></table></figure>
+
+<h5 id="正则表达式之分组"><a href="#正则表达式之分组" class="headerlink" title="正则表达式之分组"></a>正则表达式之分组</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">正则表达式之分组:</span><br><span class="line"></span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# cat test5</span><br><span class="line">abefef</span><br><span class="line">abefefabefef</span><br><span class="line">[root@test-service ~]# grep -n --color &quot;\(abefef\)\&#123;2\&#125;&quot; test5 #&#123;2&#125;是影响括号中一整个字符串</span><br><span class="line">2:abefefabefef</span><br><span class="line">[root@test-service ~]# grep -n --color &quot;\(ab\(ef\)\&#123;2\&#125;\)\&#123;2\&#125;&quot; test5</span><br><span class="line">2:abefefabefef</span><br><span class="line">以上案列中包含了两组分组符号，最外侧的&quot;\( \)&quot;中又包含了另一个&quot;\( \)&quot;,这就是分组符号的嵌套</span><br><span class="line"></span><br><span class="line">后向引用:</span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# cat test6</span><br><span class="line">Hello world Hello</span><br><span class="line">Hiiii world Hiiii</span><br><span class="line"></span><br><span class="line">[root@test-service ~]# grep --color &quot;H.\&#123;4\&#125; world H.\&#123;4\&#125;&quot; test6 </span><br><span class="line">Hello world Hello</span><br><span class="line">Hiiii world Hiiii</span><br><span class="line"></span><br><span class="line">#第三行是新增也匹配</span><br><span class="line">[root@test-service ~]# grep --color &quot;H.\&#123;4\&#125; world H.\&#123;4\&#125;&quot; test6 </span><br><span class="line">Hello world Hello</span><br><span class="line">Hiiii world Hiiii</span><br><span class="line">Hello world Hiiii</span><br><span class="line"></span><br><span class="line">#后向应用:在原有的基础之上新增分组</span><br><span class="line">[root@test-service ~]# grep --color &quot;\(H.\&#123;4\&#125;\) world \1&quot; test6 </span><br><span class="line">Hello world Hello</span><br><span class="line">Hiiii world Hiiii</span><br><span class="line"></span><br><span class="line">小结:</span><br><span class="line">&quot;\1&quot;表示引用整个正则中第一个分组中的正则所匹配到的结果</span><br><span class="line">&quot;\2&quot;表示引用整个正则中第二个分组中的正则所匹配到的结果</span><br><span class="line"></span><br><span class="line">\(\)表示分组，我们可以将其中的内容当做一个整体，分组可以嵌套</span><br><span class="line">\(ab\)表示将ab当做一个整体去处理</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="awk-格式化"><a href="#awk-格式化" class="headerlink" title="awk 格式化"></a>awk 格式化</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">主义以下三点:格式化printf和awk中printf不同</span><br><span class="line">1）使用printf动作输出的文本不会换行，如果需要换行，可以在对应的&quot;格式替换符&quot;后加入&quot;\n&quot;进行转义。</span><br><span class="line">2）使用printf动作时，&quot;指定的格式&quot; 与 &quot;被格式化的文本&quot; 之间，需要用&quot;逗号&quot;隔开。</span><br><span class="line">3）使用printf动作时，&quot;格式&quot;中的&quot;格式替换符&quot;必须与 &quot;被格式化的文本&quot; 一一对应</span><br><span class="line"></span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# awk -F: &#x27;&#123;printf &quot;%s\n%s\n%s\n&quot; , $1,$2,$3&#125;&#x27; test</span><br><span class="line">root</span><br><span class="line">x</span><br><span class="line">0</span><br><span class="line">bin</span><br><span class="line">x</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line">对比以下两个案列不同:</span><br><span class="line">[root@test-service ~]# awk -F: &#x27;&#123;printf &quot;%s\n&quot; , $1,$2&#125;&#x27; test</span><br><span class="line">root</span><br><span class="line">bin</span><br><span class="line">[root@test-service ~]# awk -F: &#x27;&#123;printf &quot;%s\n%s\n&quot; , $1,$2&#125;&#x27; test</span><br><span class="line">root</span><br><span class="line">x</span><br><span class="line">bin</span><br><span class="line">x</span><br><span class="line"></span><br><span class="line">案列:设置变量指定分隔符</span><br><span class="line">[root@test-service ~]# cat test</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">[root@test-service ~]# awk -v FS=&#x27;:&#x27; &#x27;&#123;printf &quot;第一列: %s\t 第二列: %s\n&quot; , $1,$2&#125;&#x27; test</span><br><span class="line">第一列: root	 第二列: x</span><br><span class="line">第一列: bin	 第二列: x</span><br><span class="line"></span><br><span class="line">[root@test-service ~]# awk -v FS=&#x27;:&#x27; &#x27;BEGIN&#123;printf &quot;%-10s\t %s\n&quot; , &quot;username&quot;,&quot;userid&quot;&#125; &#123;printf &quot;%-10s\t %s\n&quot; , $1,$2&#125;&#x27; test</span><br><span class="line">username  	 userid</span><br><span class="line">root      	 x</span><br><span class="line">bin       	 x</span><br></pre></td></tr></table></figure>
+
+<h5 id="awk-分隔符"><a href="#awk-分隔符" class="headerlink" title="awk 分隔符"></a>awk 分隔符</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">输入分隔符，英文原文为field separator，此处简称为FS</span><br><span class="line">输入分割符，默认是空白字符(即空格)，awk默认以空白字符为分隔符对每一行进行分割。</span><br><span class="line"></span><br><span class="line">输出分割符，英文原文为output field separator，此处简称为OFS</span><br><span class="line">awk将每行分割后，输出在屏幕上的时候，以什么字符作为分隔符，awk默认的输出分割符也是空格。</span><br><span class="line"></span><br><span class="line">除了使用 -F 选项指定输入分隔符，还能够通过设置内部变量的方式，指定awk的输入分隔符，awk内置变量FS可以用于指定输入分隔符，但是在使用变量时，需要使用-v选项，用于指定对应的变量，比如 -v FS=&#x27;#&#x27;</span><br><span class="line">案列:</span><br><span class="line">awk -F: &#x27;&#123;print $1,$2&#125;&#x27; test</span><br><span class="line"></span><br><span class="line">awk -v FS=&#x27;:&#x27; &#x27;&#123;print $1,$2&#125;&#x27; test</span><br><span class="line"></span><br><span class="line">总结:</span><br><span class="line">而-F，就是options的一种，用于指定输入分隔符</span><br><span class="line">-v也是options的一种，用于设置变量的值</span><br><span class="line"></span><br><span class="line">案列:</span><br><span class="line">awk -v FS=&#x27;:&#x27; -v OFS=&#x27;-----&#x27; &#x27;&#123;print $1,$2&#125;&#x27; test  #指定输入和输出分隔符，</span><br><span class="line">-v 选项设置变量意思</span><br><span class="line"></span><br><span class="line">在输出的时候，我们想要让两列合并在一起显示，不使用输出分隔符分开显示，该怎么做呢？</span><br><span class="line">案列:</span><br><span class="line">awk &#x27;&#123;print $1$2&#125;&#x27; test</span><br><span class="line">awk &#x27;&#123;print $1 $2&#125;&#x27; test</span><br></pre></td></tr></table></figure>
+
+<h5 id="awk-变量"><a href="#awk-变量" class="headerlink" title="awk 变量"></a>awk 变量</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">参考网址:https://blog.csdn.net/liang5603/article/details/80855386</span><br><span class="line">awk来说&quot;变量&quot;又分为&quot;内置变量&quot; 和 &quot;自定义变量&quot; , &quot;输入分隔符FS&quot;和&quot;输出分隔符OFS&quot;都属于内置变量</span><br><span class="line">内置变量就是awk预定义好的、内置在awk内部的变量，而自定义变量就是用户定义的变量。</span><br><span class="line"></span><br><span class="line">awk常用的内置变量以及其作用如下:</span><br><span class="line">FS：输入字段分隔符， 默认为空白字符</span><br><span class="line">OFS：输出字段分隔符， 默认为空白字符</span><br><span class="line">RS：输入记录分隔符(输入换行符)， 指定输入时的换行符(RS是行输入分隔符)</span><br><span class="line">ORS：输出记录分隔符（输出换行符），输出时用指定符号代替换行符(ORS是行输出分隔符)</span><br><span class="line">NF：number of Field，当前行的字段的个数(即当前行被分割成了几列)，字段数量</span><br><span class="line">NR：行号，当前处理的文本行的行号。</span><br><span class="line">FNR：各文件分别计数的行号</span><br><span class="line">FILENAME：当前文件名</span><br><span class="line">ARGC：命令行参数的个数</span><br><span class="line">ARGV：数组，保存的是命令行所给定的各参数</span><br><span class="line"></span><br><span class="line">内置变量NR：</span><br><span class="line">NR是统计文本中行数，NF统计文本中行的列数</span><br><span class="line">案列:</span><br><span class="line">awk -F: &#x27;&#123;print NR,NF&#125;&#x27; test</span><br><span class="line"></span><br><span class="line">$0是打印一整行内容</span><br><span class="line">案列:</span><br><span class="line">awk -F: &#x27;&#123;print NR,$0&#125;&#x27; test </span><br><span class="line"></span><br><span class="line">细心如你一定注意到了一个细节，就是在打印 $0 , $1 , $2 这些内置变量的时候，都有使用到&quot;$&quot;符号，但是在调用 NR , NF 这些内置变量的时候，就没有使用&quot;$&quot;，如果你有点不习惯，那么可能是因为你已经习惯了使用bash的语法去使用变量，在bash中，我们在引用变量时，都会使用$符进行引用，但是在awk中，只有在引用$0、$1等内置变量的值的时候才会用到&quot;$&quot;,引用其他变量时，不管是内置变量，还是自定义变量，都不使用&quot;$&quot;,而是直接使用变量名</span><br><span class="line"></span><br><span class="line">内置变量FNR</span><br><span class="line">FNR是对多个文件显示行号时使用的，不然用NR对多个文件进行显示行号是按顺序显示的</span><br><span class="line">案列:第一列显示是行号，用NR是按顺序显示，FNR是按每个文件单独显示</span><br><span class="line">[root@test-service ~]# awk &#x27;&#123;print NR,$0&#125;&#x27; test test1  #</span><br><span class="line">1 root:x:0:0:root:/root:/bin/bash</span><br><span class="line">2 bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">3 root:x:0:0:root:/root:/bin/bash</span><br><span class="line">4 bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line"></span><br><span class="line">[root@test-service ~]# awk &#x27;&#123;print FNR,$0&#125;&#x27; test test1 </span><br><span class="line">1 root:x:0:0:root:/root:/bin/bash</span><br><span class="line">2 bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">1 root:x:0:0:root:/root:/bin/bash</span><br><span class="line">2 bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line"></span><br><span class="line">内置变量RS:是输入行分隔符(awk认为,每遇到一个&#x27;:&#x27;，就换行)</span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# awk -v RS=&#x27;:&#x27; &#x27;&#123;print NR,$0&#125;&#x27; test1 #指定&#x27;:&#x27;为换行符</span><br><span class="line">1 root</span><br><span class="line">2 x</span><br><span class="line">bin</span><br><span class="line">3 x</span><br><span class="line"></span><br><span class="line">内置变量ORS:是输出行分割符(打印到屏幕进行分割)</span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# awk  -v ORS=&#x27;+++&#x27; &#x27;&#123;print NR,$0&#125;&#x27; test1 </span><br><span class="line">1 root:x+++2 bin:x+++</span><br><span class="line"></span><br><span class="line">内置变量FILENAME:显示文本的文件名</span><br><span class="line">案列:第一列是文本的文件名，第二列是每个文本行号，第三列是文本每行内容</span><br><span class="line">[root@test-service ~]# awk &#x27;&#123;print FILENAME,FNR,$0&#125;&#x27; test1 test</span><br><span class="line">test1 1 root:x</span><br><span class="line">test1 2 bin:x</span><br><span class="line">test 1 root:x:0:0:root:/root:/bin/bash</span><br><span class="line">test 2 bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line"></span><br><span class="line">内置变量ARGC与ARGV</span><br><span class="line">ARGC内置变量是命令行参数个数</span><br><span class="line">ARGV内置变量表示的是一个数组，这个数组中保存的是命令行所给定的参数</span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# awk &#x27;BEGIN&#123;print 1111&#125;&#x27; test</span><br><span class="line">1111</span><br><span class="line">[root@test-service ~]# awk &#x27;BEGIN&#123;print 1111,ARGV[1]&#125;&#x27; test</span><br><span class="line">1111 test</span><br><span class="line">[root@test-service ~]# awk &#x27;BEGIN&#123;print 1111,ARGV[1],ARGV[2]&#125;&#x27; test test1 </span><br><span class="line">1111 test test1</span><br><span class="line">[root@test-service ~]# awk &#x27;BEGIN&#123;print 1111,ARGV[0],ARGV[1],ARGV[2]&#125;&#x27; test test1 </span><br><span class="line">1111 awk test test1</span><br><span class="line">[root@test-service ~]# awk &#x27;BEGIN&#123;print 1111,ARGV[0],ARGV[1],ARGV[2],ARGC&#125;&#x27; test test1 </span><br><span class="line">1111 awk test test1 3</span><br><span class="line"></span><br><span class="line">自定义变量</span><br><span class="line">方法一: -v varname=value  变量名区分字符大小写</span><br><span class="line">方法二: 在program中直接定义</span><br><span class="line">案列:</span><br><span class="line">[root@test-service ~]# awk -v myVar=&#x27;testVar&#x27; &#x27;BEGIN&#123;print myVar&#125;&#x27;</span><br><span class="line">testVar</span><br><span class="line">[root@test-service ~]# awk  &#x27;BEGIN&#123;myvar=&quot;tttt&quot;;print myvar&#125;&#x27;</span><br><span class="line">tttt</span><br><span class="line">[root@test-service ~]# abc=6666666</span><br><span class="line">[root@test-service ~]# awk -v myVar=$abc &#x27;BEGIN&#123;print myVar&#125;&#x27;</span><br><span class="line">6666666</span><br></pre></td></tr></table></figure>
+
+<h5 id="正则表达式小节"><a href="#正则表达式小节" class="headerlink" title="正则表达式小节"></a>正则表达式小节</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#################常用符号#################</span><br><span class="line">.   表示任意单个字符。</span><br><span class="line">*  表示前面的字符连续出现任意次，包括0次。</span><br><span class="line">.* 表示任意长度的任意字符，与通配符中的*的意思相同。</span><br><span class="line">\  表示转义符，当与正则表达式中的符号结合时表示符号本身。</span><br><span class="line">[  ]表示匹配指定范围内的任意单个字符。</span><br><span class="line">[^  ]表示匹配指定范围外的任意单个字符。</span><br><span class="line"> </span><br><span class="line">#################单个字符匹配相关#################</span><br><span class="line">[[:alpha:]]  表示任意大小写字母。</span><br><span class="line">[[:lower:]]  表示任意小写字母。</span><br><span class="line">[[:upper:]]  表示任意大写字母。</span><br><span class="line">[[:digit:]]  表示0到9之间的任意单个数字（包括0和9）。</span><br><span class="line">[[:alnum:]]  表示任意数字或字母。</span><br><span class="line">[[:space:]]  表示任意空白字符，包括&quot;空格&quot;、&quot;tab键&quot;等。</span><br><span class="line">[[:punct:]]  表示任意标点符号。</span><br><span class="line">[^[:alpha:]]  表示单个非字母字符。</span><br><span class="line">[^[:lower:]]  表示单个非小写字母字符。</span><br><span class="line">[^[:upper:]]  表示单个非大写字母字符。</span><br><span class="line">[^[:digit:]]  表示单个非数字字符。</span><br><span class="line">[^[:alnum:]]  表示单个非数字非字母字符。</span><br><span class="line">[^[:space:]]  表示单个非空白字符。</span><br><span class="line">[^[:punct:]]  表示单个非标点符号字符。</span><br><span class="line">[0-9]与[[:digit:]]等效。</span><br><span class="line">[a-z]与[[:lower:]]等效。</span><br><span class="line">[A-Z]与[[:upper:]]等效。</span><br><span class="line">[a-zA-Z]与[[:alpha:]]等效。</span><br><span class="line">[a-zA-Z0-9]与[[:alnum:]]等效。</span><br><span class="line">[^0-9]与[^[:digit:]]等效。</span><br><span class="line">[^a-z]与[^[:lower:]]等效。</span><br><span class="line">[^A-Z]与[^[:upper:]]等效</span><br><span class="line">[^a-zA-Z]与[^[:alpha:]]等效</span><br><span class="line">[^a-zA-Z0-9]与[^[:alnum:]]等效</span><br><span class="line">#简短格式并非所有正则表达式解析器都可以识别。</span><br><span class="line">\d 表示任意单个0到9的数字。</span><br><span class="line">\D 表示任意单个非数字字符。</span><br><span class="line">\t 表示匹配单个横向制表符（相当于一个tab键）。</span><br><span class="line">\s表示匹配单个空白字符，包括&quot;空格&quot;，&quot;tab制表符&quot;等。</span><br><span class="line">\S表示匹配单个非空白字符。</span><br><span class="line"> </span><br><span class="line">#################次数匹配相关#################</span><br><span class="line">\?  表示匹配其前面的字符0或1次</span><br><span class="line">\+  表示匹配其前面的字符至少1次，或者连续多次，连续次数上不封顶。</span><br><span class="line">\&#123;n\&#125; 表示前面的字符连续出现n次，将会被匹配到。</span><br><span class="line">\&#123;x,y\&#125; 表示之前的字符至少连续出现x次，最多连续出现y次，都能被匹配到，换句话说，只要之前的字符连续出现的次数在x与y之间，即可被匹配到。</span><br><span class="line">\&#123;,n\&#125; 表示之前的字符连续出现至多n次，最少0次，都会陪匹配到。</span><br><span class="line">\&#123;n,\&#125;表示之前的字符连续出现至少n次，才会被匹配到。</span><br><span class="line"> </span><br><span class="line">#################位置边界匹配相关#################</span><br><span class="line">^：表示锚定行首，此字符后面的任意内容必须出现在行首，才能匹配。</span><br><span class="line">$：表示锚定行尾，此字符前面的任意内容必须出现在行尾，才能匹配。</span><br><span class="line">^$：表示匹配空行，这里所描述的空行表示&quot;回车&quot;，而&quot;空格&quot;或&quot;tab&quot;等都不能算作此处所描述的空行。</span><br><span class="line">^abc$：表示abc独占一行时，会被匹配到。</span><br><span class="line">\&lt;或者\b ：匹配单词边界，表示锚定词首，其后面的字符必须作为单词首部出现。</span><br><span class="line">\&gt;或者\b ：匹配单词边界，表示锚定词尾，其前面的字符必须作为单词尾部出现。</span><br><span class="line">\B：匹配非单词边界，与\b正好相反。</span><br><span class="line"> </span><br><span class="line">#################分组与后向引用#################</span><br><span class="line">\( \) 表示分组，我们可以将其中的内容当做一个整体，分组可以嵌套。</span><br><span class="line">\(ab\) 表示将ab当做一个整体去处理。</span><br><span class="line">\1 表示引用整个表达式中第1个分组中的正则匹配到的结果。</span><br><span class="line">\2 表示引用整个表达式中第2个分组中的正则匹配到的结果。</span><br></pre></td></tr></table></figure>
+<h5 id="工具下载地址"><a href="#工具下载地址" class="headerlink" title="工具下载地址:"></a>工具下载地址:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#对比文件工具</span><br><span class="line">https://www.scootersoftware.com/download.php</span><br><span class="line"></span><br><span class="line">##小乌龟（Tortoisegit）</span><br><span class="line">https://tortoisegit.org/download/</span><br><span class="line"></span><br><span class="line">##图片存放地址</span><br><span class="line">https://sm.ms/</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E8%BD%AF%E4%B8%AD%E6%96%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E8%BD%AF%E4%B8%AD%E6%96%AD/" class="post-title-link" itemprop="url">软中断</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:46:46" itemprop="dateCreated datePublished" datetime="2019-06-11T16:46:46Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">linux操作性能优化</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/12/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E8%BD%AF%E4%B8%AD%E6%96%AD/" class="post-meta-item leancloud_visitors" data-flag-title="软中断" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E8%BD%AF%E4%B8%AD%E6%96%AD/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E8%BD%AF%E4%B8%AD%E6%96%AD/" class="cy_cmt_count" data-xid="2019/06/12/linux操作性能优化/软中断/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="软中断"><a href="#软中断" class="headerlink" title="软中断"></a>软中断</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">top -H -p XX 1 / pidstat -wut -p XX 1   #那个线程占用CPU</span><br><span class="line"></span><br><span class="line">perf report -g -p XX 是否可以定位到具体的系统调用函数.</span><br><span class="line"></span><br><span class="line">中断:系统用来响应硬件设备请求的一种机制，会打断进程的正常调度和执行，通过调用内核中的中断处理程序来响应设备的请求(中断是一种异步的事件处理机制，用来提高系统的并发处理能力。中断事件发生，会触发执行中断处理程序，而中断处理程序被分为上半部和下半部这两个部分)</span><br><span class="line"></span><br><span class="line">上半部对应硬中断，用来快速处理中断</span><br><span class="line"></span><br><span class="line">下半部对应软中断，用来异步处理上半部未完成的工作</span><br><span class="line"></span><br><span class="line">1.中断是一种异步的事件处理机制，能提高系统的并发处理能力</span><br><span class="line"></span><br><span class="line">2.为了减少对正常进程运行进行影响，中断处理程序需要尽快运行。</span><br><span class="line"></span><br><span class="line">3.中断分为上下两个部分</span><br><span class="line">(1)上部分用来快速处理中断，在中断禁止模式下，主要处理跟硬件紧密相关的或时间敏感的工作</span><br><span class="line">(2)下部分用来延迟处理上半部分未完成的工作，通常以内核线程的方式运行。</span><br><span class="line"></span><br><span class="line">小结:</span><br><span class="line">上半部分直接处理硬件请求，即硬中断，特点是快速执行</span><br><span class="line">下部分由内核触发，即软中断，特点是延迟执行</span><br><span class="line">软中断除了上面的下部分，还包括一些内核自定义的事件，如:内核调度 RCU锁 网络收发 定时等</span><br><span class="line">软中断内核线程的名字:ksoftirq/cpu编号</span><br><span class="line"></span><br><span class="line">4.proc文件系统是一种内核空间和用户空间进行通信的机制，可以同时用来查看内核的数据结构又能用了动态修改内核的配置，如:</span><br><span class="line">/proc/softirqs 提供软中断的运行情况</span><br><span class="line">/proc/interrupts 提供硬中断的运行情况```</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">## 进程状态</span><br></pre></td></tr></table></figure>
+<p>当iowait升高时，进程很可能因为得不到硬件的响应，而长时间处于不可中断状态。从ps或者top命令的输出中，你可以发现它们都处于D状态，也就是不可中断状态(Uninterruptible Sleep)。<br>进程状态有哪几种:<br>R 是Running 或 Runnable 的缩写，表示进程CPU的就绪队列中，正在运行或者正在等待运行</p>
+<p>D 是Disk Sleep 的缩写，也就是不可中断状态睡眠（Uninterruptible Sleep）,一般表示进程正在跟硬件交互，并且交互过程中不允许被其他进程或中断打断</p>
+<p>Z 是Zombie的缩写，也就是可中断状态的睡眠，表示进程因为等待某个事件而被系统挂起，当进程等待的时间发生时，它会被唤醒并进入R状态</p>
+<p>I 是idle的缩写，也就是空闲状态，用在不可中断睡眠的内核线程上，前面说了，硬件交互导致的不可中断进程D表示，但对某些内核线程会导致平均负载升高，I状态的进程却不会。</p>
+<p>T或者t 也就是Stopped和Traced的缩写，表示进程处于暂停或者跟踪状态<br>向一个进程发送SIGSTOP信号，它就会因为响应这个信号变成暂停状态(Stopped);再向它发送SIGCONF信号，进程又会恢复运行（如果进程是终端里直接启动的，则需要你用fg命令，恢复到前台运行）</p>
+<p>X 也是Dead的缩写，表示进程已经消亡，所以你不会再top或者ps命令中看到它</p>
+<p>总结:<br>不可中断状态，表示进程正在跟硬件交互，为了保护进程数据和硬件的一致性，系统不允许其他进程或中断<br>打断这个进程。进程长时间处于不可中断状态，通常表示系统I/O性能问题</p>
+<p>僵尸进程表示进程已经退出，但它的父进程还没有回收子进程占用的资源。短暂的僵尸状态我们通常不必理会<br>但进程长时间处于僵尸状态，就应该注意了，可能有应用程序没有正常处理子进程的退出</p>
+<p>总结:分析系统等待I/O的CPU使用率(也就是iowait%)升高的情况<br>iowait高并不一定代码I/O有性能瓶颈。当然系统中只有I/O类型的进程在运行时，iowait也会很高<br>但是实际上，磁盘的读写远没有达到性能瓶颈的程度<br>因此，碰到iowait升高时，需要先用dstat、pidstat等工具，确认是不是磁盘I/O问题，然后找是<br>那些进程导致了I/O升高</p>
+<p>等待I/O的进程一般是不可中断状态，所以用ps命令找到的D状态（即不可中断状态）的进程，多为<br>可以进程</p>
+<p>当一个进程执行到最后成僵尸进程，就不能用strace，因为当前进程已经不存在了<br>用ps查看该进程是D状态是可以用strace进行追踪，否则用另外一种方法:<br>perf record -g(执行15s)停止，用perf report 进行查看分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line">## 某个应用cpu使用率居然达到100%，该怎么处理</span><br></pre></td></tr></table></figure>
+<p>1、linux并发(任务并行)的实质：linux作为一个多任务操作系统，将每个CPU的时间划分为很短站的时间片，再通过调度器轮流分配给各个任务使用，再通过调度器轮流分配给各个任务使用</p>
+<p>2、CPU的维护，通过实现定义的节拍率(内核用赫兹HZ标示)，触发时间判断(全局变量jiffes)记录。</p>
+<p>3、节拍率的内核态运行，属于内核空间节拍率：用户空间节拍率（USER_HZ）是一个固定值</p>
+<p>4、/proc/stat 提供的就是系统的CPU核任务统计系统信息: /proc/[pid]/stat展示进程的CPU核任务统计信息</p>
+<p>5、CPU的使用率={1-(idle_time/total_cpu_time)}/sample_ti</p>
+<p>6、性能分析工具给出的都是间隔一段时间的平均CPU使用率，所以要注意间隔的设置。top默认为3s，ps使用的是进程运行时间</p>
+<p>7、top、vmstat、mpstat等命令关于CPU性能相关指标的含义</p>
+<p>8、pidstat命令指标的含义</p>
+<p>9、perf以前用到的一堆[n]trace分析工具，perf的直观易用，这是今天最大的收获，作为dba对数据库的分析很有用的</p>
+<p>perf top、perf record、perf report对进程进行跟踪分析其调用perf top -g -p <mysqlpid></mysqlpid></p>
+<p>10、今天用测试工具:ab (apache-utils centos安装包)</p>
+<p>如果碰到不好解释的CPU问题时，比如现象：<br>通过top观察CPU使用率很高，但是看下面的进程的CPU使用率好像很正常，通过pidstat命令查看cpu也很正常。但通过top查看task数量不正常，处于R状态的进程是可疑点。</p>
+<p>首先要想到可能是短时间的应用导致的问题，如下面的两个：<br>（1）应用里直接调用了其他二进制程序，这些程序通常运行时间比较短，通过top等工具发现不了<br>（2）应用本身在不停地崩溃重启，而启动过程的资源初始化，很可能会占用很多CPU资源</p>
+<p>对于这类进程就需要 pstree 或execsnoop命令查找父进程，再从父进程的应用入手，找原因。<br>我实战的问题：<br>（1）centos的系统，发现通过 yum install pstress命令或其他命令，总是说没有匹配的软件包，这个很头疼<br>①pstress装不上可以尝试 yum install psmisc<br>②execsnoop这个命令我没有装上，想请教下老师如何解决这种yum install命令报没有匹配包的情况<br>（2）然后就是通过perf命令只能看到十六进制符号，看不到具体函数名的问题，这个可以使用上篇文章中我的留言的方法，我在copy一份，供大家参考<br>分析：当没有看到函数名，只看到十六进制时，说明perf无法找到待分析进程所依赖的库。<br>解决办法：<br>在容器外面把分析记录保存，到容器里面查看结果<br>操作：<br>（1）在centos系统上运行 perf record -g ，执行一会儿按ctrl+c停止<br>（2）把生成的perf.data（通常文件生成在命令执行的当前目录下，当然可以通过find | grep perf.data或 find / -name perf.data查看路径）文件拷贝到容器里面分析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line">## CPU上下文切换</span><br><span class="line"></span><br><span class="line">##### CPU上下文切换(上篇)</span><br></pre></td></tr></table></figure>
+<p>cpu上下文切换分为:进程上下文切换，线程上线文切换和中断上下文切换<br>1、进程上线文切换<br>   Linux安装特权等级，把进程的运行空间分为内核空间和用户空间<br>   内核空间具有最高权限，可以直接访问所有资源<br>   用户空间只能访问受限资源，不能直接访问内存等硬件设备，必须通过系统调用陷入到内核中才能访问这些特权资源<br>   换个角度看，也就是说，进程既可以在用户空间运行，也可以在内核空间运行。进程在用户空间运行时，被称为进程的用户态，<br>   而陷入内核空间的时候，被称为进程的内核态<br>   从用户态和内核态的转变，需要通过系统调用来完成，比如：当我们查看文件内容时，就需要多次系统调用来完成，首先调用<br>   open()打开文件，然后调用read()读取文件内容，并调用write()将内容写到标准输出，最后调用close()关闭文件<br>   CPU寄存器里原来用户态的指令的位置，需要先保存起来，接着，为了执行内核态代码，CPU寄存器需要更新为内核态指令的新位置<br>   ，最后才跳转到内核态运行内核任务<br>   而系统调用结束后，CPU寄存器需要恢复原来保存的用户态，然后再切到用户空间，继续运行进程，所以，一次系统调用的过程，其实时发生了两次cpu上线文切换，不过需要注意的是，系统调用过程中，并不会涉及到虚拟内存等进程用户态的资源，也不会切换进程，这跟我们通常所说的进程上线文切换时不一样的<br>   (1) 进程上线文切换，是指一个进程切换到另一个进程运行<br>   (2) 而系统调用过程中一直是同一个进程在运行<br>   所以，系统调用过程通常为特权模式切换，而不是上下文切换。但实际上，系统调用过程中，CPU的上线文切换时无法避免的<br>   进程上下文切换跟系统调用有什么区别呢?<br>   首先，进程是由内核来管理和调度的，进程的切换只发生在内核。所以，进程的上下问不仅包括了虚拟内存、栈、全局变量等用户空间的资源，还包括了内核堆栈、寄存器等内核空间的状态</p>
+<p>   因此，进程的上下问切换就比系统调用时多了一步:在保存当前进程的内核状态和CPU寄存器之前，需要先把该进程的虚拟内存、栈等保存下来；而加载了下一个进程的内核后。还需要新进程的虚拟内存和用户栈</p>
+<p>   根据Tsuna测试报告，每次上下文切换都需要几十纳秒到数微妙的CPU的时间.这个时间还是相当可观的，特别是在进程上下文切换次数较多的情况下，很容易导致CPU将大量时间耗费在寄存器、内核栈以及虚拟内存等资源的保存和恢复上，进而大大缩短了真正运行进程的时间，这也正是上一节中我们所讲的，导致平均负载升高的一个重要因素</p>
+<p>另外 Linux是通过TLB(Translation Lookaside) 来管理虚拟内存到物理内存的映射关系。当虚拟内存更新后，TLB也需要刷新，内存的访问也会随之变慢，特别是在多处理器系统上，缓存是被多个处理器共享的，刷新缓存不仅会影响当前处理器的进程，还会影响共享缓存的其他处理器的进程</p>
+<p>进程在什么时候才会被调度到CPU上运行呢？</p>
+<p>最容易想到的一个时机，就是进程执行完终止了，它之前使用的CPU会释放出来，这个时候再从就绪队列，拿一个新的进程过来运行，其实还有很多其他场景，也会触发进程调度，如下:<br>    (1) 为了保证所有进程可以得到公平调度，CPU时间被划分为一段段的时间片，这些时间片再被轮流分配给各个进程。这样当某个进程的时间片耗尽了，就会被系统挂起，切到其它正在等待CPU的进程运行<br>    (2) 进程在系统资源不足(比如内存不足)时，要等到资源满足后才可以运行，这个时候进程也会被挂起，并由系统调度其他进程运行。<br>    (3) 当进程通过睡眠函数sleep这样的方法将自己主动挂起时，自然也会重新调度<br>    (4) 当有优先级更高的进程运行时，为了保证高优先级进程的运行，当前进程会被挂起，由高优先级进程运行<br>    最后一个，发生硬件中断时，CPU上的进程会被中断挂起，转而执行内核中的中断服务程序</p>
+<p>2、线程上线文切换<br>   线程和进程最大区别在于，线程是调度的基本单位，而进程则是资源拥有的基本单位。说白了，所谓内核中的任务调度，实际上的调度对象是线程；而进程只是给线程提供了虚拟内存、全局变量等资源。所以对于线程和进程，我们可以这样理解:<br>   (1) 当进程只有一个线程时，可以认为进程就等于线程<br>   (2) 当进程拥有多个线程时，这些线程会共享</p>
+<p>3、中断上下文切换<br>   为了快速响应硬件的事件，中断处理会打断进程的正常调度和执行，转而调用中断处理程序，响应设备事件。而在打断其他进程时，就需要将进程当前的状态保存下来，这样在中断结束后，进程仍然可以从原来的状态恢复运行。<br>   跟进程上下文不同，中断上下文切换并不涉及到进程的用户态。所以即便中断过程打断一个正处在用户态的进程，也不需要保存和恢复这个进程的虚拟内存、全局变量等用户态资源。中断上下文，其实只包括内核态中断服务程序执行所必须的状态，包括CPU寄存器、内核堆栈和硬件中断参数等。<br>   对同一个CPU来说，中断处理比进程拥有更高的优先级，所以中断上下文切换并不会与进程上下文切换同时发生。同样道理，由于中断会打断正常进程的调度和执行，所以大部分中断处理程序都短小精悍，以便尽可能快的执行结束。<br>  另外，跟进程上下文切换一样，中断上下文切换也需要消耗CPU，切换次数过多也会消耗大量CPU，甚至严重降低系统的整体性能，所以，当你发现中断次数过多时，就需要注意去排查它是否会给你的系统带来严重的性能问题</p>
+<p>场景:<br>cpu上下文切换，是保证Linux系统正常工作的核心功能之一，一般情况下不需要我们特别关注</p>
+<p>但过多的上下文切换，会把CPU时间消耗在寄存器、内核栈以及虚拟内存等数据的保存和恢复上，从而缩短进程真正运行的时间，导致系统的整体性能答复下降</p>
+<p>总结:<br>1、多任务竞争CPU，CPU变换任务时进行cpu上下文切换（context switch）。CPU执行任务4中方式:进程、线程、或者硬件通过触发信号导致cpu中断的调用</p>
+<p>2、当切换任务的时候，需要记得任务当前的状态和获取下一任务信息和地址(指针)，这就是上下文的内容，因此，上下文是指某一时间CPU寄存器(CPU register)和程序计数器(PC)的内容，广义上还包括内存中进程的虚拟地址映射信息</p>
+<p>3、上下文切换的过程<br>   (1) 记录当前任务的上下文(即寄存器和计算器等所有的状态)<br>   (2) 找到新任务的上下文并加载<br>   (3) 切换到新任务的程序计算器位置，恢复期任务<br>4、根据任务的执行形式，相互的下上文切换，有进程上下文切换、线程上下文切换以及中断上下文切换三类<br>5、进程和线程区别：进程是资源分配合执行的基本单位；线程是任务调度和运行的基本单位。线程没有资源，进程给指针提供虚拟内存、栈和变量等共享资源，而线程可以共享进程的资源</p>
+<p>6、进程上线文切换:是指从一个进程切换到另一个进程。<br>  (1) 进程运行态为内核运行态和进程运行态，内核空间态资源包括内核的堆栈、寄存器等；用户空间态资源包括虚拟内存、栈、变量、正文和数据等<br>  (2) 系统调用(软中断)在内核态完成的，需要进行2次CPU上下文切换(用户空间-&gt;内核空间-&gt;用户空间)，不涉及用户资源，也不会切换进程<br>  (3) 进程是由内核来管理和调度的，进程的切换只能发生在内核态，所以，进程的上下文切换不仅包括了用户空间的资源，也包括内核空间的资源<br>  (4) 进程的上下文切换过程:<br>      (a) 接收到切换信号，挂起进程，记录当前进程虚拟内存、栈等资源存储<br>      (b) 将这个进程在CPU中的上下文状态存储起来<br>      (c) 然后在内存中检索下一个进程的上下文<br>      (d) 并将其加载到CPU的寄存器中恢复<br>      (e) 还需要刷新新进程的虚拟内存和用户栈<br>      (f) 最后跳转到程序计数器所指向的位置(即跳转搭配进程被中断时的代码行)，以恢复改进程<br>  (5) 下列将会触发进程上下文切换的场景:<br>      (a) 根据调度策略，将CPU时间划分为对应的时间片，当时间片耗尽时，当前进程必须挂起<br>      (b) 资源不足的，在获取到足够资源之前进程挂起<br>      (c) 进程sleep挂起进程<br>      (d) 高优先级进程导致当前进度挂起<br>      (e) 硬件中断，导致当前进程挂起<br>7、线程上下文切换<br>(1) 不通进程之前的线程上下文切换，其过程和进程上下文切换大致相同<br>(2) 进程内部的线程上下文切换，不需要切换进程用户资源，只需要切换线程私有的数据和寄存器等，这会比进程上下文进程切换消耗的资源少，所以多线程相比多线程优势</p>
+<p>8、中断上下文切换<br>快速响应硬件的事件，中断处理会打断进程的正常调度和执行，同一CPU内，硬件中断优先级高于进程。切换过程类似于系统调用，不涉及到用户运行态资源，但大量的中断上下文切换同样可能引发性能问题<br>备注:系统调用属于上下文切换，分别是CPU用来存储指令和下一条要执行指令的寄存器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">##### CPU上下文切换(下篇)</span><br></pre></td></tr></table></figure>
+<p>查看系统上下文切换情况:系统分析工具vmstat(vmstat是只给出了系统总体上下文切换情况，要想查看每个进程的详细情况，要向)<br><img src="https://i.loli.net/2019/03/05/5c7dd70b7cfc3.jpg" alt="vmstat_5"></p>
+<p>cs（context switch）是每秒上下文切换的次数。<br>in（interrupt）则是每秒中断的次数。<br>r（Running or Runnable）是就绪队列的长度，也就是正在运行和等待 CPU 的进程数。<br>b（Blocked）则是处于不可中断睡眠状态的进程数。</p>
+<p>###pidstat是查看每个进程上下文切换情况:（-w）每隔5秒输出1组数据<br><img src="https://i.loli.net/2019/03/05/5c7e40eb19730.jpg" alt="pidstat_5.jpg"></p>
+<p>解释:一个是 cswch ，表示每秒自愿上下文切换（voluntary context switches）的次数，<br>    另一个则是 nvcswch ，表示每秒非自愿上下文切换（non voluntary context switches）的次数。<br>所谓自愿上下文切换，是指进程无法获取所需资源，导致的上下文切换。比如说， I/O、内存等系统资源不足时，就会发生自愿上下文切换。<br>而非自愿上下文切换，则是指进程由于时间片已到等原因，被系统强制调度，进而发生的上下文切换。比如说，大量进程都在争抢 CPU 时，就容易发生非自愿上下文切换。</p>
+<pre><code>---
+</code></pre>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/services/services/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/services/services/" class="post-title-link" itemprop="url">services</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:45:44" itemprop="dateCreated datePublished" datetime="2019-06-11T16:45:44Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+
+  
+    <span id="/2019/06/12/services/services/" class="post-meta-item leancloud_visitors" data-flag-title="services" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/services/services/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/services/services/" class="cy_cmt_count" data-xid="2019/06/12/services/services/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/Alpine/Alpine/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/Alpine/Alpine/" class="post-title-link" itemprop="url">Alpine命令详解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:45:26" itemprop="dateCreated datePublished" datetime="2019-06-11T16:45:26Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Alpine/" itemprop="url" rel="index"><span itemprop="name">Alpine</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/12/Alpine/Alpine/" class="post-meta-item leancloud_visitors" data-flag-title="Alpine命令详解" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/Alpine/Alpine/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/Alpine/Alpine/" class="cy_cmt_count" data-xid="2019/06/12/Alpine/Alpine/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>1.apk update<br>$ apk update #更新最新镜像源列表</p>
+<p>2.apk search<br>$ apk search #查找所以可用软件包<br>$ apk search -v #查找所以可用软件包及其描述内容<br>$ apk search -v ‘acf*’ #通过软件包名称查找软件包<br>$ apk search -v -d ‘docker’ #通过描述文件查找特定的软件包</p>
+<p>3.apk add<br>$ apk add openssh #安装一个软件<br>$ apk add openssh openntp vim   #安装多个软件<br>$ apk add –no-cache mysql-client  #不使用本地镜像源缓存，相当于先执行update，再执行add</p>
+<p>4.apk info<br>$ apk info #列出所有已安装的软件包<br>$ apk info -a zlib #显示完整的软件包信息<br>$ apk info –who-owns /sbin/lbu #显示指定文件属于的包</p>
+<p>5.apk upgrade<br>$ apk upgrade #升级所有软件<br>$ apk upgrade openssh #升级指定软件<br>$ apk upgrade openssh openntp vim   #升级多个软件<br>$ apk add –upgrade busybox #指定升级部分软件包</p>
+<p>6.apk del<br>$ apk del openssh  #删除一个软件</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/services/redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/services/redis/" class="post-title-link" itemprop="url">redis</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:45:14" itemprop="dateCreated datePublished" datetime="2019-06-11T16:45:14Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/12/services/redis/" class="post-meta-item leancloud_visitors" data-flag-title="redis" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/services/redis/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/services/redis/" class="cy_cmt_count" data-xid="2019/06/12/services/redis/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h5 id="Redis-介绍和优点"><a href="#Redis-介绍和优点" class="headerlink" title="Redis 介绍和优点"></a>Redis 介绍和优点</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Redis是一个开源的、使用C语言编写的、支持网络交互的、可基于内存也可持久化的Key-Value数据库。 Redis开创了一种新的数据存储思路，使用Redis，我们不用在面对功能单调的数据库时，把精力放在如何把大象放进冰箱这样的问题上，而是利用Redis灵活多变的数据结构和数据操作，为不同的大象构建不同的冰箱。</span><br><span class="line"></span><br><span class="line">目前多数的NoSql数据库本质上都是键值对形式，Redis也不例外。作为缓存数据库的一种，和Memcached相比，有以下几种主要的优点：</span><br><span class="line"></span><br><span class="line">(1)速度上，Redis要比Memcached快，这是基于一些Benchmarks的测试结果得出的，而且在内存使用上，Redis突破了物理内存限制，可以使用虚拟内存；</span><br><span class="line"></span><br><span class="line">(2)数据类型比Memcached要多，Redis支持List、Set、SortedSet、HashMap等多种数据结构；</span><br><span class="line"></span><br><span class="line">(3)持久化方面，Memcached没有相应的持久化机制，而Redis有RDB快照和AOF日志两种形式结合做持久化，很大限度上保证了数据的持久化和安全性，不像Memcached断电后全都没了。</span><br><span class="line">Redis不失为Memcached的一种良好的替代方案。</span><br></pre></td></tr></table></figure>
+<h5 id="Redis-Aof-三种同步机制"><a href="#Redis-Aof-三种同步机制" class="headerlink" title="Redis Aof 三种同步机制:"></a>Redis Aof 三种同步机制:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">always  写一条数据就会刷新到硬盘上(不会丢失数据但是IO开销大)</span><br><span class="line">everysec 每秒一次刷新到磁盘中(最多会丢失一秒数据)，默认推荐这种方式</span><br><span class="line">no 根据操作系统来决定 (数据不可控)</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="Redis-配置详解"><a href="#Redis-配置详解" class="headerlink" title="Redis 配置详解"></a>Redis 配置详解</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br></pre></td><td class="code"><pre><span class="line">Redis示例配置文件</span><br><span class="line"></span><br><span class="line">注意单位问题：当需要设置内存大小的时候，可以使用类似1k、5GB、4M这样的常见格式：</span><br><span class="line">1k =&gt; 1000 bytes</span><br><span class="line"></span><br><span class="line">1kb =&gt; 1024 bytes</span><br><span class="line"></span><br><span class="line">1m =&gt; 1000000 bytes</span><br><span class="line"></span><br><span class="line">1mb =&gt; 1024*1024 bytes</span><br><span class="line"></span><br><span class="line">1g =&gt; 1000000000 bytes</span><br><span class="line"></span><br><span class="line">1gb =&gt; 102410241024 bytes</span><br><span class="line"></span><br><span class="line">单位是大小写不敏感的，所以1GB 1Gb 1gB的写法都是完全一样的。</span><br><span class="line"></span><br><span class="line">Redis默认是不作为守护进程来运行的。你可以把这个设置为&quot;yes&quot;让它作为守护进程来运行。</span><br><span class="line"></span><br><span class="line">注意，当作为守护进程的时候，Redis会把进程ID写到 /var/run/redis.pid</span><br><span class="line"></span><br><span class="line">aemonize no</span><br><span class="line"></span><br><span class="line">当以守护进程方式运行的时候，Redis会把进程ID默认写到 /var/run/redis.pid。你可以在这里修改路径。</span><br><span class="line"></span><br><span class="line">idfile /var/run/redis.pid</span><br><span class="line"></span><br><span class="line">接受连接的特定端口，默认是6379。</span><br><span class="line"></span><br><span class="line">如果端口设置为0，Redis就不会监听TCP套接字。</span><br><span class="line"></span><br><span class="line">ort 6379</span><br><span class="line"></span><br><span class="line">如果你想的话，你可以绑定单一接口；如果这里没单独设置，那么所有接口的连接都会被监听。</span><br><span class="line"></span><br><span class="line">bind 127.0.0.1</span><br><span class="line"></span><br><span class="line">指定用来监听连接的unxi套接字的路径。这个没有默认值，所以如果你不指定的话，Redis就不会通过unix套接字来监听。</span><br><span class="line"></span><br><span class="line">unixsocket /tmp/redis.sock</span><br><span class="line"></span><br><span class="line">unixsocketperm 755</span><br><span class="line"></span><br><span class="line">一个客户端空闲多少秒后关闭连接。(0代表禁用，永不关闭)</span><br><span class="line"></span><br><span class="line">imeout 0</span><br><span class="line"></span><br><span class="line"> 设置服务器调试等级。</span><br><span class="line"></span><br><span class="line"> 可能值：</span><br><span class="line"></span><br><span class="line"> debug （很多信息，对开发/测试有用）</span><br><span class="line"></span><br><span class="line"> verbose （很多精简的有用信息，但是不像debug等级那么多）</span><br><span class="line"></span><br><span class="line"> notice （适量的信息，基本上是你生产环境中需要的程度）</span><br><span class="line"></span><br><span class="line"> warning （只有很重要/严重的信息会记录下来）</span><br><span class="line"></span><br><span class="line">oglevel verbose</span><br><span class="line"></span><br><span class="line"> 指明日志文件名。也可以使用&quot;stdout&quot;来强制让Redis把日志信息写到标准输出上。</span><br><span class="line"></span><br><span class="line"> 注意：如果Redis以守护进程方式运行，而你设置日志显示到标准输出的话，那么日志会发送到 /dev/null</span><br><span class="line"></span><br><span class="line">ogfile stdout</span><br><span class="line"></span><br><span class="line"> 要使用系统日志记录器很简单，只要设置 &quot;syslog-enabled&quot; 为 &quot;yes&quot; 就可以了。</span><br><span class="line"></span><br><span class="line"> 然后根据需要设置其他一些syslog参数就可以了。</span><br><span class="line"></span><br><span class="line"> syslog-enabled no</span><br><span class="line"></span><br><span class="line"> 指明syslog身份</span><br><span class="line"></span><br><span class="line"> syslog-ident redis</span><br><span class="line"></span><br><span class="line"> 指明syslog的设备。必须是一个用户或者是 LOCAL0 ~ LOCAL7 之一。</span><br><span class="line"></span><br><span class="line"> syslog-facility local0</span><br><span class="line"></span><br><span class="line"> 设置数据库个数。默认数据库是 DB 0，你可以通过SELECT  WHERE dbid（0～&#x27;databases&#x27; - 1）来为每个连接使用不同的数据库。</span><br><span class="line"></span><br><span class="line">atabases 16</span><br><span class="line"></span><br><span class="line">############################### 快照 #################################</span><br><span class="line"></span><br><span class="line"> 把数据库存到磁盘上:</span><br><span class="line"></span><br><span class="line">   save</span><br><span class="line"></span><br><span class="line">   会在指定秒数和数据变化次数之后把数据库写到磁盘上。</span><br><span class="line"></span><br><span class="line">   下面的例子将会进行把数据写入磁盘的操作:</span><br><span class="line"></span><br><span class="line">   900秒（15分钟）之后，且至少1次变更</span><br><span class="line"></span><br><span class="line">   300秒（5分钟）之后，且至少10次变更</span><br><span class="line"></span><br><span class="line">   60秒之后，且至少10000次变更</span><br><span class="line"></span><br><span class="line">注意：你要想不写磁盘的话就把所有 &quot;save&quot; 设置注释掉就行了。</span><br><span class="line"></span><br><span class="line">ave 900 1</span><br><span class="line"></span><br><span class="line">ave 300 10</span><br><span class="line"></span><br><span class="line">ave 60 10000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 当导出到 .rdb 数据库时是否用LZF压缩字符串对象。</span><br><span class="line"></span><br><span class="line"> 默认设置为 &quot;yes&quot;，所以几乎总是生效的。</span><br><span class="line"></span><br><span class="line"> 如果你想节省CPU的话你可以把这个设置为 &quot;no&quot;，但是如果你有可压缩的key的话，那数据文件就会更大了。</span><br><span class="line"></span><br><span class="line">dbcompression yes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">数据库的文件名</span><br><span class="line"></span><br><span class="line">bfilename dump.rdb</span><br><span class="line"></span><br><span class="line">工作目录</span><br><span class="line"></span><br><span class="line">数据库会写到这个目录下，文件名就是上面的 &quot;dbfilename&quot; 的值。</span><br><span class="line"></span><br><span class="line">累加文件也放这里。</span><br><span class="line"></span><br><span class="line">注意你这里指定的必须是目录，不是文件名。</span><br><span class="line"></span><br><span class="line">ir ./</span><br><span class="line"></span><br><span class="line">################################ 同步 #################################</span><br><span class="line"></span><br><span class="line"># 主从同步。通过 slaveof 配置来实现Redis实例的备份。</span><br><span class="line"></span><br><span class="line"># 注意，这里是本地从远端复制数据。也就是说，本地可以有不同的数据库文件、绑定不同的IP、监听不同的端口。</span><br><span class="line"></span><br><span class="line"># slaveof</span><br><span class="line"></span><br><span class="line"># 如果master设置了密码（通过下面的 &quot;requirepass&quot; 选项来配置），那么slave在开始同步之前必须进行身份验证，否则它的同步请求会被拒绝。</span><br><span class="line"></span><br><span class="line"># masterauth</span><br><span class="line"></span><br><span class="line"># 当一个slave失去和master的连接，或者同步正在进行中，slave的行为有两种可能：</span><br><span class="line"></span><br><span class="line"># 1) 如果 slave-serve-stale-data 设置为 &quot;yes&quot; (默认值)，slave会继续响应客户端请求，可能是正常数据，也可能是还没获得值的空数据。</span><br><span class="line"></span><br><span class="line"># 2) 如果 slave-serve-stale-data 设置为 &quot;no&quot;，slave会回复&quot;正在从master同步（SYNC with master in progress）&quot;来处理各种请求，除了 INFO 和 SLAVEOF 命令。</span><br><span class="line"></span><br><span class="line">slave-serve-stale-data yes</span><br><span class="line"></span><br><span class="line"># slave根据指定的时间间隔向服务器发送ping请求。</span><br><span class="line"></span><br><span class="line"># 时间间隔可以通过 repl_ping_slave_period 来设置。</span><br><span class="line"></span><br><span class="line"># 默认10秒。</span><br><span class="line"></span><br><span class="line"># repl-ping-slave-period 10</span><br><span class="line"></span><br><span class="line"># 下面的选项设置了大块数据I/O、向master请求数据和ping响应的过期时间。</span><br><span class="line"></span><br><span class="line"># 默认值60秒。</span><br><span class="line"></span><br><span class="line"># 一个很重要的事情是：确保这个值比 repl-ping-slave-period 大，否则master和slave之间的传输过期时间比预想的要短。</span><br><span class="line"></span><br><span class="line"># repl-timeout 60</span><br><span class="line"></span><br><span class="line">################################## 安全 ###################################</span><br><span class="line"></span><br><span class="line"># 要求客户端在处理任何命令时都要验证身份和密码。</span><br><span class="line"></span><br><span class="line"># 这在你信不过来访者时很有用。</span><br><span class="line"></span><br><span class="line"># 为了向后兼容的话，这段应该注释掉。而且大多数人不需要身份验证（例如：它们运行在自己的服务器上。）</span><br><span class="line"></span><br><span class="line"># 警告：因为Redis太快了，所以居心不良的人可以每秒尝试150k的密码来试图破解密码。</span><br><span class="line"></span><br><span class="line"># 这意味着你需要一个高强度的密码，否则破解太容易了。</span><br><span class="line"></span><br><span class="line"># requirepass foobared</span><br><span class="line"></span><br><span class="line"># 命令重命名</span><br><span class="line"></span><br><span class="line"># 在共享环境下，可以为危险命令改变名字。比如，你可以为 CONFIG 改个其他不太容易猜到的名字，这样你自己仍然可以使用，而别人却没法做坏事了。</span><br><span class="line"></span><br><span class="line"># 例如:</span><br><span class="line"></span><br><span class="line"># rename-command CONFIG b840fc02d524045429941cc15f59e41cb7be6c52</span><br><span class="line"></span><br><span class="line"># 甚至也可以通过给命令赋值一个空字符串来完全禁用这条命令：</span><br><span class="line"></span><br><span class="line"># rename-command CONFIG &quot;&quot;</span><br><span class="line"></span><br><span class="line">################################### 限制 ####################################</span><br><span class="line"># 设置最多同时连接客户端数量。</span><br><span class="line"></span><br><span class="line"># 默认没有限制，这个关系到Redis进程能够打开的文件描述符数量。</span><br><span class="line"></span><br><span class="line"># 特殊值&quot;0&quot;表示没有限制。</span><br><span class="line"></span><br><span class="line"># 一旦达到这个限制，Redis会关闭所有新连接并发送错误&quot;达到最大用户数上限（max number of clients reached）&quot;</span><br><span class="line"></span><br><span class="line"># maxclients 128</span><br><span class="line"></span><br><span class="line"># 不要用比设置的上限更多的内存。一旦内存使用达到上限，Redis会根据选定的回收策略（参见：maxmemmory-policy）删除key。</span><br><span class="line"></span><br><span class="line"># 如果因为删除策略问题Redis无法删除key，或者策略设置为 &quot;noeviction&quot;，Redis会回复需要更多内存的错误信息给命令。</span><br><span class="line"></span><br><span class="line"># 例如，SET,LPUSH等等。但是会继续合理响应只读命令，比如：GET。</span><br><span class="line"></span><br><span class="line"># 在使用Redis作为LRU缓存，或者为实例设置了硬性内存限制的时候（使用 &quot;noeviction&quot; 策略）的时候，这个选项还是满有用的。</span><br><span class="line"></span><br><span class="line"># 警告：当一堆slave连上达到内存上限的实例的时候，响应slave需要的输出缓存所需内存不计算在使用内存当中。</span><br><span class="line"></span><br><span class="line"># 这样当请求一个删除掉的key的时候就不会触发网络问题／重新同步的事件，然后slave就会收到一堆删除指令，直到数据库空了为止。</span><br><span class="line"></span><br><span class="line"># 简而言之，如果你有slave连上一个master的话，那建议你把master内存限制设小点儿，确保有足够的系统内存用作输出缓存。</span><br><span class="line"></span><br><span class="line"># （如果策略设置为&quot;noeviction&quot;的话就不无所谓了）</span><br><span class="line"></span><br><span class="line"># maxmemory</span><br><span class="line"></span><br><span class="line"># 内存策略：如果达到内存限制了，Redis如何删除key。你可以在下面五个策略里面选：</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># volatile-lru -&gt; 根据LRU算法生成的过期时间来删除。</span><br><span class="line"></span><br><span class="line"># allkeys-lru -&gt; 根据LRU算法删除任何key。</span><br><span class="line"></span><br><span class="line"># volatile-random -&gt; 根据过期设置来随机删除key。</span><br><span class="line"></span><br><span class="line"># allkeys-&gt;random -&gt; 无差别随机删。</span><br><span class="line"></span><br><span class="line"># volatile-ttl -&gt; 根据最近过期时间来删除（辅以TTL）</span><br><span class="line"></span><br><span class="line"># noeviction -&gt; 谁也不删，直接在写操作时返回错误。</span><br><span class="line"></span><br><span class="line"># 注意：对所有策略来说，如果Redis找不到合适的可以删除的key都会在写操作时返回一个错误。</span><br><span class="line"></span><br><span class="line">#       这里涉及的命令：set setnx setex append</span><br><span class="line"></span><br><span class="line">#       incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd</span><br><span class="line"></span><br><span class="line">#       sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby</span><br><span class="line"></span><br><span class="line">#       zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby</span><br><span class="line"></span><br><span class="line">#       getset mset msetnx exec sort</span><br><span class="line"></span><br><span class="line"># 默认值如下：</span><br><span class="line"></span><br><span class="line"># maxmemory-policy volatile-lru</span><br><span class="line"></span><br><span class="line"># LRU和最小TTL算法的实现都不是很精确，但是很接近（为了省内存），所以你可以用样例做测试。</span><br><span class="line"></span><br><span class="line"># 例如：默认Redis会检查三个key然后取最旧的那个，你可以通过下面的配置项来设置样本的个数。</span><br><span class="line"></span><br><span class="line"># maxmemory-samples 3</span><br><span class="line"></span><br><span class="line">############################## 纯累加模式 ###############################</span><br><span class="line"># 默认情况下，Redis是异步的把数据导出到磁盘上。这种情况下，当Redis挂掉的时候，最新的数据就丢了。</span><br><span class="line"></span><br><span class="line"># 如果不希望丢掉任何一条数据的话就该用纯累加模式：一旦开启这个模式，Redis会把每次写入的数据在接收后都写入 appendonly.aof 文件。</span><br><span class="line"></span><br><span class="line"># 每次启动时Redis都会把这个文件的数据读入内存里。</span><br><span class="line"></span><br><span class="line"># 注意，异步导出的数据库文件和纯累加文件可以并存（你得把上面所有&quot;save&quot;设置都注释掉，关掉导出机制）。</span><br><span class="line"></span><br><span class="line"># 如果纯累加模式开启了，那么Redis会在启动时载入日志文件而忽略导出的 dump.rdb 文件。</span><br><span class="line"></span><br><span class="line"># 重要：查看 BGREWRITEAOF 来了解当累加日志文件太大了之后，怎么在后台重新处理这个日志文件。</span><br><span class="line"></span><br><span class="line">appendonly no</span><br><span class="line"></span><br><span class="line"># 纯累加文件名字（默认：&quot;appendonly.aof&quot;）</span><br><span class="line"></span><br><span class="line"># appendfilename appendonly.aof</span><br><span class="line"></span><br><span class="line"># fsync() 请求操作系统马上把数据写到磁盘上，不要再等了。</span><br><span class="line"></span><br><span class="line"># 有些操作系统会真的把数据马上刷到磁盘上；有些则要磨蹭一下，但是会尽快去做。</span><br><span class="line"></span><br><span class="line"># Redis支持三种不同的模式：</span><br><span class="line"></span><br><span class="line"># no：不要立刻刷，只有在操作系统需要刷的时候再刷。比较快。</span><br><span class="line"></span><br><span class="line"># always：每次写操作都立刻写入到aof文件。慢，但是最安全。</span><br><span class="line"></span><br><span class="line"># everysec：每秒写一次。折衷方案。</span><br><span class="line"></span><br><span class="line"># 默认的 &quot;everysec&quot; 通常来说能在速度和数据安全性之间取得比较好的平衡。</span><br><span class="line"></span><br><span class="line"># 如果你真的理解了这个意味着什么，那么设置&quot;no&quot;可以获得更好的性能表现（如果丢数据的话，则只能拿到一个不是很新的快照）；</span><br><span class="line"></span><br><span class="line"># 或者相反的，你选择 &quot;always&quot; 来牺牲速度确保数据安全、完整。</span><br><span class="line"></span><br><span class="line"># 如果拿不准，就用 &quot;everysec&quot;</span><br><span class="line"></span><br><span class="line"># appendfsync always</span><br><span class="line"></span><br><span class="line">appendfsync everysec</span><br><span class="line"></span><br><span class="line"># appendfsync no</span><br><span class="line"></span><br><span class="line"># 如果AOF的同步策略设置成 &quot;always&quot; 或者 &quot;everysec&quot;，那么后台的存储进程（后台存储或写入AOF日志）会产生很多磁盘I/O开销。</span><br><span class="line"></span><br><span class="line"># 某些Linux的配置下会使Redis因为 fsync() 而阻塞很久。</span><br><span class="line"></span><br><span class="line"># 注意，目前对这个情况还没有完美修正，甚至不同线程的 fsync() 会阻塞我们的 write(2) 请求。</span><br><span class="line"></span><br><span class="line"># 为了缓解这个问题，可以用下面这个选项。它可以在 BGSAVE 或 BGREWRITEAOF 处理时阻止 fsync()。</span><br><span class="line"></span><br><span class="line"># 这就意味着如果有子进程在进行保存操作，那么Redis就处于&quot;不可同步&quot;的状态。</span><br><span class="line"></span><br><span class="line"># 这实际上是说，在最差的情况下可能会丢掉30秒钟的日志数据。（默认Linux设定）</span><br><span class="line"></span><br><span class="line"># 如果你有延迟的问题那就把这个设为 &quot;yes&quot;，否则就保持 &quot;no&quot;，这是保存持久数据的最安全的方式。</span><br><span class="line"></span><br><span class="line">no-appendfsync-on-rewrite no</span><br><span class="line"></span><br><span class="line"># 自动重写AOF文件</span><br><span class="line"></span><br><span class="line"># 如果AOF日志文件大到指定百分比，Redis能够通过 BGREWRITEAOF 自动重写AOF日志文件。</span><br><span class="line"></span><br><span class="line"># 工作原理：Redis记住上次重写时AOF日志的大小（或者重启后没有写操作的话，那就直接用此时的AOF文件），</span><br><span class="line"></span><br><span class="line"># 基准尺寸和当前尺寸做比较。如果当前尺寸超过指定比例，就会触发重写操作。</span><br><span class="line"></span><br><span class="line"># 你还需要指定被重写日志的最小尺寸，这样避免了达到约定百分比但尺寸仍然很小的情况还要重写。</span><br><span class="line"></span><br><span class="line"># 指定百分比为0会禁用AOF自动重写特性。</span><br><span class="line"></span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line"></span><br><span class="line">auto-aof-rewrite-min-size 64mb</span><br><span class="line"></span><br><span class="line">################################## 慢查询日志 ###################################</span><br><span class="line"></span><br><span class="line"># Redis慢查询日志可以记录超过指定时间的查询。运行时间不包括各种I/O时间。</span><br><span class="line"></span><br><span class="line"># 例如：连接客户端，发送响应数据等。只计算命令运行的实际时间（这是唯一一种命令运行线程阻塞而无法同时为其他请求服务的场景）</span><br><span class="line"></span><br><span class="line"># 你可以为慢查询日志配置两个参数：一个是超标时间，单位为微妙，记录超过个时间的命令。</span><br><span class="line"></span><br><span class="line"># 另一个是慢查询日志长度。当一个新的命令被写进日志的时候，最老的那个记录会被删掉。</span><br><span class="line"></span><br><span class="line"># 下面的时间单位是微秒，所以1000000就是1秒。注意，负数时间会禁用慢查询日志，而0则会强制记录所有命令。</span><br><span class="line"></span><br><span class="line">slowlog-log-slower-than 10000</span><br><span class="line"></span><br><span class="line"># 这个长度没有限制。只要有足够的内存就行。你可以通过 SLOWLOG RESET 来释放内存。（译者注：日志居然是在内存里的Orz）</span><br><span class="line"></span><br><span class="line">slowlog-max-len 128</span><br><span class="line">################################ 虚拟内存 ###############################</span><br><span class="line">### 警告！虚拟内存在Redis 2.4是反对的。</span><br><span class="line"></span><br><span class="line">### 非常不鼓励使用虚拟内存！！</span><br><span class="line"></span><br><span class="line"># 虚拟内存可以使Redis在内存不够的情况下仍然可以将所有数据序列保存在内存里。</span><br><span class="line"></span><br><span class="line"># 为了做到这一点，高频key会调到内存里，而低频key会转到交换文件里，就像操作系统使用内存页一样。</span><br><span class="line"></span><br><span class="line"># 要使用虚拟内存，只要把 &quot;vm-enabled&quot; 设置为 &quot;yes&quot;，并根据需要设置下面三个虚拟内存参数就可以了。</span><br><span class="line"></span><br><span class="line">vm-enabled no</span><br><span class="line"></span><br><span class="line"># vm-enabled yes</span><br><span class="line"></span><br><span class="line"># 这是交换文件的路径。估计你猜到了，交换文件不能在多个Redis实例之间共享，所以确保每个Redis实例使用一个独立交换文件。</span><br><span class="line"></span><br><span class="line"># 最好的保存交换文件（被随机访问）的介质是固态硬盘（SSD）。</span><br><span class="line"></span><br><span class="line"># *** 警告 *** 如果你使用共享主机，那么默认的交换文件放到 /tmp 下是不安全的。</span><br><span class="line"></span><br><span class="line"># 创建一个Redis用户可写的目录，并配置Redis在这里创建交换文件。</span><br><span class="line"></span><br><span class="line">vm-swap-file /tmp/redis.swap</span><br><span class="line"></span><br><span class="line"># &quot;vm-max-memory&quot; 配置虚拟内存可用的最大内存容量。</span><br><span class="line"></span><br><span class="line"># 如果交换文件还有空间的话，所有超标部分都会放到交换文件里。</span><br><span class="line"></span><br><span class="line"># &quot;vm-max-memory&quot; 设置为0表示系统会用掉所有可用内存。</span><br><span class="line"></span><br><span class="line"># 这默认值不咋地，只是把你能用的内存全用掉了，留点余量会更好。</span><br><span class="line"></span><br><span class="line"># 例如，设置为剩余内存的60%-80%。</span><br><span class="line"></span><br><span class="line">vm-max-memory 0</span><br><span class="line"></span><br><span class="line"># Redis交换文件是分成多个数据页的。</span><br><span class="line"></span><br><span class="line"># 一个可存储对象可以被保存在多个连续页里，但是一个数据页无法被多个对象共享。</span><br><span class="line"></span><br><span class="line"># 所以，如果你的数据页太大，那么小对象就会浪费掉很多空间。</span><br><span class="line"></span><br><span class="line"># 如果数据页太小，那用于存储的交换空间就会更少（假定你设置相同的数据页数量）</span><br><span class="line"></span><br><span class="line"># 如果你使用很多小对象，建议分页尺寸为64或32个字节。</span><br><span class="line"></span><br><span class="line"># 如果你使用很多大对象，那就用大一些的尺寸。</span><br><span class="line"></span><br><span class="line"># 如果不确定，那就用默认值 :)</span><br><span class="line"></span><br><span class="line">vm-page-size 32</span><br><span class="line"></span><br><span class="line"># 交换文件里数据页总数。</span><br><span class="line"></span><br><span class="line"># 根据内存中分页表（已用/未用的数据页分布情况），磁盘上每8个数据页会消耗内存里1个字节。</span><br><span class="line"></span><br><span class="line"># 交换区容量 = vm-page-size * vm-pages</span><br><span class="line"></span><br><span class="line"># 根据默认的32字节的数据页尺寸和134217728的数据页数来算，Redis的数据页文件会占4GB，而内存里的分页表会消耗16MB内存。</span><br><span class="line"></span><br><span class="line"># 为你的应验程序设置最小且够用的数字比较好，下面这个默认值在大多数情况下都是偏大的。</span><br><span class="line"></span><br><span class="line">vm-pages 134217728</span><br><span class="line"></span><br><span class="line"># 同时可运行的虚拟内存I/O线程数。</span><br><span class="line"></span><br><span class="line"># 这些线程可以完成从交换文件进行数据读写的操作，也可以处理数据在内存与磁盘间的交互和编码/解码处理。</span><br><span class="line"></span><br><span class="line"># 多一些线程可以一定程度上提高处理效率，虽然I/O操作本身依赖于物理设备的限制，不会因为更多的线程而提高单次读写操作的效率。</span><br><span class="line"></span><br><span class="line"># 特殊值0会关闭线程级I/O，并会开启阻塞虚拟内存机制。</span><br><span class="line"></span><br><span class="line">vm-max-threads 4</span><br><span class="line"></span><br><span class="line">############################### 高级配置 ###############################</span><br><span class="line"></span><br><span class="line"># 当有大量数据时，适合用哈希编码（需要更多的内存），元素数量上限不能超过给定限制。</span><br><span class="line"></span><br><span class="line"># 你可以通过下面的选项来设定这些限制：</span><br><span class="line"></span><br><span class="line">hash-max-zipmap-entries 512</span><br><span class="line"></span><br><span class="line">hash-max-zipmap-value 64</span><br><span class="line"></span><br><span class="line"># 与哈希相类似，数据元素较少的情况下，可以用另一种方式来编码从而节省大量空间。</span><br><span class="line"></span><br><span class="line"># 这种方式只有在符合下面限制的时候才可以用：</span><br><span class="line"></span><br><span class="line">list-max-ziplist-entries 512</span><br><span class="line"></span><br><span class="line">list-max-ziplist-value 64</span><br><span class="line"></span><br><span class="line"># 还有这样一种特殊编码的情况：数据全是64位无符号整型数字构成的字符串。</span><br><span class="line"></span><br><span class="line"># 下面这个配置项就是用来限制这种情况下使用这种编码的最大上限的。</span><br><span class="line"></span><br><span class="line">set-max-intset-entries 512</span><br><span class="line"></span><br><span class="line"># 与第一、第二种情况相似，有序序列也可以用一种特别的编码方式来处理，可节省大量空间。</span><br><span class="line"></span><br><span class="line"># 这种编码只适合长度和元素都符合下面限制的有序序列：</span><br><span class="line"></span><br><span class="line">zset-max-ziplist-entries 128</span><br><span class="line"></span><br><span class="line">zset-max-ziplist-value 64</span><br><span class="line"></span><br><span class="line"># 哈希刷新，每100个CPU毫秒会拿出1个毫秒来刷新Redis的主哈希表（顶级键值映射表）。</span><br><span class="line"></span><br><span class="line"># redis所用的哈希表实现（见dict.c）采用延迟哈希刷新机制：你对一个哈希表操作越多，哈希刷新操作就越频繁；</span><br><span class="line"></span><br><span class="line"># 反之，如果服务器非常不活跃那么也就是用点内存保存哈希表而已。</span><br><span class="line"></span><br><span class="line"># 默认是每秒钟进行10次哈希表刷新，用来刷新字典，然后尽快释放内存。</span><br><span class="line"></span><br><span class="line"># 建议：</span><br><span class="line"></span><br><span class="line"># 如果你对延迟比较在意的话就用 &quot;activerehashing no&quot;，每个请求延迟2毫秒不太好嘛。</span><br><span class="line"></span><br><span class="line"># 如果你不太在意延迟而希望尽快释放内存的话就设置 &quot;activerehashing yes&quot;。</span><br><span class="line"></span><br><span class="line">activerehashing yes</span><br><span class="line"></span><br><span class="line">################################## 包含 ###################################</span><br><span class="line"></span><br><span class="line"># 包含一个或多个其他配置文件。</span><br><span class="line"></span><br><span class="line"># 这在你有标准配置模板但是每个redis服务器又需要个性设置的时候很有用。</span><br><span class="line"></span><br><span class="line"># 包含文件特性允许你引人其他配置文件，所以好好利用吧。</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># include /path/to/local.conf</span><br><span class="line"></span><br><span class="line"># include /path/to/other.conf</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="Redis-开启密码"><a href="#Redis-开启密码" class="headerlink" title="Redis 开启密码"></a>Redis 开启密码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">####修改redis.conf文件</span><br><span class="line">![redis_requirepass.jpg](https://i.loli.net/2019/03/08/5c820f8c5b2b9.jpg)</span><br><span class="line"></span><br><span class="line">1.  redis 127.0.0.1:6379[1]&gt; config set requirepass 123456</span><br><span class="line">2. OK</span><br><span class="line">3. redis 127.0.0.1:6379[1]&gt; config get requirepass</span><br><span class="line">4. 1) &quot;requirepass&quot;</span><br><span class="line">5.  2) &quot;123456&quot;</span><br><span class="line">3)设置验证密码之后，redis服务关闭需要密码验证通过之后才能关闭，因此命令修改为：</span><br><span class="line">$ redis-cli –a 123456 shutdown</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="Redis主从同步"><a href="#Redis主从同步" class="headerlink" title="Redis主从同步"></a>Redis主从同步</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">1.1概述</span><br><span class="line">Redis的主从复制功能非常强大，一个master可以拥有多个slave，而一个slave又可以拥有多个slave，如此下去，形成了强大的多级服务器集群架构。主从同步，有以下好处：</span><br><span class="line"></span><br><span class="line">实现数据的备份，减少单点故障带来的损失；有利于实现负载均衡。本来一台服务器负责所有数据的读写，而通过主从同步，可以让多个从服务器负责数据的读，而主服务器主要负责数据的写，减轻了单点压力。</span><br><span class="line"></span><br><span class="line">1.2实现机制</span><br><span class="line">(1)Slave服务器连接到Master服务器.</span><br><span class="line"></span><br><span class="line">(2)Slave服务器发送SYCN命令.</span><br><span class="line"></span><br><span class="line">(3)Master服务器备份数据库到.rdb文件.</span><br><span class="line"></span><br><span class="line">(4)Master服务器把.rdb文件传输给Slave服务器.</span><br><span class="line"></span><br><span class="line">(5)Slave服务器把.rdb文件数据导入到数据库中.</span><br><span class="line"></span><br><span class="line">上面的这5步是同步的第一阶段, 接下来在Master服务器上调用每一个命令都使用replicationFeedSlaves()来同步到Slave服务器.而replicationFeedSlaves()主要做的工作就是把用户执行的命令发送到所有的Slave服务器, 让Slave服务器执行. 这样就可以实施同步功能.</span><br><span class="line"></span><br><span class="line">主从配置:</span><br><span class="line">修改redis.conf配置文件，主要配置如下：</span><br><span class="line"></span><br><span class="line">1)  配置相应的ip和端口</span><br><span class="line"></span><br><span class="line">主：</span><br><span class="line"></span><br><span class="line">bind172.168.10.254                           #绑定主机IP， (必须修改为网卡ip地址)</span><br><span class="line"></span><br><span class="line">port   6379                                   #监听端口，默认为6379</span><br><span class="line"></span><br><span class="line">从：</span><br><span class="line"></span><br><span class="line">bind172.168.10.254                           #绑定主机IP， (必须修改为网卡ip地址)</span><br><span class="line"></span><br><span class="line">port   6380                                   #监听端口，默认为6379</span><br><span class="line"></span><br><span class="line">2)  修改从服务redis.conf 配置：</span><br><span class="line"></span><br><span class="line">slaveof172.168.10.254  6379                  #设置主服务的IP及端口</span><br><span class="line"></span><br><span class="line">slave-read-only      yes                      #配置从机是否只读</span><br><span class="line"></span><br><span class="line">masterauthpwd123                             #设置主服务的连接密码</span><br><span class="line"></span><br><span class="line">slave-serve-stale-datayes                    #在master服务器挂掉或者同步失败时,从服务器是否继续提供服务。</span><br><span class="line"></span><br><span class="line">#repl-ping-slave-period10                   #master端ping slave端的时间间隔，时刻检测slave连接的有效</span><br><span class="line">#repl-timeout60                   # replication连接的超时时间</span><br><span class="line"></span><br><span class="line">#slave-priority100                  #slave的权重，用于redis sentinel模式中，如果masterdown，权重大的slave接替master</span><br><span class="line"></span><br><span class="line">slave-priority100                            #slave级别，数字越小级别越大(在master挂掉,slave升级用到)</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/lua/lua/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/lua/lua/" class="post-title-link" itemprop="url">lua</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:43:26" itemprop="dateCreated datePublished" datetime="2019-06-11T16:43:26Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+
+  
+    <span id="/2019/06/12/lua/lua/" class="post-meta-item leancloud_visitors" data-flag-title="lua" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/12/lua/lua/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/12/lua/lua/" class="cy_cmt_count" data-xid="2019/06/12/lua/lua/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019-2021 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Apollo运维之路 沪ICP备18003764号</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{&quot;enable&quot;:true,&quot;app_id&quot;:&quot;60FhJz0dwC9abRffuc3Vxx8C-gzGzoHsz&quot;,&quot;app_key&quot;:&quot;cNv2qm5Kf2d0a7WcmwTAt3kN&quot;,&quot;server_url&quot;:&quot;https:&#x2F;&#x2F;github.mansoncui.com&quot;,&quot;security&quot;:true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="changyan" type="application/json">{&quot;enable&quot;:true,&quot;appid&quot;:&quot;cyvygPryP&quot;,&quot;appkey&quot;:&quot;7b3cae28f8dd04a93996dedcf63bb59d&quot;}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

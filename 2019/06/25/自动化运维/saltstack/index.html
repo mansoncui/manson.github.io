@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;github.mansoncui.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:300,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12,&quot;onmobile&quot;:true},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="部署saltstacksaltstack 环境配置12345环境:关闭firewalld，iptables，selinux,设置dns或者hosts解析     python 版本: 2.7 &lt;&#x3D; python &lt; 3     master和slave设置hosts解析:     192.168.1.117 saltstack-master     192.168.1.118 salt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="saltstack">
+<meta property="og:url" content="https://github.mansoncui.com/2019/06/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/saltstack/index.html">
+<meta property="og:site_name" content="Apollo 运维之路">
+<meta property="og:description" content="部署saltstacksaltstack 环境配置12345环境:关闭firewalld，iptables，selinux,设置dns或者hosts解析     python 版本: 2.7 &lt;&#x3D; python &lt; 3     master和slave设置hosts解析:     192.168.1.117 saltstack-master     192.168.1.118 salt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-25T15:23:16.000Z">
+<meta property="article:modified_time" content="2021-07-14T05:03:41.778Z">
+<meta property="article:author" content="Apollo">
+<meta property="article:tag" content="saltstack">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.mansoncui.com/2019/06/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/saltstack/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;github.mansoncui.com&#x2F;2019&#x2F;06&#x2F;25&#x2F;%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4&#x2F;saltstack&#x2F;&quot;,&quot;path&quot;:&quot;2019&#x2F;06&#x2F;25&#x2F;自动化运维&#x2F;saltstack&#x2F;&quot;,&quot;title&quot;:&quot;saltstack&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>saltstack | Apollo 运维之路</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Apollo 运维之路" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Apollo 运维之路</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Apollo 博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">40</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2saltstack"><span class="nav-number">1.</span> <span class="nav-text">部署saltstack</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#saltstack-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">saltstack 环境配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85saltstack"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">安装saltstack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#saltstack-%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">saltstack 常用模块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E6%94%B6%E9%9B%86"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">错误收集</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Apollo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Apollo</p>
+  <div class="site-description" itemprop="description">不要轻易给自己人生设限，努力就完事了。
+</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mansoncui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mansoncui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mansoncui@163.com" title="E-Mail → mailto:mansoncui@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zhangguanzhang.github.io/" title="https:&#x2F;&#x2F;zhangguanzhang.github.io&#x2F;" rel="noopener" target="_blank">张馆长</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kuboard.cn/" title="https:&#x2F;&#x2F;kuboard.cn&#x2F;" rel="noopener" target="_blank">邵欢庆</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://yangcs.net/" title="https:&#x2F;&#x2F;yangcs.net&#x2F;" rel="noopener" target="_blank">云原生实验室</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+  <a href="https://github.com/mansoncui" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/saltstack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          saltstack
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-25 15:23:16" itemprop="dateCreated datePublished" datetime="2019-06-25T15:23:16Z">2019-06-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">自动化运维</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/saltstack/" class="post-meta-item leancloud_visitors" data-flag-title="saltstack" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/saltstack/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/06/25/自动化运维/saltstack/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="部署saltstack"><a href="#部署saltstack" class="headerlink" title="部署saltstack"></a>部署saltstack</h2><h5 id="saltstack-环境配置"><a href="#saltstack-环境配置" class="headerlink" title="saltstack 环境配置"></a>saltstack 环境配置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">环境:关闭firewalld，iptables，selinux,设置dns或者hosts解析</span><br><span class="line">     python 版本: 2.7 &lt;= python &lt; 3</span><br><span class="line">     master和slave设置hosts解析:</span><br><span class="line">     192.168.1.117 saltstack-master</span><br><span class="line">     192.168.1.118 saltstack-slave</span><br></pre></td></tr></table></figure>
+<h5 id="安装saltstack"><a href="#安装saltstack" class="headerlink" title="安装saltstack"></a>安装saltstack</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">服务端安装:</span><br><span class="line">yum  -y  install  epel-release</span><br><span class="line">yum  -y  install  salt-master salt-minion </span><br><span class="line"></span><br><span class="line">服务端配置修改:</span><br><span class="line"># vim /etc/salt/minion                   //在第16行添加，冒号后有一个空格</span><br><span class="line">master: saltstack-master</span><br><span class="line"></span><br><span class="line">客户端安装:</span><br><span class="line">yum  -y  install  epel-release</span><br><span class="line">yum  -y  install  salt-minion</span><br><span class="line"></span><br><span class="line">客户端配置修改:</span><br><span class="line"># vim /etc/salt/minion                   //在第16行添加，冒号后有一个空格</span><br><span class="line">master: saltstack-master</span><br><span class="line"></span><br><span class="line">客户端和服务端启动服务:</span><br><span class="line">service salt-master start #只有服务端安装了该服务</span><br><span class="line">service salt-minion start #服务端和客户端都安装此服务</span><br><span class="line"></span><br><span class="line">配置认证:</span><br><span class="line">服务端操作:</span><br><span class="line">salt-key -a  saltstack-master</span><br><span class="line">salt-key -a  saltstack-slave</span><br><span class="line">salt-key</span><br><span class="line"></span><br><span class="line">说明：-a ：accept ，-A：accept-all，-d：delete，-D：delete-all。可以使用 salt-key 命令查看到已经签名的客户端。此时我们在客户端的 /etc/salt/pki/minion 目录下面会多出一个minion_master.pub 文件</span><br><span class="line"></span><br><span class="line">测试验证:</span><br><span class="line">示例1： salt &#x27;*&#x27; test.ping                  //检测通讯是否正常，也可以指定其中一个 &#x27;saltstack-master&#x27;</span><br><span class="line"></span><br><span class="line">示例2:  salt &#x27;*&#x27; cmd.run   &#x27;df -h&#x27;        //远程执行命令</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="saltstack-常用模块"><a href="#saltstack-常用模块" class="headerlink" title="saltstack 常用模块"></a>saltstack 常用模块</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line">salt &quot;*&quot; sys.list_modules  #查看支持的模块</span><br><span class="line"></span><br><span class="line">1.Archive模块</span><br><span class="line">#采用gunzip解压sourcefile.txt.gz包</span><br><span class="line">salt &#x27;*&#x27; archive.gunzip sourcefile.txt.gz</span><br><span class="line"></span><br><span class="line">#采用gzip压缩sourcefile.txt文件</span><br><span class="line">salt &#x27;*&#x27; archive.gzip sourcefile.txt</span><br><span class="line">API调用：</span><br><span class="line"></span><br><span class="line">client.cmd(&#x27;*&#x27;,&#x27;archive.gunzip&#x27;,[&#x27;sourcefile.txt.gz&#x27;])</span><br><span class="line"></span><br><span class="line">2.cmd模块</span><br><span class="line">#获取被控主机的内存使用情况</span><br><span class="line">salt &#x27;*&#x27; cmd.run &#x27;free -m&#x27;</span><br><span class="line"></span><br><span class="line">#同步test.py到被控端，再执行</span><br><span class="line">salt &#x27;*&#x27; cmd.script salt://script/test.py</span><br><span class="line">API调用：</span><br><span class="line"></span><br><span class="line">client.cmd(&#x27;*&#x27;,&#x27;cmd.run&#x27;,[&#x27;free -m&#x27;])</span><br><span class="line"></span><br><span class="line">3.cp模块</span><br><span class="line">#将被控主机的/etc/hosts文件复制到被控主机本地的salt cache目录（/var/cache/salt/minion/localfiles/）</span><br><span class="line">salt &#x27;*&#x27; cp.cache_local_file /etc/hosts</span><br><span class="line"></span><br><span class="line">#将主控端file_roots指定位置下的目录复制到被控主机/minion/目录下</span><br><span class="line">salt &#x27;*&#x27; cp.get_dir salt://script/ /minion/</span><br><span class="line"></span><br><span class="line">#将主控端file_roots指定位置下的文件复制到被控主机/minion/test.py文件(file为文件名)</span><br><span class="line">salt &#x27;*&#x27; cp.get_dir salt://script/test.py /minion/test.py</span><br><span class="line"></span><br><span class="line">#下载URL内容到被控主机指定位置(/tmp/index.html)</span><br><span class="line">salt &#x27;*&#x27; cp.get_url http://www.slashdot.ort /tmp/index.html</span><br><span class="line">复制代码</span><br><span class="line">API调用：</span><br><span class="line"></span><br><span class="line">client.cmd(&#x27;*&#x27;,&#x27;cp.get_file&#x27;,[&#x27;salt://script/test.py&#x27;,&#x27;/minion/test.py&#x27;])</span><br><span class="line"></span><br><span class="line">4.cron模块</span><br><span class="line">#查看指定被控主机、root用户的crontab操作</span><br><span class="line">salt &#x27;*&#x27; cron.raw_cron root</span><br><span class="line"></span><br><span class="line">#为指定被控主机、root用户添加任务</span><br><span class="line">salt &#x27;*&#x27; cron.set_job root &#x27;*&#x27; &#x27;*&#x27; &#x27;*&#x27; &#x27;*&#x27; 1 /usr/sbin/ntpdate</span><br><span class="line"></span><br><span class="line">#删除指定被控主机、root用户crontab的任务</span><br><span class="line">salt &#x27;*&#x27; cron.rm_job root /usr/sbin/ntpdate </span><br><span class="line">复制代码</span><br><span class="line">API调用：</span><br><span class="line"></span><br><span class="line">client.cmd(&#x27;*&#x27;,&#x27;cron.set_job&#x27;,[&#x27;root&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,&#x27;*&#x27;,1,&#x27;/usr/sbin/ntpdate&#x27;])</span><br><span class="line"></span><br><span class="line">5.file模块</span><br><span class="line">#校验所有被控主机/etc/fstab文件的md5值是否为xxxxxxxxxxxxx,一致则返回True值</span><br><span class="line">salt &#x27;*&#x27; file.check_hash /etc/fstab md5=xxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"></span><br><span class="line">#校验所有被控主机文件的加密信息，支持md5、sha1、sha224、shs256、sha384、sha512加密算法</span><br><span class="line">salt &#x27;*&#x27; file.get_sum /etc/passwd md5</span><br><span class="line"></span><br><span class="line">#修改所有被控主机/etc/passwd文件的属组、用户权限、等价于chown root:root /etc/passwd</span><br><span class="line">salt &#x27;*&#x27; file.chown /etc/passwd root root</span><br><span class="line"></span><br><span class="line">#复制所有被控主机/path/to/src文件到本地的/path/to/dst文件</span><br><span class="line">salt &#x27;*&#x27; file.copy /path/to/src /path/to/dst</span><br><span class="line"></span><br><span class="line">#检查所有被控主机/etc目录是否存在，存在则返回True,检查文件是否存在使用file.file_exists方法</span><br><span class="line">salt &#x27;*&#x27; file.directory_exists /etc</span><br><span class="line"></span><br><span class="line">#获取所有被控主机/etc/passwd的stats信息</span><br><span class="line">salt &#x27;*&#x27; file.stats /etc/passwd</span><br><span class="line"></span><br><span class="line">#获取所有被控主机/etc/passwd的权限mode，如755，644</span><br><span class="line">salt &#x27;*&#x27; file.get_mode /etc/passwd</span><br><span class="line"></span><br><span class="line">#修改所有被控主机/etc/passwd的权限mode为0644</span><br><span class="line">salt &#x27;*&#x27; file.set_mode /etc/passwd 0644</span><br><span class="line"></span><br><span class="line">#在所有被控主机创建/opt/test目录</span><br><span class="line">salt &#x27;*&#x27; file.mkdir /opt/test</span><br><span class="line"></span><br><span class="line">#将所有被控主机/etc/httpd/httpd.conf文件的LogLevel参数的warn值修改为info</span><br><span class="line">salt &#x27;*&#x27; file.sed /etc/httpd/httpd.conf &#x27;LogLevel warn&#x27; &#x27;LogLevel info&#x27;</span><br><span class="line"></span><br><span class="line">#给所有被控主机的/tmp/test/test.conf文件追加内容‘maxclient 100’</span><br><span class="line">salt &#x27;*&#x27; file.append /tmp/test/test.conf &#x27;maxclient 100&#x27;</span><br><span class="line"></span><br><span class="line">#删除所有被控主机的/tmp/foo文件</span><br><span class="line">salt &#x27;*&#x27; file.remove /tmp/foo</span><br><span class="line"></span><br><span class="line">API调用：</span><br><span class="line"></span><br><span class="line">client.cmd(&#x27;*&#x27;,&#x27;file.remove&#x27;,[&#x27;/tmp/foo&#x27;])</span><br><span class="line"></span><br><span class="line">6.network 模块</span><br><span class="line">salt &#x27;*&#x27; network.dig www.qq.com</span><br><span class="line">salt &#x27;*&#x27; network.ping www.qq.com</span><br><span class="line">salt &#x27;*&#x27; network.ip_addrs</span><br><span class="line"></span><br><span class="line">7.pkg包管理模块</span><br><span class="line">管理yum， apt-get等</span><br><span class="line">salt &#x27;*&#x27; pkg.install php   # 安装php</span><br><span class="line">salt &#x27;*&#x27; pkg.remove php    # 移除php</span><br><span class="line">salt &#x27;*&#x27; pkg.upgrade       # 升级所有的软件包</span><br><span class="line"></span><br><span class="line">8.service模块</span><br><span class="line">salt &#x27;*&#x27; service.enable nginx    # 使nginx可用</span><br><span class="line">salt &#x27;*&#x27; service.disable nginx   # 使nginx不可用</span><br><span class="line">salt &#x27;*&#x27; service.restart nginx   # 重启nginx</span><br><span class="line"></span><br><span class="line">9.pillar模块</span><br><span class="line">记录所有minion通用的属性，如cpu、内存、磁盘等信息，然后同步到master端</span><br><span class="line">salt-call saltutil.refresh_pillar # minion端</span><br><span class="line">salt &#x27;*&#x27; saltutil.refresh_pillar  # master端</span><br><span class="line"></span><br><span class="line">pillar（在master上定义）（yaml语法）</span><br><span class="line">在配置文件中找pillar的文件路径：</span><br><span class="line"></span><br><span class="line">找到以后，mkdir /export/salt/pillar</span><br><span class="line">vim top.sls</span><br><span class="line">base:</span><br><span class="line">&quot;*&quot;:</span><br><span class="line">- test</span><br><span class="line">vim test.sls</span><br><span class="line">conf: xiang</span><br><span class="line">然后刷新pillar： salt &#x27;*&#x27; saltutil.refresh_pillar</span><br><span class="line">验证：salt &#x27;*&#x27; pillar.items conf</span><br><span class="line">或者： salt -I &#x27;conf:xiang&#x27; test.ping</span><br><span class="line"></span><br><span class="line">10. grains模块</span><br><span class="line">记录minion的属性key：value</span><br><span class="line">[root@k8s-master ~]# salt &quot;*&quot; grains.ls</span><br><span class="line">k8s-node1:</span><br><span class="line">    - SSDs</span><br><span class="line">    - biosreleasedate</span><br><span class="line">    - biosversion</span><br><span class="line">    - cpu_flags</span><br><span class="line">    - cpu_model</span><br><span class="line">    - cpuarch</span><br><span class="line">    - domain</span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">自定义grians（在minion上定义的）</span><br><span class="line">grains是在minion启动时搜集一些信息，如操作系统类型，网卡，内核版本，cpu架构等</span><br><span class="line">salt &quot;*&quot; grains.ls    列出所有grains项目名字</span><br><span class="line">salt &quot;*app.*&quot; grains.items  列出所有grains项目以及值</span><br><span class="line">grains的信息并不是动态的，并不会实时变化，它只是在minion启动时收集到的</span><br><span class="line">我们可以根据grains收集到的一些信息，做一些配置管理工作</span><br><span class="line">在minion上：vim /etc/salt/grains</span><br><span class="line">role: nginx</span><br><span class="line">env: test</span><br><span class="line">重启service salt-minion restart</span><br><span class="line">获取grians：</span><br><span class="line">salt &quot;*&quot; grains.item role env</span><br><span class="line">或者：</span><br><span class="line">salt -G &quot;*&quot; role:nginx cmd.run &quot;hostname“</span><br><span class="line">salt &quot;*&quot; grains.items</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="错误收集"><a href="#错误收集" class="headerlink" title="错误收集"></a>错误收集</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、错误信息 Minion did not return. [Not connected]</span><br><span class="line">删除客户端公钥:rm -rf /etc/salt/pki/minion/minion_master.pub</span><br><span class="line">service salt-minion restart #重启client服务  </span><br><span class="line"></span><br><span class="line">2、错误信息:Failed building wheel for uwsgi</span><br><span class="line">yum -y install python-devel（python2.7）</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/pay/wechat.png" alt="Apollo 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/pay/alipay.jpg" alt="Apollo 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Apollo
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://github.mansoncui.com/2019/06/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/saltstack/" title="saltstack">https://github.mansoncui.com/2019/06/25/自动化运维/saltstack/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/saltstack/" rel="tag"># saltstack</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/06/25/services/keepalived-redis/" rel="prev" title="keepalived_redis">
+                  <i class="fa fa-chevron-left"></i> keepalived_redis
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/06/26/services/mysql-master-slave/" rel="next" title="mysql_master_slave">
+                  mysql_master_slave <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019-2021 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Apollo运维之路 沪ICP备18003764号</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{&quot;enable&quot;:true,&quot;app_id&quot;:&quot;60FhJz0dwC9abRffuc3Vxx8C-gzGzoHsz&quot;,&quot;app_key&quot;:&quot;cNv2qm5Kf2d0a7WcmwTAt3kN&quot;,&quot;server_url&quot;:&quot;https:&#x2F;&#x2F;github.mansoncui.com&quot;,&quot;security&quot;:true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="changyan" type="application/json">{&quot;enable&quot;:true,&quot;appid&quot;:&quot;cyvygPryP&quot;,&quot;appkey&quot;:&quot;7b3cae28f8dd04a93996dedcf63bb59d&quot;}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
