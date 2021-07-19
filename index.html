@@ -87,9 +87,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">40</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">35</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">41</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,20 +162,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -233,6 +233,115 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2021/07/19/zabbix/zabbix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/19/zabbix/zabbix/" class="post-title-link" itemprop="url">zabbix 监控SSL证书过期时间</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-07-19 14:37:00 / 修改时间：07:16:55" itemprop="dateCreated datePublished" datetime="2021-07-19T14:37:00Z">2021-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/zabbix/" itemprop="url" rel="index"><span itemprop="name">zabbix</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/07/19/zabbix/zabbix/" class="post-meta-item leancloud_visitors" data-flag-title="zabbix 监控SSL证书过期时间" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/07/19/zabbix/zabbix/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2021/07/19/zabbix/zabbix/" class="cy_cmt_count" data-xid="2021/07/19/zabbix/zabbix/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="zabbix-监控ssl证书"><a href="#zabbix-监控ssl证书" class="headerlink" title="zabbix 监控ssl证书"></a>zabbix 监控ssl证书</h2><p>1.编写获取域名和443端口脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/zabbix/scripts/ssl_discovery.py    </span><br><span class="line">#!/usr/bin/env python</span><br><span class="line">#coding:utf-8</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line">#这个函数主要是构造出一个特定格式的字典，用于zabbix</span><br><span class="line">def ssl_cert_discovery():</span><br><span class="line">    web_list=[]</span><br><span class="line">    web_dict=&#123;&quot;data&quot;:None&#125;</span><br><span class="line">    with open(&quot;/etc/zabbix/scripts/ssl_cert_list&quot;,&quot;r&quot;) as f:</span><br><span class="line">        for sslcert in f:</span><br><span class="line">            dict=&#123;&#125;</span><br><span class="line">            dict[&quot;&#123;#DOMAINNAME&#125;&quot;]=sslcert.strip().split()[0]</span><br><span class="line">            dict[&quot;&#123;#PORT&#125;&quot;]=sslcert.strip().split()[1]</span><br><span class="line">            web_list.append(dict)</span><br><span class="line">    web_dict[&quot;data&quot;]=web_list</span><br><span class="line">    jsonStr = json.dumps(web_dict,indent=4)</span><br><span class="line">    return jsonStr</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    print ssl_cert_discovery()</span><br></pre></td></tr></table></figure>
+<p>2.检查证书过期时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/zabbix/scripts/check-ssl-expire.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">host=$1</span><br><span class="line">port=$2</span><br><span class="line">end_date=`/usr/bin/openssl s_client -servername $host -host $host -port $port -showcerts &lt;/dev/null 2&gt;/dev/null |</span><br><span class="line">  sed -n &#x27;/BEGIN CERTIFICATE/,/END CERT/p&#x27; |</span><br><span class="line">  /usr/bin/openssl  x509 -text 2&gt;/dev/null |</span><br><span class="line">  sed -n &#x27;s/ *Not After : *//p&#x27;`</span><br><span class="line"># openssl 检验和验证SSL证书。</span><br><span class="line"># -servername $host 因一台主机存在多个证书，利用SNI特性检查</span><br><span class="line"># &lt;/dev/null 定向标准输入，防止交互式程序。从/dev/null 读时，直接读出0 。</span><br><span class="line"># sed -n 和p 一起使用，仅显示匹配到的部分。 //,// 区间匹配。</span><br><span class="line"># openssl x509 -text 解码证书信息，包含证书的有效期。</span><br><span class="line"></span><br><span class="line">if [ -n &quot;$end_date&quot; ]</span><br><span class="line">then</span><br><span class="line">    end_date_seconds=`date &#x27;+%s&#x27; --date &quot;$end_date&quot;`</span><br><span class="line">    now_seconds=`date &#x27;+%s&#x27;`</span><br><span class="line">    echo &quot;($end_date_seconds-$now_seconds)/24/3600&quot; | bc</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>3.域名和端口存放文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/zabbix/scripts/ssl_cert_list</span><br><span class="line">test.xxxxxx.com 443</span><br><span class="line">test1.xxxxxx.com 443</span><br></pre></td></tr></table></figure>
+<p>4.配置zabbix</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">把脚本上传:/etc/zabbix/scripts/下</span><br><span class="line">cat /etc/zabbix/zabbix_agentd.d/sslcert.conf </span><br><span class="line">UserParameter=sslcert_discovery,/usr/bin/python  /etc/zabbix/scripts/ssl_discovery.py</span><br><span class="line">UserParameter=sslcert.info[*],/bin/bash /etc/zabbix/scripts/check-ssl-expire.sh $1 $2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">重启agent和proxy</span><br><span class="line">systemctl restart zabbix-agent </span><br><span class="line">systemctl restart zabbix-proxy</span><br><span class="line">测试</span><br><span class="line">/etc/zabbix/scripts/check-ssl-expire.sh api.xxxxxx.com 443</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/zabbix/zabbix_agent_ssl.jpg"></p>
+<p>5.导入模板(下载链接)<br>[<a href="https://www.aliyundrive.com/s/WFfnahYBeTC]">https://www.aliyundrive.com/s/WFfnahYBeTC]</a></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -870,119 +979,6 @@
 <h5 id="两台真是服务器安装nginx"><a href="#两台真是服务器安装nginx" class="headerlink" title="两台真是服务器安装nginx"></a>两台真是服务器安装nginx</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx </span><br><span class="line"></span><br><span class="line">把两台相应IP写到index.html 文件中(有标识行)</span><br></pre></td></tr></table></figure>
 
 <h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">关闭一台keepalived </span><br><span class="line"></span><br><span class="line">浏览器访问</span><br><span class="line">https://192.168.1.121/?a=Math.random()</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/28/services/v-p-n/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/06/28/services/v-p-n/" class="post-title-link" itemprop="url">v-p-n</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-06-28 13:55:24" itemprop="dateCreated datePublished" datetime="2019-06-28T13:55:24Z">2019-06-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/06/28/services/v-p-n/" class="post-meta-item leancloud_visitors" data-flag-title="v-p-n" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/06/28/services/v-p-n/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/06/28/services/v-p-n/" class="cy_cmt_count" data-xid="2019/06/28/services/v-p-n/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="vpn-安装"><a href="#vpn-安装" class="headerlink" title="vpn 安装"></a>vpn 安装</h2><h5 id="更换内核，安装锐速加速软件-可以跳过"><a href="#更换内核，安装锐速加速软件-可以跳过" class="headerlink" title="更换内核，安装锐速加速软件(可以跳过)"></a>更换内核，安装锐速加速软件(可以跳过)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@vultr_test ~]# rpm -qa|grep kernel</span><br><span class="line">kernel-3.10.0-862.el7.x86_64</span><br><span class="line">kernel-tools-libs-3.10.0-862.14.4.el7.x86_64</span><br><span class="line">kernel-3.10.0-862.14.4.el7.x86_64</span><br><span class="line">kernel-tools-3.10.0-862.14.4.el7.x86_64</span><br><span class="line">[root@vultr_test ~]# rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br><span class="line">Retrieving http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm</span><br><span class="line">Preparing...                          ################################# [100%]</span><br><span class="line">Updating / installing...</span><br><span class="line">   1:kernel-3.10.0-229.1.2.el7        ################################# [100%]</span><br><span class="line">[root@vultr_test ~]# rpm -qa|grep kernel</span><br><span class="line">kernel-3.10.0-862.el7.x86_64</span><br><span class="line">kernel-tools-libs-3.10.0-862.14.4.el7.x86_64</span><br><span class="line">kernel-3.10.0-862.14.4.el7.x86_64</span><br><span class="line">kernel-tools-3.10.0-862.14.4.el7.x86_64</span><br><span class="line">kernel-3.10.0-229.1.2.el7.x86_64</span><br><span class="line"></span><br><span class="line">降内核:</span><br><span class="line">rpm -ivh http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br><span class="line"></span><br><span class="line">rpm -qa | grep kernel</span><br><span class="line"></span><br><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh  #锐锋加速VPN</span><br><span class="line"></span><br><span class="line">bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
-<hr>
-<h5 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[root@vultr_test ~]# yum -y install net-tools vim</span><br><span class="line">[root@vultr_test ~]# wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">[root@vultr_test ~]# python2.7 get-pip.py`</span><br><span class="line"></span><br><span class="line">安装并配置ss</span><br><span class="line">(1)安装</span><br><span class="line">[root@vultr_test ~]# pip install shadowsocks</span><br><span class="line"></span><br><span class="line">(2)配置</span><br><span class="line">[root@vultr_test ~]# vim /etc/shadowsocks.json</span><br><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_port&quot;:8765,</span><br><span class="line">    &quot;password&quot;:&quot;bd87d3600c6baffe20f0a03ebf17985f&quot;,</span><br><span class="line">    &quot;timeout&quot;:300,</span><br><span class="line">    &quot;method&quot;:&quot;rc4-md5&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_port&quot;:8765,</span><br><span class="line">    &quot;password&quot;:&quot;ef487f64b19e581554564ab8635c8995&quot;,</span><br><span class="line">    &quot;timeout&quot;:60,</span><br><span class="line">    &quot;method&quot;:&quot;rc4-md5&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(3)启动</span><br><span class="line">[root@vultr_test ~]# ssserver -c /etc/shadowsocks.json -d start </span><br><span class="line">[root@vultr_test ~]# netstat -anpt |grep python</span><br><span class="line">tcp        0      0 0.0.0.0:8765            0.0.0.0:*               LISTEN      1162/python2.7  </span><br><span class="line"></span><br><span class="line">(4)关闭防火墙</span><br><span class="line">[root@vultr_test ~]# systemctl stop firewalld</span><br><span class="line">[root@vultr_test ~]# systemctl disable firewalld</span><br></pre></td></tr></table></figure>
-<hr>
-<h5 id="优化并添加monit监控"><a href="#优化并添加monit监控" class="headerlink" title="优化并添加monit监控"></a>优化并添加monit监控</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">### BEGIN INIT INFO</span><br><span class="line"># Provides:          ssserver</span><br><span class="line"># Required-Start:    $remote_fs $network</span><br><span class="line"># Required-Stop:     $remote_fs $network</span><br><span class="line"># Default-Start:     2 3 4 5</span><br><span class="line"># Default-Stop:      0 1 6</span><br><span class="line"># Short-Description: starts crontab-ui</span><br><span class="line"># Description:       starts the crond Process Manager daemon</span><br><span class="line">### END INIT INFO</span><br><span class="line"></span><br><span class="line">prefix=/usr/bin/ssserver</span><br><span class="line"></span><br><span class="line">case $1  in </span><br><span class="line">	start)</span><br><span class="line">	$&#123;prefix&#125; -c /etc/shadowsocks.json -d start  &gt; /dev/null 2&gt;&amp;1 &amp;</span><br><span class="line">	if [ $? -eq 0 ];then</span><br><span class="line">		echo &quot;start ssserver ....... ok&quot;</span><br><span class="line">	else</span><br><span class="line">		echo &quot;start ssserver ....... fail&quot;</span><br><span class="line">	fi</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	stop)</span><br><span class="line">	$&#123;prefix&#125; -c /etc/shadowsocks.json -d stop</span><br><span class="line">	if [ $? -eq 0 ];then</span><br><span class="line">		echo &quot;stop ssserver ....... ok&quot; </span><br><span class="line">	else</span><br><span class="line">		echo &quot;stop ssserver .......fail&quot;</span><br><span class="line">	fi</span><br><span class="line">	;;</span><br><span class="line">	status)</span><br><span class="line">	process=`pgrep -f &#x27;/usr/bin/ssserver&#x27; | wc -l` </span><br><span class="line">	if [ $&#123;process&#125; -eq 1 ];then</span><br><span class="line">		echo &quot;ssserver is running ........!!!&quot;</span><br><span class="line">	else</span><br><span class="line">		echo &quot;ssserver is not running ........!!!&quot;</span><br><span class="line">	fi	</span><br><span class="line">	;;</span><br><span class="line">	</span><br><span class="line">*)</span><br><span class="line">	echo &quot;Usage: $0 &#123;start|stop|status&#125;&quot;</span><br><span class="line">	;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-<hr>
-<h5 id="monit-配置"><a href="#monit-配置" class="headerlink" title="monit 配置"></a>monit 配置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">####ss</span><br><span class="line">check process ssserver with  matching &quot;/usr/bin/ssserver&quot;</span><br><span class="line">      start program = &quot;/etc/init.d/ss start&quot;</span><br><span class="line">      stop program = &quot;/etc/init.d/ss stop&quot;</span><br><span class="line"></span><br><span class="line">新版本安装ss</span><br><span class="line"></span><br><span class="line">参考链接:https://www.e-learn.cn/content/qita/838991</span><br><span class="line">CENTOS7安装ShadowSocksR与加速软件锐速</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装ssr"><a href="#安装ssr" class="headerlink" title="安装ssr"></a>安装ssr</h2><h5 id="下载安装脚本"><a href="#下载安装脚本" class="headerlink" title="下载安装脚本"></a>下载安装脚本</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@VPS ~]# wget –no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">[root@VPS ~]# chmod +x shadowsocksR.sh</span><br><span class="line"></span><br><span class="line">安装ss</span><br><span class="line">[root@VPS ~]# ./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br><span class="line"></span><br><span class="line">安装完以后会有一点延迟。刚开始需要等一下看看</span><br><span class="line">ssr相关操作</span><br><span class="line">启动：/etc/init.d/shadowsocks start</span><br><span class="line">停止：/etc/init.d/shadowsocks stop</span><br><span class="line">重启：/etc/init.d/shadowsocks restart</span><br><span class="line">状态：/etc/init.d/shadowsocks status</span><br><span class="line"> </span><br><span class="line">配置文件路径：/etc/shadowsocks.json</span><br><span class="line">日志文件路径：/var/log/shadowsocks.log</span><br><span class="line">代码安装目录：/usr/local/shadowsocks</span><br></pre></td></tr></table></figure>
-<hr>
-<h5 id="安装锐速破解版"><a href="#安装锐速破解版" class="headerlink" title="安装锐速破解版"></a>安装锐速破解版</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1.一键拉取安装脚本</span><br><span class="line">[root@VPS ~]# wget -N --no-check-certificate https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh</span><br><span class="line">注：锐速只支持kvm,不支持openvz </span><br><span class="line"></span><br><span class="line">2.运行脚本</span><br><span class="line">[root@California_VPS ~]# chmod +x serverspeeder.sh</span><br><span class="line">[root@California_VPS ~]# bash serverspeeder.sh</span><br><span class="line"></span><br><span class="line">注：如果内核不支持，转3 </span><br><span class="line">3.手动更换内核 </span><br><span class="line">(1) CentO S7.3的内核3.10.0-514.16.1.el7.x86_64暂不支持安装锐速，故更换为3.10.0-229.1.2.el7.x86_64</span><br><span class="line">rpm -ivh http://soft.91yun.org/ISO/Linux/CentOS/kernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force       ##更换内核</span><br><span class="line">rpm -qa | grep kernel</span><br><span class="line">如果看到上述箭头所示，代表内核安装成功。 </span><br><span class="line">以上转换内核安装不成功，下面亲测可以用：</span><br><span class="line">wget -N --no-check-certificate https://freed.ga/kernel/ruisu.sh &amp;&amp; bash ruisu.sh</span><br><span class="line"></span><br><span class="line">(2) 重启查看内核版本</span><br><span class="line">reboot</span><br><span class="line">uname -r</span><br><span class="line"></span><br><span class="line">(3) 重新安装锐速</span><br><span class="line"></span><br><span class="line">wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
