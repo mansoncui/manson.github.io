@@ -89,7 +89,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">35</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,7 +162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -572,6 +572,125 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2021/03/22/kubernetes/k8s-harbor-secret/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/22/kubernetes/k8s-harbor-secret/" class="post-title-link" itemprop="url">kubernetes 创建 secret</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-21 16:30:00" itemprop="dateCreated datePublished" datetime="2021-03-21T16:30:00Z">2021-03-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-21 09:13:44" itemprop="dateModified" datetime="2021-07-21T09:13:44Z">2021-07-21</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/03/22/kubernetes/k8s-harbor-secret/" class="post-meta-item leancloud_visitors" data-flag-title="kubernetes 创建 secret" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/03/22/kubernetes/k8s-harbor-secret/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2021/03/22/kubernetes/k8s-harbor-secret/" class="cy_cmt_count" data-xid="2021/03/22/kubernetes/k8s-harbor-secret/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="kubernetes-secret-描述"><a href="#kubernetes-secret-描述" class="headerlink" title="kubernetes secret 描述"></a>kubernetes secret 描述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">secret 用于存储和管理一些敏感数据，比如密码，token，密钥等敏感信息。它把 Pod 想要访问的加密数据存放到 Etcd 中。然后用户就可以通过在 Pod 的容器里挂载 Volume 的方式或者 环境变量 的方式访问到这些 Secret 里保存的信息</span><br><span class="line"></span><br><span class="line">Secret 有三种类型</span><br><span class="line"></span><br><span class="line">Opaque：base64 编码格式的 Secret，用来存储密码、密钥等；但数据也可以通过base64 –decode解码得到原始数据，所有加密性很弱。</span><br><span class="line"></span><br><span class="line">Service Account：用来访问Kubernetes API，由Kubernetes自动创建，并且会自动挂载到Pod的 /run/secrets/kubernetes.io/serviceaccount 目录中。Service Account 对象的作用，就是 Kubernetes 系统内置的一种“服务账户”，它是 Kubernetes 进行权限分配的对象。比如，Service Account A，可以只被允许对 Kubernetes API 进行 GET 操作，而 Service Account B，则可以有 Kubernetes API 的所有操作权限</span><br><span class="line"></span><br><span class="line">kubernetes.io/dockerconfigjson ： 用来存储私有docker registry的认证信息</span><br></pre></td></tr></table></figure>
+<h2 id="Opaque-Secret-使用"><a href="#Opaque-Secret-使用" class="headerlink" title="Opaque Secret 使用"></a>Opaque Secret 使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# echo -n &quot;admin&quot; | base64</span><br><span class="line">YWRtaW4=</span><br><span class="line">[root@test1 ~]# echo -n &quot;123456&quot; | base64</span><br><span class="line">MTIzNDU2</span><br></pre></td></tr></table></figure>
+<p>创建secret</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim myapp-secret.yaml</span><br><span class="line"></span><br><span class="line"># 内容</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Secret</span><br><span class="line">metadata:</span><br><span class="line">  name: mysecret</span><br><span class="line">type: Opaque</span><br><span class="line">data:</span><br><span class="line">  username: YWRtaW4=</span><br><span class="line">  password: MTIzNDU2</span><br></pre></td></tr></table></figure>
+<p>将secret导入环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line"> name: myapp-deploy</span><br><span class="line">spec:</span><br><span class="line">  replicas: 2</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: myapp</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: myapp</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: myapp</span><br><span class="line">        image: 192.168.26.160:86/xielong/myapp:v1.0</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br><span class="line">        env:</span><br><span class="line">        - name: MYSQL_SERVICE_USER</span><br><span class="line">          valueFrom:</span><br><span class="line">            secretKeyRef:</span><br><span class="line">              name: mysecret</span><br><span class="line">              key: username</span><br><span class="line">        - name: MYSQL_SERVICE_PASSWORD</span><br><span class="line">          valueFrom:</span><br><span class="line">            secretKeyRef:</span><br><span class="line">              name: mysecret</span><br><span class="line">              key: password</span><br></pre></td></tr></table></figure>
+<p>查看环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@master1 yaml]# kubectl exec myapp-deploy-5df5dfbb7f-75qql env</span><br><span class="line">PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span><br><span class="line">HOSTNAME=myapp-deploy-5df5dfbb7f-75qql</span><br><span class="line"> </span><br><span class="line"># 成功导入</span><br><span class="line">MYSQL_SERVICE_USER=admin</span><br><span class="line">MYSQL_SERVICE_PASSWORD=123456</span><br><span class="line"> </span><br><span class="line">KUBERNETES_PORT_443_TCP_PROTO=tcp</span><br><span class="line">KUBERNETES_PORT_443_TCP_PORT=443</span><br><span class="line">KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1</span><br><span class="line">KUBERNETES_SERVICE_HOST=10.96.0.1</span><br><span class="line">KUBERNETES_SERVICE_PORT=443</span><br><span class="line">KUBERNETES_SERVICE_PORT_HTTPS=443</span><br><span class="line">KUBERNETES_PORT=tcp://10.96.0.1:443</span><br><span class="line">KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443</span><br><span class="line">NGINX_VERSION=1.19.6</span><br><span class="line">NJS_VERSION=0.5.0</span><br><span class="line">PKG_RELEASE=1~buster</span><br><span class="line">HOME=/root</span><br></pre></td></tr></table></figure>
+<h2 id="k8s通过secret拉取harbor镜像"><a href="#k8s通过secret拉取harbor镜像" class="headerlink" title="k8s通过secret拉取harbor镜像"></a>k8s通过secret拉取harbor镜像</h2><h3 id="创建secret"><a href="#创建secret" class="headerlink" title="创建secret"></a>创建secret</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">kubectl create secret docker-registry test-hub-puller --docker-server=http://test-hub.xxxxx.com --docker-username=puller --docker-password=W2xxxxxxIh  --docker-email=puller@xxxx.com -n shxxxxxxiot</span><br><span class="line"></span><br><span class="line">备注:</span><br><span class="line">test-hub-puller #是secret name</span><br><span class="line">--docker-email #邮箱任意写 </span><br><span class="line">--docker-username=puller  #是harbor仓库用户名和密码</span><br><span class="line">--docker-server=http://test-hub.xxxxx.com  #harbor仓库地址</span><br></pre></td></tr></table></figure>
+<h3 id="查看secret和yaml配置"><a href="#查看secret和yaml配置" class="headerlink" title="查看secret和yaml配置"></a>查看secret和yaml配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get secret -n shixxxiot</span><br></pre></td></tr></table></figure>
+<img src="/images/k8s/secret/k8s-secret.jpg" width="100%" height="50%" align="left/">
+<img src="/images/k8s/secret/k8s-secret-containers.jpg" width="100%" height="50%" align="left/">
+
+
+<p>参考链接: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/</span><br><span class="line">https://blog.csdn.net/mshxuyi/article/details/110942969</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/08/22/shell/shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -866,119 +985,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="centos6-和-7-服务进程关闭"><a href="#centos6-和-7-服务进程关闭" class="headerlink" title="centos6 和 7 服务进程关闭"></a>centos6 和 7 服务进程关闭</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">服务名称	        功能	                            		默认 	建议 	备注说明</span><br><span class="line">NetworkManager	    用于自动连接网络，常用在Laptop上			开启	关闭	对服务器无用</span><br><span class="line">abrt-ccpp	                                            		开启	自定	对服务器无用</span><br><span class="line">abrt-oops	                                            		开启	自定	对服务器无用</span><br><span class="line">abrtd	                                                		开启	自定	对服务器无用</span><br><span class="line">acpid	            电源的开关等检测管理，常用在Laptop上		开启	自定	对服务器无用</span><br><span class="line">atd	                在指定时间执行命令							开启	关闭	如果用crond，则可关闭它</span><br><span class="line">auditd				审核守护进程								开启	开启	如果用selinux，需要开启它</span><br><span class="line">autofs				文件系统自动加载和卸载						开启	自定	只在需要时开启它，可以关闭</span><br><span class="line">avahi-daemon		本地网络服务查找							开启	关闭	对服务器无用</span><br><span class="line">bluetooth			蓝牙无线通讯								开启	关闭	对服务器无用</span><br><span class="line">certmonger														关闭	关闭	</span><br><span class="line">cpuspeed			调节cpu速度用来省电，常用在Laptop上			开启	关闭	对服务器无用</span><br><span class="line">crond				计划任务管理								开启	开启	常用，开启</span><br><span class="line">cups				通用unix打印服务							开启	关闭	对服务器无用</span><br><span class="line">dnsmasq	dns cache												关闭	关闭	DNS缓存服务，无用</span><br><span class="line">firstboot			系统安装后初始设定							关闭	关闭	</span><br><span class="line">haldaemon			硬件信息收集服务							开启	开启	</span><br><span class="line">ip6tables			ipv6防火墙									开启	关闭	用到ipv6网络的就用，一般关闭</span><br><span class="line">iptables			ipv4防火墙									开启	开启	ipv4防火墙服务</span><br><span class="line">irqbalance			cpu负载均衡									开启	自定	多核cup需要</span><br><span class="line">kdump				硬件变动检测								关闭	关闭	服务器无用</span><br><span class="line">lvm2-monitor		lvm监视										开启	自定	如果使用LVM逻辑卷管理就开启</span><br><span class="line">matahari-broker													关闭	关闭	此服务不清楚，我关闭</span><br><span class="line">matahari-host													关闭	关闭	此服务不清楚，我关闭</span><br><span class="line">matahari-network												关闭	关闭	此服务不清楚，我关闭</span><br><span class="line">matahari-service												关闭	关闭	此服务不清楚，我关闭</span><br><span class="line">matahari-sysconfig												关闭	关闭	此服务不清楚，我关闭</span><br><span class="line">mdmonitor			软raid监视									开启	自定	</span><br><span class="line">messagebus			负责在各个系统进程之间传递消息				开启	开启	如停用，haldaemon启动会失败</span><br><span class="line">netconsole														关闭	关闭	</span><br><span class="line">netfs				系统启动时自动挂载网络文件系统				开启	关闭	如果使用nfs服务，就开启</span><br><span class="line">network				系统启动时激活所有网络接口					开启	开启	网络基础服务，必需！</span><br><span class="line">nfs					网络文件系统								关闭	关闭	nfs文件服务，用到就开启</span><br><span class="line">nfslock				nfs相关										开启	关闭	nfs相关服务，用到就开启</span><br><span class="line">ntpd				自动对时工具								关闭	自定	网络对时服务，用到就开启</span><br><span class="line">ntpdate				自动对时工具								关闭	关闭	</span><br><span class="line">oddjobd				与D-BUS相关									关闭	关闭	</span><br><span class="line">portreserve			RPC 服务相关								开启	自定	可以关闭</span><br><span class="line">postfix				替代sendmail的邮件服务器					开启	自定	如果无邮件服务，可关闭</span><br><span class="line">psacct				负荷检测									关闭	关闭	可以关闭</span><br><span class="line">qpidd				消息通信									开启	开启	</span><br><span class="line">quota_nld														关闭	关闭	可以关闭</span><br><span class="line">rdisc			    自动检测路由器								关闭	关闭	</span><br><span class="line">restorecond			selinux相关									关闭	关闭	如果开启了selinux，就需开启</span><br><span class="line">rpcbind															开启	开启	关键的基础服务，nfs服务和桌面环境都依赖此服务！相当于CentOS 5.x里面的portmap服务。</span><br><span class="line">rpcgssd				NFS相关										开启	关闭	NFS相关服务，可选</span><br><span class="line">rpcidmapd			RPC name to UID/GID mapper					开启	关闭	NFS相关服务，可选</span><br><span class="line">rpcsvcgssd			NFS相关										关闭	关闭	NFS相关服务，可选</span><br><span class="line">rsyslog				提供系统的登录档案记录						开启	开启	系统日志关键服务，必需！</span><br><span class="line">saslauthd			sasl认证服务相关							关闭	关闭	</span><br><span class="line">smartd				硬盘自动检测守护进程						关闭	关闭	</span><br><span class="line">spice-vdagentd													开启	开启	</span><br><span class="line">sshd				ssh服务端，可提供安全的shell登录			开启	开启	SSH远程登录服务，必需！</span><br><span class="line">sssd															关闭	关闭	</span><br><span class="line">sysstat															开启	开启	一组系统监控工具的服务，常用</span><br><span class="line">udev-post			设备管理系统								开启	开启	</span><br><span class="line">wdaemon															关闭	关闭	</span><br><span class="line">wpa_supplicant		无线认证相关								关闭	关闭	</span><br><span class="line">ypbind				network information service客户端			关闭	关闭	</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/07/08/services/keepalived-lvs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/07/08/services/keepalived-lvs/" class="post-title-link" itemprop="url">keepalived-lvs</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-07-08 13:17:45" itemprop="dateCreated datePublished" datetime="2019-07-08T13:17:45Z">2019-07-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/07/08/services/keepalived-lvs/" class="post-meta-item leancloud_visitors" data-flag-title="keepalived-lvs" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/07/08/services/keepalived-lvs/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/07/08/services/keepalived-lvs/" class="cy_cmt_count" data-xid="2019/07/08/services/keepalived-lvs/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="keepalived-lvs"><a href="#keepalived-lvs" class="headerlink" title="keepalived + lvs"></a>keepalived + lvs</h2><h5 id="主和从上安装keepalived"><a href="#主和从上安装keepalived" class="headerlink" title="主和从上安装keepalived"></a>主和从上安装keepalived</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install keepalived </span><br></pre></td></tr></table></figure>
-<h5 id="keepalived-conf-配置-主"><a href="#keepalived-conf-配置-主" class="headerlink" title="keepalived.conf 配置(主)"></a>keepalived.conf 配置(主)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;                       </span><br><span class="line">   notification_email &#123;             </span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">    smtp_connect_timeout 30</span><br><span class="line">        router_id LVS_DEVEL             </span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VI_1 &#123;            </span><br><span class="line">        state MASTER     #配置LVS是主机的状态        </span><br><span class="line">        interface eth0     #配置LVS机器对外开放的IP       </span><br><span class="line">        virtual_router_id 51        </span><br><span class="line">        priority 100                  </span><br><span class="line">        advert_int 1           </span><br><span class="line">        authentication &#123;        </span><br><span class="line">                auth_type PASS</span><br><span class="line">                auth_pass 1111</span><br><span class="line">        &#125;</span><br><span class="line">        virtual_ipaddress &#123;         </span><br><span class="line">                192.168.1.121    #LVS的对内IP</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">virtual_server 192.168.1.121 80 &#123;</span><br><span class="line">        delay_loop 6           </span><br><span class="line">        lb_algo wrr            </span><br><span class="line">        lb_kind DR         #使用LVSDR模式                 </span><br><span class="line">        nat_mask 255.255.255.0   </span><br><span class="line">        persistence_timeout 0    </span><br><span class="line">        protocol TCP                          </span><br><span class="line">        real_server 192.168.1.101 80 &#123;    #真实服务的IP </span><br><span class="line">                weight 1        #配置加权轮询的权重             </span><br><span class="line">                TCP_CHECK &#123;                     </span><br><span class="line">                        connect_timeout 10   </span><br><span class="line">                        nb_get_retry 3</span><br><span class="line">                        delay_before_retry 3</span><br><span class="line">                        connect_port 80</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        real_server 192.168.1.89 80 &#123;</span><br><span class="line">                weight 2</span><br><span class="line">                TCP_CHECK &#123;</span><br><span class="line">                        connect_timeout 10</span><br><span class="line">                        nb_get_retry 3</span><br><span class="line">                        delay_before_retry 3</span><br><span class="line">                        connect_port 80</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="keepalived-conf-配置-从"><a href="#keepalived-conf-配置-从" class="headerlink" title="keepalived.conf 配置(从)"></a>keepalived.conf 配置(从)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;                       </span><br><span class="line">#   notification_email &#123;             </span><br><span class="line">#   &#125;</span><br><span class="line">#   smtp_connect_timeout 30</span><br><span class="line">        router_id LVS_DEVEL             </span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VI_1 &#123;            </span><br><span class="line">        state BACKUP     #配置LVS是主机的状态        </span><br><span class="line">        interface ens192     #配置LVS机器对外开放的IP       </span><br><span class="line">        virtual_router_id 51        </span><br><span class="line">        priority 100                  </span><br><span class="line">        advert_int 1           </span><br><span class="line">        authentication &#123;        </span><br><span class="line">                auth_type PASS</span><br><span class="line">                auth_pass 1111</span><br><span class="line">        &#125;</span><br><span class="line">        virtual_ipaddress &#123;         </span><br><span class="line">                192.168.1.121    #LVS的对内IP</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">virtual_server 192.168.1.121 80 &#123;</span><br><span class="line">        delay_loop 6           </span><br><span class="line">        lb_algo wrr            </span><br><span class="line">        lb_kind DR         #使用LVSDR模式                 </span><br><span class="line">        nat_mask 255.255.255.0   </span><br><span class="line">        persistence_timeout 0    </span><br><span class="line">        protocol TCP                          </span><br><span class="line">        real_server 192.168.1.101 80 &#123;    #真实服务的IP </span><br><span class="line">                weight 1        #配置加权轮询的权重             </span><br><span class="line">                TCP_CHECK &#123;                     </span><br><span class="line">                        connect_timeout 10   </span><br><span class="line">                        nb_get_retry 3</span><br><span class="line">                        delay_before_retry 3</span><br><span class="line">                        connect_port 80</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        real_server 192.168.1.89 80 &#123;</span><br><span class="line">                weight 2</span><br><span class="line">                TCP_CHECK &#123;</span><br><span class="line">                        connect_timeout 10</span><br><span class="line">                        nb_get_retry 3</span><br><span class="line">                        delay_before_retry 3</span><br><span class="line">                        connect_port 80</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service keepalived start </span><br><span class="line"></span><br><span class="line">观察系统日志</span><br></pre></td></tr></table></figure>
-<h5 id="两台-real-server-部署一下脚本-放到-etc-init-d-下"><a href="#两台-real-server-部署一下脚本-放到-etc-init-d-下" class="headerlink" title="两台 real server 部署一下脚本(放到/etc/init.d/下 )"></a>两台 real server 部署一下脚本(放到/etc/init.d/下 )</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash  </span><br><span class="line">#description : start realserver  </span><br><span class="line">SNS_VIP=192.168.1.121 #定义了一个VIP变量，必须跟真是服务在一个网段</span><br><span class="line">source /etc/rc.d/init.d/functions  </span><br><span class="line">case &quot;$1&quot; in  </span><br><span class="line">start)  </span><br><span class="line">echo &quot; start LVS of REALServer&quot;  </span><br><span class="line">/sbin/ifconfig lo:0 $SNS_VIP broadcast $SNS_VIP netmask 255.255.255.255 up  #增加一个本地路由 lo:0</span><br><span class="line">echo &quot;1&quot; &gt;/proc/sys/net/ipv4/conf/lo/arp_ignore  </span><br><span class="line">echo &quot;2&quot; &gt;/proc/sys/net/ipv4/conf/lo/arp_announce  </span><br><span class="line">echo &quot;1&quot; &gt;/proc/sys/net/ipv4/conf/all/arp_ignore  </span><br><span class="line">echo &quot;2&quot; &gt;/proc/sys/net/ipv4/conf/all/arp_announce  </span><br><span class="line">;;  </span><br><span class="line">stop)  </span><br><span class="line">/sbin/ifconfig lo:0 down  </span><br><span class="line">echo &quot;close LVS Directorserver&quot;  </span><br><span class="line">echo &quot;0&quot; &gt;/proc/sys/net/ipv4/conf/lo/arp_ignore  </span><br><span class="line">echo &quot;0&quot; &gt;/proc/sys/net/ipv4/conf/lo/arp_announce  </span><br><span class="line">echo &quot;0&quot; &gt;/proc/sys/net/ipv4/conf/all/arp_ignore  </span><br><span class="line">echo &quot;0&quot; &gt;/proc/sys/net/ipv4/conf/all/arp_announce  </span><br><span class="line">;;  </span><br><span class="line">*)  </span><br><span class="line">echo &quot;Usage: $0 &#123;start|stop&#125;&quot;  </span><br><span class="line">exit 1  </span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /etc/init.d/realserver</span><br><span class="line"></span><br><span class="line">/etc/init.d/realserver start </span><br></pre></td></tr></table></figure>
-
-<h5 id="两台真是服务器安装nginx"><a href="#两台真是服务器安装nginx" class="headerlink" title="两台真是服务器安装nginx"></a>两台真是服务器安装nginx</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx </span><br><span class="line"></span><br><span class="line">把两台相应IP写到index.html 文件中(有标识行)</span><br></pre></td></tr></table></figure>
-
-<h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">关闭一台keepalived </span><br><span class="line"></span><br><span class="line">浏览器访问</span><br><span class="line">https://192.168.1.121/?a=Math.random()</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 

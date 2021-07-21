@@ -89,7 +89,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">35</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,7 +162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -233,6 +233,119 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/07/08/services/keepalived-lvs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/07/08/services/keepalived-lvs/" class="post-title-link" itemprop="url">keepalived-lvs</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-07-08 13:17:45" itemprop="dateCreated datePublished" datetime="2019-07-08T13:17:45Z">2019-07-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/07/08/services/keepalived-lvs/" class="post-meta-item leancloud_visitors" data-flag-title="keepalived-lvs" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/07/08/services/keepalived-lvs/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/07/08/services/keepalived-lvs/" class="cy_cmt_count" data-xid="2019/07/08/services/keepalived-lvs/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="keepalived-lvs"><a href="#keepalived-lvs" class="headerlink" title="keepalived + lvs"></a>keepalived + lvs</h2><h5 id="主和从上安装keepalived"><a href="#主和从上安装keepalived" class="headerlink" title="主和从上安装keepalived"></a>主和从上安装keepalived</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install keepalived </span><br></pre></td></tr></table></figure>
+<h5 id="keepalived-conf-配置-主"><a href="#keepalived-conf-配置-主" class="headerlink" title="keepalived.conf 配置(主)"></a>keepalived.conf 配置(主)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;                       </span><br><span class="line">   notification_email &#123;             </span><br><span class="line">   &#125;</span><br><span class="line">      </span><br><span class="line">    smtp_connect_timeout 30</span><br><span class="line">        router_id LVS_DEVEL             </span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VI_1 &#123;            </span><br><span class="line">        state MASTER     #配置LVS是主机的状态        </span><br><span class="line">        interface eth0     #配置LVS机器对外开放的IP       </span><br><span class="line">        virtual_router_id 51        </span><br><span class="line">        priority 100                  </span><br><span class="line">        advert_int 1           </span><br><span class="line">        authentication &#123;        </span><br><span class="line">                auth_type PASS</span><br><span class="line">                auth_pass 1111</span><br><span class="line">        &#125;</span><br><span class="line">        virtual_ipaddress &#123;         </span><br><span class="line">                192.168.1.121    #LVS的对内IP</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">virtual_server 192.168.1.121 80 &#123;</span><br><span class="line">        delay_loop 6           </span><br><span class="line">        lb_algo wrr            </span><br><span class="line">        lb_kind DR         #使用LVSDR模式                 </span><br><span class="line">        nat_mask 255.255.255.0   </span><br><span class="line">        persistence_timeout 0    </span><br><span class="line">        protocol TCP                          </span><br><span class="line">        real_server 192.168.1.101 80 &#123;    #真实服务的IP </span><br><span class="line">                weight 1        #配置加权轮询的权重             </span><br><span class="line">                TCP_CHECK &#123;                     </span><br><span class="line">                        connect_timeout 10   </span><br><span class="line">                        nb_get_retry 3</span><br><span class="line">                        delay_before_retry 3</span><br><span class="line">                        connect_port 80</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        real_server 192.168.1.89 80 &#123;</span><br><span class="line">                weight 2</span><br><span class="line">                TCP_CHECK &#123;</span><br><span class="line">                        connect_timeout 10</span><br><span class="line">                        nb_get_retry 3</span><br><span class="line">                        delay_before_retry 3</span><br><span class="line">                        connect_port 80</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="keepalived-conf-配置-从"><a href="#keepalived-conf-配置-从" class="headerlink" title="keepalived.conf 配置(从)"></a>keepalived.conf 配置(从)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;                       </span><br><span class="line">#   notification_email &#123;             </span><br><span class="line">#   &#125;</span><br><span class="line">#   smtp_connect_timeout 30</span><br><span class="line">        router_id LVS_DEVEL             </span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VI_1 &#123;            </span><br><span class="line">        state BACKUP     #配置LVS是主机的状态        </span><br><span class="line">        interface ens192     #配置LVS机器对外开放的IP       </span><br><span class="line">        virtual_router_id 51        </span><br><span class="line">        priority 100                  </span><br><span class="line">        advert_int 1           </span><br><span class="line">        authentication &#123;        </span><br><span class="line">                auth_type PASS</span><br><span class="line">                auth_pass 1111</span><br><span class="line">        &#125;</span><br><span class="line">        virtual_ipaddress &#123;         </span><br><span class="line">                192.168.1.121    #LVS的对内IP</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">virtual_server 192.168.1.121 80 &#123;</span><br><span class="line">        delay_loop 6           </span><br><span class="line">        lb_algo wrr            </span><br><span class="line">        lb_kind DR         #使用LVSDR模式                 </span><br><span class="line">        nat_mask 255.255.255.0   </span><br><span class="line">        persistence_timeout 0    </span><br><span class="line">        protocol TCP                          </span><br><span class="line">        real_server 192.168.1.101 80 &#123;    #真实服务的IP </span><br><span class="line">                weight 1        #配置加权轮询的权重             </span><br><span class="line">                TCP_CHECK &#123;                     </span><br><span class="line">                        connect_timeout 10   </span><br><span class="line">                        nb_get_retry 3</span><br><span class="line">                        delay_before_retry 3</span><br><span class="line">                        connect_port 80</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        real_server 192.168.1.89 80 &#123;</span><br><span class="line">                weight 2</span><br><span class="line">                TCP_CHECK &#123;</span><br><span class="line">                        connect_timeout 10</span><br><span class="line">                        nb_get_retry 3</span><br><span class="line">                        delay_before_retry 3</span><br><span class="line">                        connect_port 80</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service keepalived start </span><br><span class="line"></span><br><span class="line">观察系统日志</span><br></pre></td></tr></table></figure>
+<h5 id="两台-real-server-部署一下脚本-放到-etc-init-d-下"><a href="#两台-real-server-部署一下脚本-放到-etc-init-d-下" class="headerlink" title="两台 real server 部署一下脚本(放到/etc/init.d/下 )"></a>两台 real server 部署一下脚本(放到/etc/init.d/下 )</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash  </span><br><span class="line">#description : start realserver  </span><br><span class="line">SNS_VIP=192.168.1.121 #定义了一个VIP变量，必须跟真是服务在一个网段</span><br><span class="line">source /etc/rc.d/init.d/functions  </span><br><span class="line">case &quot;$1&quot; in  </span><br><span class="line">start)  </span><br><span class="line">echo &quot; start LVS of REALServer&quot;  </span><br><span class="line">/sbin/ifconfig lo:0 $SNS_VIP broadcast $SNS_VIP netmask 255.255.255.255 up  #增加一个本地路由 lo:0</span><br><span class="line">echo &quot;1&quot; &gt;/proc/sys/net/ipv4/conf/lo/arp_ignore  </span><br><span class="line">echo &quot;2&quot; &gt;/proc/sys/net/ipv4/conf/lo/arp_announce  </span><br><span class="line">echo &quot;1&quot; &gt;/proc/sys/net/ipv4/conf/all/arp_ignore  </span><br><span class="line">echo &quot;2&quot; &gt;/proc/sys/net/ipv4/conf/all/arp_announce  </span><br><span class="line">;;  </span><br><span class="line">stop)  </span><br><span class="line">/sbin/ifconfig lo:0 down  </span><br><span class="line">echo &quot;close LVS Directorserver&quot;  </span><br><span class="line">echo &quot;0&quot; &gt;/proc/sys/net/ipv4/conf/lo/arp_ignore  </span><br><span class="line">echo &quot;0&quot; &gt;/proc/sys/net/ipv4/conf/lo/arp_announce  </span><br><span class="line">echo &quot;0&quot; &gt;/proc/sys/net/ipv4/conf/all/arp_ignore  </span><br><span class="line">echo &quot;0&quot; &gt;/proc/sys/net/ipv4/conf/all/arp_announce  </span><br><span class="line">;;  </span><br><span class="line">*)  </span><br><span class="line">echo &quot;Usage: $0 &#123;start|stop&#125;&quot;  </span><br><span class="line">exit 1  </span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /etc/init.d/realserver</span><br><span class="line"></span><br><span class="line">/etc/init.d/realserver start </span><br></pre></td></tr></table></figure>
+
+<h5 id="两台真是服务器安装nginx"><a href="#两台真是服务器安装nginx" class="headerlink" title="两台真是服务器安装nginx"></a>两台真是服务器安装nginx</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx </span><br><span class="line"></span><br><span class="line">把两台相应IP写到index.html 文件中(有标识行)</span><br></pre></td></tr></table></figure>
+
+<h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">关闭一台keepalived </span><br><span class="line"></span><br><span class="line">浏览器访问</span><br><span class="line">https://192.168.1.121/?a=Math.random()</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -853,108 +966,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="mysql-读写分离"><a href="#mysql-读写分离" class="headerlink" title="mysql 读写分离"></a>mysql 读写分离</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">环境: 四台机器，两台数据库服务器，一台代理，一台客户端测试</span><br><span class="line"></span><br><span class="line">注意:先把代理建完并测试以后，再搭建主从数据库服务器</span><br><span class="line"></span><br><span class="line">一、搭建代理服务器</span><br><span class="line"></span><br><span class="line">1、下载mysql-proxy包，并解压到/usr/local/,重命名为mysqlproxy(重命名根据自己情况，不一定)</span><br><span class="line"></span><br><span class="line">-P  #指定代理服务器的ip地址和端口号</span><br><span class="line"></span><br><span class="line">-r  #指定从数据库服务器的IP地址和端口(读操作)</span><br><span class="line"></span><br><span class="line">-b  #指定主数据库服务器的IP地址和端口(写操作)</span><br><span class="line"></span><br><span class="line">-s  #指定lun脚本文件的路径</span><br><span class="line"></span><br><span class="line">--keepalive  #若进程奔溃，自动重启此进程（可写可不写)</span><br><span class="line"></span><br><span class="line">lun脚本存放的目录:/usr/local/share/doc/mysql-proxt/rw--splitting.lua   #区分读写操作的</span><br><span class="line"></span><br><span class="line">/usr/local/bin/mysqlproxy/bin/mysql-proxy     #启动命令</span><br><span class="line"></span><br><span class="line">/usr/local/bin/mysqlproxy/bin/mysql-proxy   -P 指定代理服务器的IP地址和端口  -r 从数据库服务器IP地址和端口  -b  主数据库的IP地址和端口   -s   /usr/local/share/doc/mysql-proxt/rw--splitting.lua    &amp;</span><br><span class="line"></span><br><span class="line">关闭命令端口: pkill  进程名或 kill -9 pid</span><br><span class="line"></span><br><span class="line">二、搭建主从数据库</span><br><span class="line"></span><br><span class="line">主从授权用同一个用户，建议为：proxyuser ，地址为:%(代表所有地址)</span><br><span class="line"></span><br><span class="line">主从数据库的搭建和之前一样</span><br><span class="line"></span><br><span class="line">三、客户端测试</span><br><span class="line"></span><br><span class="line">mysql -h代理IP   -u授权用户  -p授权密码</span><br><span class="line"></span><br><span class="line">注释:前5个终端读写操作都是在主数据库服务器上，超过五个时（不包括第五个）读写操作正常分开，除非重启该服务，否者读写永久生效</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/26/services/mysql-master-slave/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/06/26/services/mysql-master-slave/" class="post-title-link" itemprop="url">mysql_master_slave</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-06-25 16:38:43" itemprop="dateCreated datePublished" datetime="2019-06-25T16:38:43Z">2019-06-25</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-
-  
-    <span id="/2019/06/26/services/mysql-master-slave/" class="post-meta-item leancloud_visitors" data-flag-title="mysql_master_slave" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/06/26/services/mysql-master-slave/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/06/26/services/mysql-master-slave/" class="cy_cmt_count" data-xid="2019/06/26/services/mysql-master-slave/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="主从搭建"><a href="#主从搭建" class="headerlink" title="主从搭建"></a>主从搭建</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">环境:两台服务器(主:192.168.1.10,从:192.168.1.20)，两个数据库服务器有的库和表必须一样，不一样用mysqldump备份导入从数据库服务器上。</span><br><span class="line">mysql主服务器:</span><br><span class="line">1、启用binlog日志</span><br><span class="line">2、service mysql stop</span><br><span class="line">vim  /etc/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">log-bin   #启用binlog日志（默认是主机名和数据库目录，也可以自定义目录:/root/dsn） </span><br><span class="line">server_id=10    主机位标识(1-255) #标识自己的身份</span><br><span class="line">server mysql start</span><br><span class="line"></span><br><span class="line">3、授权一个连接用户可以从192.168.1.20来连接自己，连接后有拷贝数据的权限</span><br><span class="line">grant  replication slave  on *.*   to   用户名@“从服务器地址”   identified  by  “密码”；#给从服务器授权，到从服务器上测试是否能连接</span><br><span class="line"></span><br><span class="line">二、从服务器设置:</span><br><span class="line">1、server  mysql  stop</span><br><span class="line"></span><br><span class="line">vim  /etc/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">log-bin=slave  #可有可无，不做硬性规定</span><br><span class="line">server-id=20    #主机位标识(1-255) #标识自己的身份</span><br><span class="line"></span><br><span class="line">server mysql start</span><br><span class="line"></span><br><span class="line">2、连接主数据库服务器，看连接是否正常(命令行下)</span><br><span class="line">#mysql  -h192.168.1.20 -u授权用户  -p密码</span><br><span class="line"></span><br><span class="line">3、从本机登录数据库</span><br><span class="line">mysql  -uroot   -p密码</span><br><span class="line">mysql&gt;change master to master_host=&quot;192.168.1.10&quot;,master_user=&quot;授权用户&quot;，master_password=&quot;授权密码&quot;，master_log_file=&quot;binlog日志文件&quot;,</span><br><span class="line">master_log_pos=时间节点；</span><br><span class="line">master_log_file=&quot;&quot;   #主服务器上日志文件名</span><br><span class="line">mysql&gt;change master to master_host=&quot;10.2.0.29&quot;,master_user=&quot;scrm&quot;,master_password=&quot;thankyou&quot;,master_log_file=&quot;mysql-bin.000003&quot;,master_log_pos=154;</span><br><span class="line"></span><br><span class="line">/ebsig/mysqldata/mysql/auto.cnf  #如果是克隆从数据库，需要重新生成uuid，先把老的UUID备份，重启mysql服务就可以了</span><br><span class="line"></span><br><span class="line">mysql&gt;set global server_id=2;  #配置文件server_id不能生效要自己设置；</span><br><span class="line"></span><br><span class="line">用命令mysql&gt;show  master status;   #查看时间节点和binlog日志文件名（在主服务器上操作的）</span><br><span class="line"></span><br><span class="line">mysql&gt;show  slave  status\G；   #在从服务器上操作的，看状态:Slave_IO_Running: No 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　Slave_SQL_Running: No</span><br><span class="line"></span><br><span class="line">mysql&gt;start slave; #开启从服务器Slave_IO_Running: Yes 　　　　　　　　　　　　　　　　  Slave_SQL_Running: Yes</span><br><span class="line"></span><br><span class="line">三、测试:在主数据库服务器上创建表、库和更新数据，到从数据库服务器上查看是否同步</span><br><span class="line"></span><br><span class="line">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">数据库主从同步原理:</span><br><span class="line"></span><br><span class="line">如果有NO没有成功：原因:从服务器是克隆，修改uuid，存放在数据库目录下/var/lib/mysql/auto.cnf,随便修改一下就可以了</span><br><span class="line"></span><br><span class="line">错误信息看一下四项:</span><br><span class="line">IO进程原理:IO进程负责拷贝主数据库服务器binlog里的SQL语句到本机中继binlog日志里 IO进程报错信息 Last_IO_Errno: 0   #出错的个数</span><br><span class="line">　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　             Last_IO_Error:      #出错的信息</span><br><span class="line">SQL进程原理:SQL进程负责本机中继binlog日志里sql语句把数据写进数据库中 SQL进程报错信息 Last_SQL_Errno: 0   #出错的个数</span><br><span class="line">　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　                   Last_SQL_Error:     #出错的信息</span><br><span class="line">IO进程什么时候出错?  连接不上主数据库服务器时会出错    ping  (线路问题   安全)    授权</span><br><span class="line">SQL进程什么时候会出错? sql语句操作的库、表和字段在自己本机不存在，就会出错</span><br><span class="line">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">从数据库目录下有几个文件</span><br><span class="line">验证从数据库服务器是否能自动备份主数据库服务器上的数据</span><br><span class="line">master.info    #记录主数据文件的信息</span><br><span class="line">web-relay-bin.index   #记录已有的中继binlog日志</span><br><span class="line">relay-log.info #记录中继日志信息</span><br><span class="line">web-relay-bin.00000X   #中继binlog日志：是从主数据库服务器上拷贝到本机的binlog日志</span><br></pre></td></tr></table></figure>
-
-<h2 id="DDL-和-DML含义"><a href="#DDL-和-DML含义" class="headerlink" title="DDL 和 DML含义"></a>DDL 和 DML含义</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DDL：数据定义语言(创建表和修改表、truncate 删除表)</span><br><span class="line">DML(Data Manipulation Language)：数据操纵语言命令使用户能够查询数据库以及操作已有数据库中的数据。</span><br><span class="line">truncate不是可以删除表中数据，这就算可以操作数据库中的数据了，为什么还是DDL而不是DML呢？谢谢！</span><br><span class="line">那像drop table这些命令是手工提交的？</span><br></pre></td></tr></table></figure>
-
-<h2 id="主从延迟"><a href="#主从延迟" class="headerlink" title="主从延迟"></a>主从延迟</h2><h5 id="MySQL数据库主从同步延迟原理"><a href="#MySQL数据库主从同步延迟原理" class="headerlink" title="MySQL数据库主从同步延迟原理"></a>MySQL数据库主从同步延迟原理</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql主从同步原理：</span><br><span class="line">主库针对写操作，顺序写binlog，从库单线程去主库顺序读”写操作的binlog”，从库取到binlog在本地原样执行(随机写)，来保证主从数据逻辑上一致。</span><br><span class="line">mysql的主从复制都是单线程的操作，主库对所有DDL和DML产生binlog，binlog是顺序写，所以效率很高，slave的Slave_IO_Running线程到主库取日志，效率比较高，下一步，问题来了，slave的Slave_SQL_Running线程将主库的DDL和DML操作在slave实施。DML和DDL的IO操作是随即的，不是顺序的，成本高很多，还可能可slave上的其他查询产生lock争用，由于Slave_SQL_Running也是单线程的，所以一个DDL卡主了，需要执行10分钟，那么所有之后的DDL会等待这个DDL执行完才会继续执行，这就导致了延时。</span><br></pre></td></tr></table></figure>
-
-<h5 id="MySQL数据库主从同步延迟是怎么产生的"><a href="#MySQL数据库主从同步延迟是怎么产生的" class="headerlink" title="MySQL数据库主从同步延迟是怎么产生的?"></a>MySQL数据库主从同步延迟是怎么产生的?</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有朋友会问：“主库上那个相同的DDL也需要执行10分，为什么slave会延时?”，答案是master可以并发，Slave_SQL_Running线程却不可以。</span><br><span class="line">当主库的TPS并发较高时，产生的DDL数量超过slave一个sql线程所能承受的范围，那么延时就产生了，当然还有就是可能与slave的大型query语句产生了锁等待。</span><br><span class="line">首要原因：数据库在业务上读写压力太大，CPU计算负荷大，网卡负荷大，硬盘随机IO太高</span><br><span class="line">次要原因：读写binlog带来的性能影响，网络传输延迟。</span><br></pre></td></tr></table></figure>
-
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
