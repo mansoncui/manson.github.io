@@ -87,9 +87,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">35</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">36</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,7 +162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,7 +175,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -233,6 +233,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/26/services/mysql-proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/26/services/mysql-proxy/" class="post-title-link" itemprop="url">mysql_proxy</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-25 17:10:54" itemprop="dateCreated datePublished" datetime="2019-06-25T17:10:54Z">2019-06-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/26/services/mysql-proxy/" class="post-meta-item leancloud_visitors" data-flag-title="mysql_proxy" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/06/26/services/mysql-proxy/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://github.mansoncui.com/2019/06/26/services/mysql-proxy/" class="cy_cmt_count" data-xid="2019/06/26/services/mysql-proxy/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="mysql-读写分离"><a href="#mysql-读写分离" class="headerlink" title="mysql 读写分离"></a>mysql 读写分离</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">环境: 四台机器，两台数据库服务器，一台代理，一台客户端测试</span><br><span class="line"></span><br><span class="line">注意:先把代理建完并测试以后，再搭建主从数据库服务器</span><br><span class="line"></span><br><span class="line">一、搭建代理服务器</span><br><span class="line"></span><br><span class="line">1、下载mysql-proxy包，并解压到/usr/local/,重命名为mysqlproxy(重命名根据自己情况，不一定)</span><br><span class="line"></span><br><span class="line">-P  #指定代理服务器的ip地址和端口号</span><br><span class="line"></span><br><span class="line">-r  #指定从数据库服务器的IP地址和端口(读操作)</span><br><span class="line"></span><br><span class="line">-b  #指定主数据库服务器的IP地址和端口(写操作)</span><br><span class="line"></span><br><span class="line">-s  #指定lun脚本文件的路径</span><br><span class="line"></span><br><span class="line">--keepalive  #若进程奔溃，自动重启此进程（可写可不写)</span><br><span class="line"></span><br><span class="line">lun脚本存放的目录:/usr/local/share/doc/mysql-proxt/rw--splitting.lua   #区分读写操作的</span><br><span class="line"></span><br><span class="line">/usr/local/bin/mysqlproxy/bin/mysql-proxy     #启动命令</span><br><span class="line"></span><br><span class="line">/usr/local/bin/mysqlproxy/bin/mysql-proxy   -P 指定代理服务器的IP地址和端口  -r 从数据库服务器IP地址和端口  -b  主数据库的IP地址和端口   -s   /usr/local/share/doc/mysql-proxt/rw--splitting.lua    &amp;</span><br><span class="line"></span><br><span class="line">关闭命令端口: pkill  进程名或 kill -9 pid</span><br><span class="line"></span><br><span class="line">二、搭建主从数据库</span><br><span class="line"></span><br><span class="line">主从授权用同一个用户，建议为：proxyuser ，地址为:%(代表所有地址)</span><br><span class="line"></span><br><span class="line">主从数据库的搭建和之前一样</span><br><span class="line"></span><br><span class="line">三、客户端测试</span><br><span class="line"></span><br><span class="line">mysql -h代理IP   -u授权用户  -p授权密码</span><br><span class="line"></span><br><span class="line">注释:前5个终端读写操作都是在主数据库服务器上，超过五个时（不包括第五个）读写操作正常分开，除非重启该服务，否者读写永久生效</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -888,119 +991,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/19/services/lsyncd/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/06/19/services/lsyncd/" class="post-title-link" itemprop="url">lsyncd</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-06-19 15:40:00" itemprop="dateCreated datePublished" datetime="2019-06-19T15:40:00Z">2019-06-19</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/06/19/services/lsyncd/" class="post-meta-item leancloud_visitors" data-flag-title="lsyncd" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/06/19/services/lsyncd/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/06/19/services/lsyncd/" class="cy_cmt_count" data-xid="2019/06/19/services/lsyncd/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/19/services/lsyncd/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
