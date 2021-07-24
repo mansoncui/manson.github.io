@@ -212,7 +212,7 @@ language_switcher: false
 
 footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
-  since: 2019-2021
+  since: 2019
 
   # Icon between year and copyright info.
   icon:
@@ -637,18 +637,18 @@ livere_uid: # <your_uid>
 # For more information: https://gitalk.github.io
 gitalk:
   enable: false
-  github_id: # GitHub repo owner
-  repo: # Repository name to store issues
-  client_id: # GitHub Application Client ID
-  client_secret: # GitHub Application Client Secret
-  admin_user: # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  github_id: mansoncui # GitHub repo owner
+  repo: hexo_code_comment # Repository name to store issues
+  client_id: 8001746708066292fe0f # GitHub Application Client ID
+  client_secret: 3eeaf6ac745dbe009cf7d307e4187ad41d27b5c3 # GitHub Application Client Secret
+  admin_user: '[mansoncui]' # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # When the official proxy is not available, you can change it to your own proxy address
   proxy: https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token # This is official proxy adress
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
-  language:
+  language: 
 
 # Utterances
 # For more information: https://utteranc.es
