@@ -9,6 +9,7 @@ categories:
     - [ services ]
 #password: cbb4693
 ---
+<!-- more -->
 ## 系统环境
 ```
 操作系统: centos 7.9

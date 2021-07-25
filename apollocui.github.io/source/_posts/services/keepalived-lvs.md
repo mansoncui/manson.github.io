@@ -7,6 +7,8 @@ tags:
 categories:
     - [ services ]
 ---
+keepalived+lvs+nginx(DR)
+<!-- more -->
 ## keepalived+lvs 工作原理
 ```
 说起lvs，不得不说说关于lvs的工作原理，通常来说lvs的工作方式有三种：nat模式（LVS/NAT),直接路由模式（ LVS/DR），ip隧道模式(LVS/TUN),不过据说还有第四种模式（FULL NAT），下面我们来介绍介绍关于lvs常用的三种工作模式说明

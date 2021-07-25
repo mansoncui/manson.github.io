@@ -188,7 +188,7 @@ toc:
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: true
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
-  expand_all: true
+  expand_all: false
   # Maximum heading depth of generated toc.
   max_depth: 6
 
@@ -248,6 +248,15 @@ footer:
 
 # Automatically excerpt description in homepage as preamble text.
 excerpt_description: true
+
+#excerpt:
+#  depth: 5  
+#  excerpt_excludes: []
+#  more_excludes: []
+#  hideWholePostExcerpts: true
+auto_excerpt:
+  enable: true  #是否自动摘录。不推荐。
+  length: 200
 
 # Read more button
 # If true, the read more button will be displayed in excerpt section.
@@ -624,7 +633,7 @@ disqusjs:
 # Changyan
 # For more information: https://changyan.kuaizhan.com
 changyan:
-  enable: true
+  enable: false
   appid: cyvygPryP
   appkey: 7b3cae28f8dd04a93996dedcf63bb59d
 
@@ -636,12 +645,12 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io
 gitalk:
-  enable: false
-  github_id: mansoncui # GitHub repo owner
-  repo: hexo_code_comment # Repository name to store issues
-  client_id: 8001746708066292fe0f # GitHub Application Client ID
-  client_secret: 3eeaf6ac745dbe009cf7d307e4187ad41d27b5c3 # GitHub Application Client Secret
-  admin_user: '[mansoncui]' # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  enable: true
+  github_id: 'mansoncui' # GitHub repo owner
+  repo: gitalk-comment # Repository name to store issues
+  client_id: 79a88520b0dde363b1f8 # GitHub Application Client ID
+  client_secret: 01934d9d6031fc1d3dfe48a445d41cf03ae53c7e # GitHub Application Client Secret
+  admin_user: 'mansoncui' # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # When the official proxy is not available, you can change it to your own proxy address
   proxy: https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token # This is official proxy adress
