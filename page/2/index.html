@@ -294,22 +294,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/07/10/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/centos6-7/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/07/10/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/centos6-7/" class="cy_cmt_count" data-xid="2019/07/10/linux操作性能优化/centos6-7/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
 </div>
 
         </div>
@@ -377,7 +361,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-23 10:52:35" itemprop="dateModified" datetime="2021-07-23T10:52:35Z">2021-07-23</time>
+        <time title="修改时间：2021-07-29 06:50:47" itemprop="dateModified" datetime="2021-07-29T06:50:47Z">2021-07-29</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -397,22 +381,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/07/08/services/keepalived-lvs/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/07/08/services/keepalived-lvs/" class="cy_cmt_count" data-xid="2019/07/08/services/keepalived-lvs/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
 </div>
 
         </div>
@@ -422,23 +390,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="keepalived-lvs-工作原理"><a href="#keepalived-lvs-工作原理" class="headerlink" title="keepalived+lvs 工作原理"></a>keepalived+lvs 工作原理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">说起lvs，不得不说说关于lvs的工作原理，通常来说lvs的工作方式有三种：nat模式（LVS/NAT),直接路由模式（ LVS/DR），ip隧道模式(LVS/TUN),不过据说还有第四种模式（FULL NAT），下面我们来介绍介绍关于lvs常用的三种工作模式说明</span><br></pre></td></tr></table></figure>
-<h3 id="LVS负载均衡模式—NAT模式原理"><a href="#LVS负载均衡模式—NAT模式原理" class="headerlink" title="LVS负载均衡模式—NAT模式原理"></a>LVS负载均衡模式—NAT模式原理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LVS-NAT模式:NAT用法本来是因为网络IP地址不足而把内部保留IP地址通过映射转换成公网地址的一种上网方式(原地址NAT)如果把NAT的过程稍微变化,就可以 成为负载均衡的一种方式原理其实就是把从客户端发来的IP包的IP头目的地址在DR上换成其中一台REALSERVER的IP地址并发至此 REALSERVER,而REALSERVER则在处理完成后把数据经过DR主机发回给客户端,DR在这个时候再把数据包的原IP地址改为DR接口上的 IP地址即可期间,无论是进来的流量,还是出去的流量,都必须经过DR</span><br></pre></td></tr></table></figure>
-<p>如下为lvs nat模式的示意说明图：<br><img src="/images/service/keepalived/lvs_nat.png" width="100%" height="50%" align="left/"></p>
-<h3 id="DR-路由"><a href="#DR-路由" class="headerlink" title="DR(路由)"></a>DR(路由)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LVS-DR模式：每个Real Server上都有两个IP：VIP和RIP，但是VIP是隐藏的，就是不能提高解析等功能，只是用来做请求回复的源IP的，Director上只需要一个网卡，然后利用别名来配置两个IP：VIP和DIP，在DIR接收到客户端的请求后，DIR根据负载算法选择一台rs sever的网卡mac作为客户端请求包中的目标mac，通过arp转交给后端rs serve处理，后端再通过自己的路由网关回复给客户端</span><br></pre></td></tr></table></figure>
-<p>如下为lvs tun模式的示意说明图：<br><img src="/images/service/keepalived/lvs_tun.png" width="100%" height="50%" align="left/"></p>
-<h3 id="TUN-隧道"><a href="#TUN-隧道" class="headerlink" title="TUN(隧道)"></a>TUN(隧道)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LVS-TUN模式：它的连接调度和管理与VS/NAT中的一样，利用ip隧道技术的原理，即在原有的客户端请求包头中再加一层IP Tunnel的包头ip首部信息，不改变原来整个请求包信息，只是新增了一层ip首部信息，再利用路由原理将请求发给RS server，不过要求的是所有的server必须支持&quot;IPTunneling&quot;或者&quot;IP Encapsulation&quot;协议</span><br></pre></td></tr></table></figure>
-<h2 id="keepalived-lvs"><a href="#keepalived-lvs" class="headerlink" title="keepalived + lvs"></a>keepalived + lvs</h2><h3 id="主和从上安装keepalived"><a href="#主和从上安装keepalived" class="headerlink" title="主和从上安装keepalived"></a>主和从上安装keepalived</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install keepalived </span><br></pre></td></tr></table></figure>
-<h3 id="keepalived-conf-配置-master"><a href="#keepalived-conf-配置-master" class="headerlink" title="keepalived.conf 配置(master)"></a>keepalived.conf 配置(master)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">! Configuration File for keepalived</span><br><span class="line">global_defs &#123;</span><br><span class="line">   router_id lvs01          #router_id 机器标识，通常为hostname，但不一定非得是hostname。故障发生时，邮件通知会用到。</span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VI_1 &#123;            #vrrp实例定义部分</span><br><span class="line">    state MASTER               #设置lvs的状态，MASTER和BACKUP两种，必须大写 </span><br><span class="line">    interface ens160               #设置对外服务的接口</span><br><span class="line">    virtual_router_id 100        #设置虚拟路由标示，这个标示是一个数字，同一个vrrp实例使用唯一标示 </span><br><span class="line">    priority 100               #定义优先级，数字越大优先级越高，在一个vrrp——instance下，master的优先级必须大于backup</span><br><span class="line">    advert_int 1              #设定master与backup负载均衡器之间同步检查的时间间隔，单位是秒</span><br><span class="line">    nopreempt</span><br><span class="line">    authentication &#123;           #设置验证类型和密码</span><br><span class="line">        auth_type PASS         #主要有PASS和AH两种</span><br><span class="line">        auth_pass 1111         #验证密码，同一个vrrp_instance下MASTER和BACKUP密码必须相同</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;         #设置虚拟ip地址，可以设置多个，每行一个</span><br><span class="line">        192.168.3.199 </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">virtual_server 192.168.3.199 88 &#123;       #设置虚拟服务器，需要指定虚拟ip和服务端口</span><br><span class="line">    delay_loop 6                 #健康检查时间间隔</span><br><span class="line">    lb_algo wrr                  #负载均衡调度算法</span><br><span class="line">    lb_kind DR                   #负载均衡转发规则</span><br><span class="line">    persistence_timeout 50        #设置会话保持时间，对动态网页非常有用</span><br><span class="line">    protocol TCP               #指定转发协议类型，有TCP和UDP两种</span><br><span class="line">    real_server 192.168.3.105 88 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">    weight 1               #设置权重，数字越大权重越高</span><br><span class="line">    TCP_CHECK &#123;              #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10       #连接超时为10秒</span><br><span class="line">       retry 3             #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 88         #连接端口为80，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     real_server 192.168.3.114 88 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">     weight 1                  #设置权重，数字越大权重越高</span><br><span class="line">     TCP_CHECK &#123;               #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10         #连接超时为10秒</span><br><span class="line">       retry 3               #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 88          #连接端口为80，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">virtual_server 192.168.3.199 8000 &#123;       #设置虚拟服务器，需要指定虚拟ip和服务端口</span><br><span class="line">    delay_loop 6                 #健康检查时间间隔</span><br><span class="line">    lb_algo wrr                  #负载均衡调度算法</span><br><span class="line">    lb_kind DR                   #负载均衡转发规则</span><br><span class="line">    #persistence_timeout 50        #设置会话保持时间，对动态网页非常有用</span><br><span class="line">    protocol TCP               #指定转发协议类型，有TCP和UDP两种</span><br><span class="line">    real_server 192.168.3.105 8000 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">    weight 1               #设置权重，数字越大权重越高</span><br><span class="line">    TCP_CHECK &#123;              #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10       #连接超时为10秒</span><br><span class="line">       retry 3             #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 8000         #连接端口为8000，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     real_server 192.168.3.114 8000 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">     weight 1                  #设置权重，数字越大权重越高</span><br><span class="line">     TCP_CHECK &#123;               #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10         #连接超时为10秒</span><br><span class="line">       retry 3               #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 8000          #连接端口为8000，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">virtual_server 192.168.3.199 8904 &#123;       #设置虚拟服务器，需要指定虚拟ip和服务端口</span><br><span class="line">    delay_loop 6                 #健康检查时间间隔</span><br><span class="line">    lb_algo wrr                  #负载均衡调度算法</span><br><span class="line">    lb_kind DR                   #负载均衡转发规则</span><br><span class="line">    #persistence_timeout 50        #设置会话保持时间，对动态网页非常有用</span><br><span class="line">    protocol TCP               #指定转发协议类型，有TCP和UDP两种</span><br><span class="line">    real_server 192.168.3.105 8904 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">    weight 1               #设置权重，数字越大权重越高</span><br><span class="line">    TCP_CHECK &#123;              #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10       #连接超时为10秒</span><br><span class="line">       retry 3             #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 8904         #连接端口为81，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     real_server 192.168.3.114 8904 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">     weight 1                  #设置权重，数字越大权重越高</span><br><span class="line">     TCP_CHECK &#123;               #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10         #连接超时为10秒</span><br><span class="line">       retry 3               #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 8904          #连接端口为8904，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="keepalived-conf-配置-从"><a href="#keepalived-conf-配置-从" class="headerlink" title="keepalived.conf 配置(从)"></a>keepalived.conf 配置(从)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">! Configuration File for keepalived</span><br><span class="line">global_defs &#123;</span><br><span class="line">   router_id lvs02          #router_id 机器标识，通常为hostname，但不一定非得是hostname。故障发生时，邮件通知会用到。</span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VI_1 &#123;            #vrrp实例定义部分</span><br><span class="line">    state BACKUP              #设置lvs的状态，MASTER和BACKUP两种，必须大写</span><br><span class="line">    interface ens160           #设置对外服务的接口</span><br><span class="line">    virtual_router_id 100         #设置虚拟路由标示，这个标示是一个数字，同一个vrrp实例使用唯一标示</span><br><span class="line">    priority 99             #定义优先级，数字越大优先级越高，在一个vrrp——instance下，master的优先级必须大于backup</span><br><span class="line">    advert_int 1              #设定master与backup负载均衡器之间同步检查的时间间隔，单位是秒</span><br><span class="line">    authentication &#123;            #设置验证类型和密码</span><br><span class="line">        auth_type PASS         #主要有PASS和AH两种</span><br><span class="line">        auth_pass 1111         #验证密码，同一个vrrp_instance下MASTER和BACKUP密码必须相同</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;         #设置虚拟ip地址，可以设置多个，每行一个</span><br><span class="line">        192.168.3.199</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">virtual_server 192.168.3.199 88 &#123;      #设置虚拟服务器，需要指定虚拟ip和服务端口</span><br><span class="line">    delay_loop 6             #健康检查时间间隔</span><br><span class="line">    lb_algo wrr              #负载均衡调度算法</span><br><span class="line">    lb_kind DR               #负载均衡转发规则</span><br><span class="line">    #persistence_timeout 50          #设置会话保持时间，对动态网页非常有用</span><br><span class="line">    protocol TCP              #指定转发协议类型，有TCP和UDP两种</span><br><span class="line">    real_server 192.168.3.105 88 &#123;       #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">    weight 1                #设置权重，数字越大权重越高</span><br><span class="line">    TCP_CHECK &#123;              #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10         #连接超时为10秒</span><br><span class="line">       retry 3                #重连次数</span><br><span class="line">       delay_before_retry 3       #重试间隔</span><br><span class="line">       connect_port 88           #连接端口为80，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     real_server 192.168.3.114 88 &#123;   #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">     weight 1                #设置权重，数字越大权重越高</span><br><span class="line">     TCP_CHECK &#123;              #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10          #连接超时为10秒</span><br><span class="line">       retry 3             #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 88         #连接端口为80，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">virtual_server 192.168.3.199 8000 &#123;       #设置虚拟服务器，需要指定虚拟ip和服务端口</span><br><span class="line">    delay_loop 6                 #健康检查时间间隔</span><br><span class="line">    lb_algo wrr                  #负载均衡调度算法</span><br><span class="line">    lb_kind DR                   #负载均衡转发规则</span><br><span class="line">    #persistence_timeout 50        #设置会话保持时间，对动态网页非常有用</span><br><span class="line">    protocol TCP               #指定转发协议类型，有TCP和UDP两种</span><br><span class="line">    real_server 192.168.3.105 8000 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">    weight 1               #设置权重，数字越大权重越高</span><br><span class="line">    TCP_CHECK &#123;              #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10       #连接超时为10秒</span><br><span class="line">       retry 3             #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 8000         #连接端口为8000，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     real_server 192.168.3.114 8000 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">     weight 1                  #设置权重，数字越大权重越高</span><br><span class="line">     TCP_CHECK &#123;               #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10         #连接超时为10秒</span><br><span class="line">       retry 3               #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 8000          #连接端口为8000，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">virtual_server 192.168.3.199 8904 &#123;       #设置虚拟服务器，需要指定虚拟ip和服务端口</span><br><span class="line">    delay_loop 6                 #健康检查时间间隔</span><br><span class="line">    lb_algo wrr                  #负载均衡调度算法</span><br><span class="line">    lb_kind DR                   #负载均衡转发规则</span><br><span class="line">    #persistence_timeout 50        #设置会话保持时间，对动态网页非常有用</span><br><span class="line">    protocol TCP               #指定转发协议类型，有TCP和UDP两种</span><br><span class="line">    real_server 192.168.3.105 8904 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">    weight 1               #设置权重，数字越大权重越高</span><br><span class="line">    TCP_CHECK &#123;              #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10       #连接超时为10秒</span><br><span class="line">       retry 3             #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 8904         #连接端口为8904，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     real_server 192.168.3.114 8904 &#123;    #配置服务器节点1，需要指定real server的真实IP地址和端口</span><br><span class="line">     weight 1                  #设置权重，数字越大权重越高</span><br><span class="line">     TCP_CHECK &#123;               #realserver的状态监测设置部分单位秒</span><br><span class="line">       connect_timeout 10         #连接超时为10秒</span><br><span class="line">       retry 3               #重连次数</span><br><span class="line">       delay_before_retry 3        #重试间隔</span><br><span class="line">       connect_port 8904          #连接端口为8904，要和上面的保持一致</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">service keepalived start </span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">观察系统日志</span><br><span class="line">### 两台 real server 部署一下脚本(放到/etc/init.d/下 )</span><br></pre></td></tr></table></figure>
-<p>#!/bin/bash<br>#description : start realserver<br>SNS_VIP=192.168.1.121 #定义了一个VIP变量，必须跟真是服务在一个网段<br>source /etc/rc.d/init.d/functions<br>case “$1” in<br>start)<br>echo “ start LVS of REALServer”<br>/sbin/ifconfig lo:0 $SNS_VIP broadcast $SNS_VIP netmask 255.255.255.255 up  #增加一个本地路由 lo:0<br>echo “1” &gt;/proc/sys/net/ipv4/conf/lo/arp_ignore<br>echo “2” &gt;/proc/sys/net/ipv4/conf/lo/arp_announce<br>echo “1” &gt;/proc/sys/net/ipv4/conf/all/arp_ignore<br>echo “2” &gt;/proc/sys/net/ipv4/conf/all/arp_announce<br>;;<br>stop)<br>/sbin/ifconfig lo:0 down<br>echo “close LVS Directorserver”<br>echo “0” &gt;/proc/sys/net/ipv4/conf/lo/arp_ignore<br>echo “0” &gt;/proc/sys/net/ipv4/conf/lo/arp_announce<br>echo “0” &gt;/proc/sys/net/ipv4/conf/all/arp_ignore<br>echo “0” &gt;/proc/sys/net/ipv4/conf/all/arp_announce<br>;;<br>*)<br>echo “Usage: $0 {start|stop}”<br>exit 1<br>esac</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">````</span><br><span class="line">chmod 777 /etc/init.d/realserver</span><br><span class="line"></span><br><span class="line">/etc/init.d/realserver start </span><br></pre></td></tr></table></figure>
-
-<h2 id="两台真是服务器安装nginx"><a href="#两台真是服务器安装nginx" class="headerlink" title="两台真是服务器安装nginx"></a>两台真是服务器安装nginx</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx </span><br><span class="line"></span><br><span class="line">把两台相应IP写到index.html 文件中(有标识行)</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">关闭一台keepalived </span><br><span class="line"></span><br><span class="line">浏览器访问</span><br><span class="line">https://192.168.1.121/?a=Math.random()</span><br></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          <p>keepalived+lvs+nginx(DR)</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/08/services/keepalived-lvs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -516,22 +476,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/06/28/services/v-p-n/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/06/28/services/v-p-n/" class="cy_cmt_count" data-xid="2019/06/28/services/v-p-n/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
 </div>
 
         </div>
@@ -620,22 +564,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/06/28/common-user/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/06/28/common-user/" class="cy_cmt_count" data-xid="2019/06/28/common-user/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
 </div>
 
         </div>
@@ -731,22 +659,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/06/26/monitor/zabbix/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/06/26/monitor/zabbix/" class="cy_cmt_count" data-xid="2019/06/26/monitor/zabbix/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
 </div>
 
         </div>
@@ -839,22 +751,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/06/26/services/pxe/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/06/26/services/pxe/" class="cy_cmt_count" data-xid="2019/06/26/services/pxe/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
 </div>
 
         </div>
@@ -945,22 +841,6 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2019/06/26/services/squid/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://github.mansoncui.com/2019/06/26/services/squid/" class="cy_cmt_count" data-xid="2019/06/26/services/squid/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1002,7 +882,7 @@
 
 
 <div class="copyright">
-  &copy; 2019-2021 – 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="heart"></i>
@@ -1051,8 +931,10 @@
   <script src="/js/third-party/statistics/lean-analytics.js"></script>
 
 
-<script class="next-config" data-name="changyan" type="application/json">{&quot;enable&quot;:true,&quot;appid&quot;:&quot;cyvygPryP&quot;,&quot;appkey&quot;:&quot;7b3cae28f8dd04a93996dedcf63bb59d&quot;}</script>
-<script src="/js/third-party/comments/changyan.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{&quot;enable&quot;:true,&quot;github_id&quot;:&quot;mansoncui&quot;,&quot;repo&quot;:&quot;gitalk-comment&quot;,&quot;client_id&quot;:&quot;79a88520b0dde363b1f8&quot;,&quot;client_secret&quot;:&quot;01934d9d6031fc1d3dfe48a445d41cf03ae53c7e&quot;,&quot;admin_user&quot;:&quot;mansoncui&quot;,&quot;distraction_free_mode&quot;:true,&quot;proxy&quot;:&quot;https:&#x2F;&#x2F;cors-anywhere.azm.workers.dev&#x2F;https:&#x2F;&#x2F;github.com&#x2F;login&#x2F;oauth&#x2F;access_token&quot;,&quot;language&quot;:null,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;gitalk@1.7.2&#x2F;dist&#x2F;gitalk.min.js&quot;,&quot;integrity&quot;:&quot;sha256-Pmj85ojLaPOWwRtlMJwmezB&#x2F;Qg8BzvJp5eTzvXaYAfA&#x3D;&quot;},&quot;path_md5&quot;:&quot;c853ec00cc9d13bc22336b7d45d1416e&quot;}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
