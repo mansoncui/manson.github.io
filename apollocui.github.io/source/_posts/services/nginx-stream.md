@@ -38,9 +38,14 @@ stream {
 
     access_log /var/log/nginx/tcp-access.log proxy ;
 
+upstream tcp_9093 {
+	server 192.168.3.105:8000;
+	server 192.168.3.114:8000;
+}
+
     server {
         listen 9093;
-        proxy_pass 192.168.7.219:9098;
+        proxy_pass tcp_9093;
         allow 192.168.7.0/24;
         deny   all;
     }

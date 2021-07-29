@@ -269,17 +269,98 @@ chmod 777 /etc/init.d/realserver
 /etc/init.d/realserver start 
 ````
 
-## 两台真是服务器安装nginx
-```
+### 两台真是服务器安装nginx
+````
 yum -y install nginx 
 
 把两台相应IP写到index.html 文件中(有标识行)
-```
+````
 
-## 测试
-```
+### 测试
+````
 关闭一台keepalived 
 
 浏览器访问
 https://192.168.1.121/?a=Math.random()
+````
+## keepalived + lvs + nginx
+
+### 配置描述 
 ```
+keepalived和nginx部署在一台机器上
+环境:centos7 
+```
+### 安装keepalived 和 nginx
+````
+yum -y install nginx keepalived ipvsadm
+````
+### keepalived master
+````
+! Configuration File for keepalived
+global_defs {
+   router_id lvs01          #router_id 机器标识，通常为hostname，但不一定非得是hostname。故障发生时，邮件通知会用到。
+}
+vrrp_instance VI_1 {            #vrrp实例定义部分
+    state MASTER               #设置lvs的状态，MASTER和BACKUP两种，必须大写
+    interface ens160               #设置对外服务的接口
+    virtual_router_id 100        #设置虚拟路由标示，这个标示是一个数字，同一个vrrp实例使用唯一标示
+    priority 100               #定义优先级，数字越大优先级越高，在一个vrrp——instance下，master的优先级必须大于backup
+    advert_int 1              #设定master与backup负载均衡器之间同步检查的时间间隔，单位是秒
+    nopreempt
+    authentication {           #设置验证类型和密码
+        auth_type PASS         #主要有PASS和AH两种
+        auth_pass 1111         #验证密码，同一个vrrp_instance下MASTER和BACKUP密码必须相同
+    }
+    virtual_ipaddress {         #设置虚拟ip地址，可以设置多个，每行一个
+        192.168.3.199
+    }
+}
+````
+
+### keepalived backup
+````
+! Configuration File for keepalived
+global_defs {
+   router_id lvs02          #router_id 机器标识，通常为hostname，但不一定非得是hostname。故障发生时，邮件通知会用到。
+}
+vrrp_instance VI_1 {            #vrrp实例定义部分
+    state BACKUP              #设置lvs的状态，MASTER和BACKUP两种，必须大写
+    interface ens160           #设置对外服务的接口
+    virtual_router_id 100         #设置虚拟路由标示，这个标示是一个数字，同一个vrrp实例使用唯一标示
+    priority 99             #定义优先级，数字越大优先级越高，在一个vrrp——instance下，master的优先级必须大于backup
+    advert_int 1              #设定master与backup负载均衡器之间同步检查的时间间隔，单位是秒
+    authentication {            #设置验证类型和密码
+        auth_type PASS         #主要有PASS和AH两种
+        auth_pass 1111         #验证密码，同一个vrrp_instance下MASTER和BACKUP密码必须相同
+    }
+    virtual_ipaddress {         #设置虚拟ip地址，可以设置多个，每行一个
+        192.168.3.199
+    }
+}
+````
+
+### nginx 配置(两台一样配置)
+````
+upstream uni_gateway_8082 {
+        ip_hash;
+        server 192.168.3.114:8082 weight=5 max_fails=3 fail_timeout=10;
+        server 192.168.3.105:8082 weight=5 max_fails=3 fail_timeout=10;
+}
+    server {
+        listen       8082;
+        access_log  /var/log/nginx/access-89.log  main;
+        location / {
+                proxy_pass http://uni_gateway_8082;
+                proxy_redirect  off;
+                proxy_http_version 1.1;
+                proxy_set_header  Host  $host;
+                proxy_set_header  X-Real-IP $remote_addr;
+                proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+    }
+````
+### vip 测试
+````
+通过关闭nginx 测试，漂移VIP
+````
