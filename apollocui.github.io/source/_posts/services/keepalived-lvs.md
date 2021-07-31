@@ -32,9 +32,9 @@ LVS-TUN模式：它的连接调度和管理与VS/NAT中的一样，利用ip隧�
 ## keepalived + lvs 
 ### 主和从上安装keepalived
 ````
-yum -y install keepalived 
+yum -y install keepalived ipvsadm 
 ````
-### keepalived.conf 配置(master)
+### keepalived.conf 配置master
 ````
 ! Configuration File for keepalived
 global_defs {
@@ -81,60 +81,9 @@ virtual_server 192.168.3.199 88 {       #设置虚拟服务器，需要指定虚
      }
 }
 
-virtual_server 192.168.3.199 8000 {       #设置虚拟服务器，需要指定虚拟ip和服务端口
-    delay_loop 6                 #健康检查时间间隔
-    lb_algo wrr                  #负载均衡调度算法
-    lb_kind DR                   #负载均衡转发规则
-    #persistence_timeout 50        #设置会话保持时间，对动态网页非常有用
-    protocol TCP               #指定转发协议类型，有TCP和UDP两种
-    real_server 192.168.3.105 8000 {    #配置服务器节点1，需要指定real server的真实IP地址和端口
-    weight 1               #设置权重，数字越大权重越高
-    TCP_CHECK {              #realserver的状态监测设置部分单位秒
-       connect_timeout 10       #连接超时为10秒
-       retry 3             #重连次数
-       delay_before_retry 3        #重试间隔
-       connect_port 8000         #连接端口为8000，要和上面的保持一致
-       }
-    }
-     real_server 192.168.3.114 8000 {    #配置服务器节点1，需要指定real server的真实IP地址和端口
-     weight 1                  #设置权重，数字越大权重越高
-     TCP_CHECK {               #realserver的状态监测设置部分单位秒
-       connect_timeout 10         #连接超时为10秒
-       retry 3               #重连次数
-       delay_before_retry 3        #重试间隔
-       connect_port 8000          #连接端口为8000，要和上面的保持一致
-       }
-     }
-}
-
-virtual_server 192.168.3.199 8904 {       #设置虚拟服务器，需要指定虚拟ip和服务端口
-    delay_loop 6                 #健康检查时间间隔
-    lb_algo wrr                  #负载均衡调度算法
-    lb_kind DR                   #负载均衡转发规则
-    #persistence_timeout 50        #设置会话保持时间，对动态网页非常有用
-    protocol TCP               #指定转发协议类型，有TCP和UDP两种
-    real_server 192.168.3.105 8904 {    #配置服务器节点1，需要指定real server的真实IP地址和端口
-    weight 1               #设置权重，数字越大权重越高
-    TCP_CHECK {              #realserver的状态监测设置部分单位秒
-       connect_timeout 10       #连接超时为10秒
-       retry 3             #重连次数
-       delay_before_retry 3        #重试间隔
-       connect_port 8904         #连接端口为81，要和上面的保持一致
-       }
-    }
-     real_server 192.168.3.114 8904 {    #配置服务器节点1，需要指定real server的真实IP地址和端口
-     weight 1                  #设置权重，数字越大权重越高
-     TCP_CHECK {               #realserver的状态监测设置部分单位秒
-       connect_timeout 10         #连接超时为10秒
-       retry 3               #重连次数
-       delay_before_retry 3        #重试间隔
-       connect_port 8904          #连接端口为8904，要和上面的保持一致
-       }
-     }
-}
 ````
 
-### keepalived.conf 配置(从)
+### keepalived 配置backup
 ````
 ! Configuration File for keepalived
 global_defs {
@@ -180,88 +129,60 @@ virtual_server 192.168.3.199 88 {      #设置虚拟服务器，需要指定虚�
      }
 }
 
-virtual_server 192.168.3.199 8000 {       #设置虚拟服务器，需要指定虚拟ip和服务端口
-    delay_loop 6                 #健康检查时间间隔
-    lb_algo wrr                  #负载均衡调度算法
-    lb_kind DR                   #负载均衡转发规则
-    #persistence_timeout 50        #设置会话保持时间，对动态网页非常有用
-    protocol TCP               #指定转发协议类型，有TCP和UDP两种
-    real_server 192.168.3.105 8000 {    #配置服务器节点1，需要指定real server的真实IP地址和端口
-    weight 1               #设置权重，数字越大权重越高
-    TCP_CHECK {              #realserver的状态监测设置部分单位秒
-       connect_timeout 10       #连接超时为10秒
-       retry 3             #重连次数
-       delay_before_retry 3        #重试间隔
-       connect_port 8000         #连接端口为8000，要和上面的保持一致
-       }
-    }
-     real_server 192.168.3.114 8000 {    #配置服务器节点1，需要指定real server的真实IP地址和端口
-     weight 1                  #设置权重，数字越大权重越高
-     TCP_CHECK {               #realserver的状态监测设置部分单位秒
-       connect_timeout 10         #连接超时为10秒
-       retry 3               #重连次数
-       delay_before_retry 3        #重试间隔
-       connect_port 8000          #连接端口为8000，要和上面的保持一致
-       }
-     }
-}
-
-virtual_server 192.168.3.199 8904 {       #设置虚拟服务器，需要指定虚拟ip和服务端口
-    delay_loop 6                 #健康检查时间间隔
-    lb_algo wrr                  #负载均衡调度算法
-    lb_kind DR                   #负载均衡转发规则
-    #persistence_timeout 50        #设置会话保持时间，对动态网页非常有用
-    protocol TCP               #指定转发协议类型，有TCP和UDP两种
-    real_server 192.168.3.105 8904 {    #配置服务器节点1，需要指定real server的真实IP地址和端口
-    weight 1               #设置权重，数字越大权重越高
-    TCP_CHECK {              #realserver的状态监测设置部分单位秒
-       connect_timeout 10       #连接超时为10秒
-       retry 3             #重连次数
-       delay_before_retry 3        #重试间隔
-       connect_port 8904         #连接端口为8904，要和上面的保持一致
-       }
-    }
-     real_server 192.168.3.114 8904 {    #配置服务器节点1，需要指定real server的真实IP地址和端口
-     weight 1                  #设置权重，数字越大权重越高
-     TCP_CHECK {               #realserver的状态监测设置部分单位秒
-       connect_timeout 10         #连接超时为10秒
-       retry 3               #重连次数
-       delay_before_retry 3        #重试间隔
-       connect_port 8904          #连接端口为8904，要和上面的保持一致
-       }
-     }
-}
 service keepalived start 
-```
-
 观察系统日志
+````
+
 ### 两台 real server 部署一下脚本(放到/etc/init.d/下 )
 ````
-#!/bin/bash  
-#description : start realserver  
-SNS_VIP=192.168.1.121 #定义了一个VIP变量，必须跟真是服务在一个网段
-source /etc/rc.d/init.d/functions  
-case "$1" in  
-start)  
-echo " start LVS of REALServer"  
-/sbin/ifconfig lo:0 $SNS_VIP broadcast $SNS_VIP netmask 255.255.255.255 up  #增加一个本地路由 lo:0
-echo "1" >/proc/sys/net/ipv4/conf/lo/arp_ignore  
-echo "2" >/proc/sys/net/ipv4/conf/lo/arp_announce  
-echo "1" >/proc/sys/net/ipv4/conf/all/arp_ignore  
-echo "2" >/proc/sys/net/ipv4/conf/all/arp_announce  
-;;  
-stop)  
-/sbin/ifconfig lo:0 down  
-echo "close LVS Directorserver"  
-echo "0" >/proc/sys/net/ipv4/conf/lo/arp_ignore  
-echo "0" >/proc/sys/net/ipv4/conf/lo/arp_announce  
-echo "0" >/proc/sys/net/ipv4/conf/all/arp_ignore  
-echo "0" >/proc/sys/net/ipv4/conf/all/arp_announce  
-;;  
-*)  
-echo "Usage: $0 {start|stop}"  
-exit 1  
+[root@192-168-3-105 init.d]# cat realserver 
+#!/bin/bash
+# Script to start LVS DR real server.
+# description: LVS DR real server
+. /etc/rc.d/init.d/functions
+VIP=192.168.3.199 #修改为VIP
+host=`/usr/bin/hostname`
+Ifconfig=`which ifconfig`
+case "$1" in
+    start)
+        # Start LVS-DR real server on this machine.
+        $Ifconfig lo down
+        $Ifconfig lo up
+        echo 1 > /proc/sys/net/ipv4/conf/lo/arp_ignore
+        echo 2 > /proc/sys/net/ipv4/conf/lo/arp_announce
+        echo 1 > /proc/sys/net/ipv4/conf/all/arp_ignore
+        echo 2 > /proc/sys/net/ipv4/conf/all/arp_announce
+        /sbin/ifconfig lo:0 $VIP broadcast $VIP netmask 255.255.255.255 up
+        /sbin/route add -host $VIP dev lo:0
+        ;; 
+    stop)
+        # Stop LVS-DR real server loopback device(s).
+        $Ifconfig lo:0 down
+        echo 0 > /proc/sys/net/ipv4/conf/lo/arp_ignore
+        echo 0 > /proc/sys/net/ipv4/conf/lo/arp_announce
+        echo 0 > /proc/sys/net/ipv4/conf/all/arp_ignore
+        echo 0 > /proc/sys/net/ipv4/conf/all/arp_announce
+        ;; 
+    status)
+
+        # Status of LVS-DR real server.
+        islothere=`$Ifconfig lo:0 | grep $VIP`
+        isrothere=`netstat -rn | grep "lo:0" | grep $VIP`
+        if [ ! "$islothere" -o ! "isrothere" ];then
+            # Either the route or the lo:0 device
+            # not found.
+            echo "LVS-DR real server Stopped." 
+        else
+            echo "LVS-DR real server Running." 
+        fi
+        ;; 
+    *) 
+    # Invalid entry.
+    echo "$0: Usage: $0 {start|status|stop}"
+    exit 1
+    ;; 
 esac
+exit 0
 ````
 ````
 chmod 777 /etc/init.d/realserver
@@ -281,7 +202,7 @@ yum -y install nginx
 关闭一台keepalived 
 
 浏览器访问
-https://192.168.1.121/?a=Math.random()
+http://192.168.3.199:88
 ````
 ## keepalived + lvs + nginx
 
@@ -364,3 +285,14 @@ upstream uni_gateway_8082 {
 ````
 通过关闭nginx 测试，漂移VIP
 ````
+## 配置keepalived 日志
+```
+修改rsyslog 配置:
+cat /etc/rsyslog.conf
+*.info;mail.none;authpriv.none;cron.none;local0.none    /var/log/messages #新增local0.none
+local0.*        /var/log/keepalived.log  #最下方新增这一行
+
+重启rsyslog 和 keepalived
+systemctl restart rsyslog 
+systemctl restart keepalived 
+```
