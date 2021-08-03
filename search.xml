@@ -823,4 +823,23 @@
         <tag>redis</tag>
       </tags>
   </entry>
+  <entry>
+    <title>守护进程的文件数量限制</title>
+    <url>/2021/08/04/problem/problem/</url>
+    <content><![CDATA[<h2 id="故障现象"><a href="#故障现象" class="headerlink" title="故障现象"></a>故障现象</h2><p>故障现象</p>
+<p>c++开发终端服务 进行并发压测，抓包报如下错误:<br><img src="/images/problem/system-fd.png" width="100%" height="50%" align="left/"><br><img src="/images/problem/system-压测.png" width="100%" height="50%" align="left/"></p>
+<h2 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h2><p>修改 c++ 终端服务 systemd 启动脚本，添加如下两行:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DefaultLimitNOFILE=10240000 # 修改文件句柄的限制</span><br><span class="line">DefaultLimitNPROC=10240000 # 修改进程树的限制</span><br></pre></td></tr></table></figure>
+<h2 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload </span><br><span class="line">systemctl restart edxxxx-xxp</span><br></pre></td></tr></table></figure>
+<p>systemctl show edxxxx-xxp | grep -i limit<br><img src="/images/problem/system-open-file.png" width="100%" height="50%" align="left/"></p>
+<h2 id="重新压测正常"><a href="#重新压测正常" class="headerlink" title="重新压测正常"></a>重新压测正常</h2><img src="/images/problem/system-并发压测.png" width="100%" height="50%" align="left/">
+
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>problem</category>
+      </categories>
+      <tags>
+        <tag>systemd</tag>
+      </tags>
+  </entry>
 </search>

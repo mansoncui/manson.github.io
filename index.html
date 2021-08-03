@@ -87,9 +87,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">36</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,20 +162,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -233,6 +233,95 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2021/08/04/problem/problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/04/problem/problem/" class="post-title-link" itemprop="url">守护进程的文件数量限制</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-03 16:00:00 / 修改时间：10:19:39" itemprop="dateCreated datePublished" datetime="2021-08-03T16:00:00Z">2021-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/problem/" itemprop="url" rel="index"><span itemprop="name">problem</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/08/04/problem/problem/" class="post-meta-item leancloud_visitors" data-flag-title="守护进程的文件数量限制" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="故障现象"><a href="#故障现象" class="headerlink" title="故障现象"></a>故障现象</h2><p>故障现象</p>
+<p>c++开发终端服务 进行并发压测，抓包报如下错误:<br><img src="/images/problem/system-fd.png" width="100%" height="50%" align="left/"><br><img src="/images/problem/system-压测.png" width="100%" height="50%" align="left/"></p>
+<h2 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h2><p>修改 c++ 终端服务 systemd 启动脚本，添加如下两行:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DefaultLimitNOFILE=10240000 # 修改文件句柄的限制</span><br><span class="line">DefaultLimitNPROC=10240000 # 修改进程树的限制</span><br></pre></td></tr></table></figure>
+<h2 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload </span><br><span class="line">systemctl restart edxxxx-xxp</span><br></pre></td></tr></table></figure>
+<p>systemctl show edxxxx-xxp | grep -i limit<br><img src="/images/problem/system-open-file.png" width="100%" height="50%" align="left/"></p>
+<h2 id="重新压测正常"><a href="#重新压测正常" class="headerlink" title="重新压测正常"></a>重新压测正常</h2><img src="/images/problem/system-并发压测.png" width="100%" height="50%" align="left/">
+
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -803,96 +892,6 @@
 <h5 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">计算字符串长度</span><br><span class="line">1、$&#123;#string&#125;</span><br><span class="line">2、expr length $string</span><br><span class="line">var=&quot;i love you&quot;</span><br><span class="line">echo $&#123;#var&#125;</span><br><span class="line">expr length $&#123;var&#125;</span><br><span class="line"></span><br><span class="line">获取字符串中的子串</span><br><span class="line">1、$&#123;string:pos&#125;</span><br><span class="line">2、$&#123;string:pos:len&#125;</span><br><span class="line">3、$&#123;string:(-pos)&#125;</span><br><span class="line">4、expr substr $string $pos $len</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h5 id="案列"><a href="#案列" class="headerlink" title="案列"></a>案列</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#!/bin/sh</span><br><span class="line">var=&quot;i love you&quot;</span><br><span class="line">tmp=$&#123;var:1&#125;</span><br><span class="line">echo &quot;$tmp&quot;</span><br><span class="line">tmp=$&#123;var:1:2&#125;   # 下标是从0开始的</span><br><span class="line">echo &quot;$&#123;tmp&#125;&quot;</span><br><span class="line">tmp=$&#123;var:(-5)&#125;</span><br><span class="line">echo &quot;$&#123;tmp&#125;&quot;</span><br><span class="line">tmp=`expr substr &quot;$&#123;var&#125;&quot; 1 10`  # 注意expr下标是从1开始的</span><br><span class="line">echo &quot;$&#123;tmp&#125;&quot;</span><br></pre></td></tr></table></figure>
 <h5 id="一个完整字符串处理案例"><a href="#一个完整字符串处理案例" class="headerlink" title="一个完整字符串处理案例"></a>一个完整字符串处理案例</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line">#</span><br><span class="line">string=&quot;Bigdata process framework is Hadoop,Hadoop is an open source project&quot;</span><br><span class="line">function tips_info</span><br><span class="line">&#123;</span><br><span class="line">	echo &quot;******************************************&quot;</span><br><span class="line">	echo &quot;***  (1) 打印string长度&quot;</span><br><span class="line">	echo &quot;***  (2) 在整个字符串中删除Hadoop&quot;</span><br><span class="line">	echo &quot;***  (3) 替换第一个Hadoop为Mapreduce&quot;</span><br><span class="line">	echo &quot;***  (4) 替换全部Hadoop为Mapreduce&quot;</span><br><span class="line">	echo &quot;******************************************&quot;</span><br><span class="line">&#125;</span><br><span class="line">function print_len</span><br><span class="line">&#123;</span><br><span class="line">	# -z表示判断字符串长度是否为0</span><br><span class="line">	if [ -z &quot;$string&quot; ];then</span><br><span class="line">		echo &quot;Error,string is null&quot;</span><br><span class="line">		exit 1</span><br><span class="line">	else</span><br><span class="line">		echo &quot;$&#123;#string&#125;&quot;</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line">function del_hadoop</span><br><span class="line">&#123;</span><br><span class="line">	if [ -z &quot;$string&quot; ];then</span><br><span class="line">		echo &quot;Error,string is null&quot;</span><br><span class="line">		exit 1</span><br><span class="line">	else</span><br><span class="line">		echo &quot;$&#123;string//Hadoop/&#125;&quot;</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line">function rep_hadoop_mapreduce_first</span><br><span class="line">&#123;</span><br><span class="line">	if [ -z &quot;$string&quot; ];then</span><br><span class="line">		echo &quot;Error,string is null&quot;</span><br><span class="line">		exit 1</span><br><span class="line">	else</span><br><span class="line">		echo &quot;$&#123;string/Hadoop/Mapreduce&#125;&quot;</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line">function rep_hadoop_mapreduce_all</span><br><span class="line">&#123;</span><br><span class="line">        if [ -z &quot;$string&quot; ];then</span><br><span class="line">                echo &quot;Error,string is null&quot;</span><br><span class="line">                exit 1</span><br><span class="line">        else</span><br><span class="line">                echo &quot;$&#123;string//Hadoop/Mapreduce&#125;&quot;</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">echo &quot;【string=\&quot;$string\&quot;】&quot;</span><br><span class="line">tips_info</span><br><span class="line">read -p &quot;Please Switch a Choice: &quot; choice</span><br><span class="line"># case, esac(反写esac); 相当于switch case break</span><br><span class="line">case &quot;$choice&quot; in</span><br><span class="line">	1)</span><br><span class="line">		echo</span><br><span class="line">		echo &quot;Length Of String is: `print_len`&quot;</span><br><span class="line">		echo</span><br><span class="line">		continue</span><br><span class="line">		;;</span><br><span class="line">	2)</span><br><span class="line">		echo</span><br><span class="line">		echo &quot;删除Hadoop后的字符串为：`del_hadoop`&quot;</span><br><span class="line">		echo</span><br><span class="line">		;;</span><br><span class="line">	3)</span><br><span class="line">		echo </span><br><span class="line">		echo &quot;替换第一个Hadoop的字符串为：`rep_hadoop_mapreduce_first`&quot;</span><br><span class="line">		echo</span><br><span class="line">		;;</span><br><span class="line">	4)</span><br><span class="line">		echo </span><br><span class="line">                echo &quot;替换第一个Hadoop的字符串为：`rep_hadoop_mapreduce_all`&quot;</span><br><span class="line">                echo</span><br><span class="line">		;;</span><br><span class="line">	q|Q)</span><br><span class="line">		exit 0</span><br><span class="line">		;;</span><br><span class="line">	*)</span><br><span class="line">		echo &quot;error,unlegal input,legal input only in &#123; 1|2|3|4|q|Q &#125;&quot;</span><br><span class="line">		continue	</span><br><span class="line">		;;</span><br><span class="line">esac</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/07/16/services/php7-3-install/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/07/16/services/php7-3-install/" class="post-title-link" itemprop="url">php7.3-install</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-07-16 14:41:40" itemprop="dateCreated datePublished" datetime="2019-07-16T14:41:40Z">2019-07-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/07/16/services/php7-3-install/" class="post-meta-item leancloud_visitors" data-flag-title="php7.3-install" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="php7-3"><a href="#php7-3" class="headerlink" title="php7.3"></a>php7.3</h2><h5 id="安装libzip-不然会报错"><a href="#安装libzip-不然会报错" class="headerlink" title="安装libzip 不然会报错"></a>安装libzip 不然会报错</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">wget https://nih.at/libzip/libzip-1.2.0.tar.gz</span><br><span class="line">tar -zxvf libzip-1.2.0.tar.gz</span><br><span class="line">cd libzip-1.2.0</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">错误信息:configure: error: off_t undefined; check your library configuration </span><br><span class="line">#解决方法</span><br><span class="line"># 添加搜索路径到配置文件</span><br><span class="line">echo &#x27;/usr/local/lib64</span><br><span class="line">/usr/local/lib</span><br><span class="line">/usr/lib</span><br><span class="line">/usr/lib64&#x27;&gt;&gt;/etc/ld.so.conf</span><br><span class="line"># 更新配置</span><br><span class="line">ldconfig -v</span><br><span class="line"></span><br><span class="line">#解决方法：手动复制过去</span><br><span class="line">cp /usr/local/lib/libzip/include/zipconf.h /usr/local/include/zipconf.h</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="php7-3-安装配置"><a href="#php7-3-安装配置" class="headerlink" title="php7.3 安装配置"></a>php7.3 安装配置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">php下载地址:https://www.php.net/distributions/php-7.3.7.tar.gz</span><br><span class="line"></span><br><span class="line">wget https://www.php.net/distributions/php-7.3.7.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf  php-7.3.7.tar.gz</span><br><span class="line"></span><br><span class="line">cd  php-7.3.7</span><br><span class="line"></span><br><span class="line">./configure  --prefix=/usr/local/php7 --with-config-file-path=/usr/local/php7/etc --with-gd --with-jpeg-dir --with-png-dir --with-zlib --with-freetype-dir --with-libxml-dir --enable-shared  --with-iconv --without-pdo-sqlite --with-gettext=/usr --enable-soap --with-curl --enable-mbregex --enable-fpm --with-fpm-user=www --with-fpm-group=www --enable-mbstring --with-mhash --enable-pcntl --enable-sockets --enable-dom --with-xsl --enable-opcache --with-openssl --enable-simplexml --enable-zip --enable-shmop --enable-ftp --enable-bcmath --with-pdo_mysql --with-mysqli=mysqlnd</span><br><span class="line"></span><br><span class="line">make -j 4</span><br><span class="line"></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h5 id="安装php7错误信息总结"><a href="#安装php7错误信息总结" class="headerlink" title="安装php7错误信息总结"></a>安装php7错误信息总结</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">configure: error: libxml2 not found. Please check your libxml2 installation.</span><br><span class="line">yum install -y  libxml2-devel</span><br><span class="line"></span><br><span class="line">configure: error: Please reinstall the BZip2 distribution</span><br><span class="line">yum install -y  bzip2-devel</span><br><span class="line"></span><br><span class="line">configure: error: cURL version 7.15.5 or later is required to compile php with cURL support</span><br><span class="line">yum install -y  curl-devel</span><br><span class="line"></span><br><span class="line">configure: error: jpeglib.h not found.</span><br><span class="line">yum install -y  libjpeg-devel</span><br><span class="line"></span><br><span class="line">configure: error: png.h not found.</span><br><span class="line">yum install -y libpng-devel</span><br><span class="line"></span><br><span class="line">configure: error: freetype-config not found.</span><br><span class="line">yum install -y freetype-devel</span><br><span class="line"></span><br><span class="line">configure: error: xslt-config not found. Please reinstall the libxslt &gt;= 1.1.0 distribution</span><br><span class="line">yum install -y libxslt-devel</span><br><span class="line"></span><br><span class="line">configure: error: Please reinstall the libzip distribution</span><br><span class="line">yum install -y libzip-devel</span><br></pre></td></tr></table></figure>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
