@@ -19,28 +19,28 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;github.mansoncui.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:300,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12,&quot;onmobile&quot;:true},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:true}}</script><script src="/js/config.js"></script>
-<meta name="description" content="gcc update在centos 6.8 上安装swoole-4.2.13时，make编译时提示gcc版本大于等于4.8版本123456789101112131415161718192021222324252627282930313233343536373839404142gcc4.4.7升级gcc4.81.下载源码包wget http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;gcc&#x2F;gcc-4.8">
+<meta name="description" content="docker 参数详解123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263docker-daemon.json各配置详解&amp;#123;“api-cors-header”:&quot;&quot;, ——————在引擎AP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="update gcc">
-<meta property="og:url" content="https://github.mansoncui.com/2019/06/19/services/update_gcc/index.html">
+<meta property="og:title" content="docker 参数详解">
+<meta property="og:url" content="https://github.mansoncui.com/2021/08/04/kubernetes/docker/index.html">
 <meta property="og:site_name" content="Apollo 运维之路">
-<meta property="og:description" content="gcc update在centos 6.8 上安装swoole-4.2.13时，make编译时提示gcc版本大于等于4.8版本123456789101112131415161718192021222324252627282930313233343536373839404142gcc4.4.7升级gcc4.81.下载源码包wget http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;gcc&#x2F;gcc-4.8">
+<meta property="og:description" content="docker 参数详解123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263docker-daemon.json各配置详解&amp;#123;“api-cors-header”:&quot;&quot;, ——————在引擎AP">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-06-19T11:21:52.000Z">
-<meta property="article:modified_time" content="2021-07-14T05:03:41.774Z">
+<meta property="article:published_time" content="2021-08-03T16:42:04.000Z">
+<meta property="article:modified_time" content="2021-08-03T10:22:31.273Z">
 <meta property="article:author" content="Apollo">
-<meta property="article:tag" content="gcc">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://github.mansoncui.com/2019/06/19/services/update_gcc/">
+<link rel="canonical" href="https://github.mansoncui.com/2021/08/04/kubernetes/docker/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;github.mansoncui.com&#x2F;2019&#x2F;06&#x2F;19&#x2F;services&#x2F;update_gcc&#x2F;&quot;,&quot;path&quot;:&quot;2019&#x2F;06&#x2F;19&#x2F;services&#x2F;update_gcc&#x2F;&quot;,&quot;title&quot;:&quot;update gcc&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;github.mansoncui.com&#x2F;2021&#x2F;08&#x2F;04&#x2F;kubernetes&#x2F;docker&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;08&#x2F;04&#x2F;kubernetes&#x2F;docker&#x2F;&quot;,&quot;title&quot;:&quot;docker 参数详解&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>update gcc | Apollo 运维之路</title>
+<title>docker 参数详解 | Apollo 运维之路</title>
   
 
 
@@ -148,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-update"><span class="nav-number">1.</span> <span class="nav-text">gcc update</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8centos-6-8-%E4%B8%8A%E5%AE%89%E8%A3%85swoole-4-2-13%E6%97%B6%EF%BC%8Cmake%E7%BC%96%E8%AF%91%E6%97%B6%E6%8F%90%E7%A4%BAgcc%E7%89%88%E6%9C%AC%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8E4-8%E7%89%88%E6%9C%AC"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">在centos 6.8 上安装swoole-4.2.13时，make编译时提示gcc版本大于等于4.8版本</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">docker 参数详解</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -246,7 +246,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/19/services/update_gcc/">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2021/08/04/kubernetes/docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -260,7 +260,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          update gcc
+          docker 参数详解
         </h1>
 
         <div class="post-meta-container">
@@ -270,28 +270,22 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2019-06-19 11:21:52" itemprop="dateCreated datePublished" datetime="2019-06-19T11:21:52Z">2019-06-19</time>
+      <time title="创建时间：2021-08-03 16:42:04 / 修改时间：10:22:31" itemprop="dateCreated datePublished" datetime="2021-08-03T16:42:04Z">2021-08-03</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
+          <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
         </span>
     </span>
 
   
-    <span id="/2019/06/19/services/update_gcc/" class="post-meta-item leancloud_visitors" data-flag-title="update gcc" title="阅读次数">
+    <span id="/2021/08/04/kubernetes/docker/" class="post-meta-item leancloud_visitors" data-flag-title="docker 参数详解" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -314,7 +308,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="gcc-update"><a href="#gcc-update" class="headerlink" title="gcc update"></a>gcc update</h2><h5 id="在centos-6-8-上安装swoole-4-2-13时，make编译时提示gcc版本大于等于4-8版本"><a href="#在centos-6-8-上安装swoole-4-2-13时，make编译时提示gcc版本大于等于4-8版本" class="headerlink" title="在centos 6.8 上安装swoole-4.2.13时，make编译时提示gcc版本大于等于4.8版本"></a>在centos 6.8 上安装swoole-4.2.13时，make编译时提示gcc版本大于等于4.8版本</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">gcc4.4.7升级gcc4.8</span><br><span class="line">1.下载源码包</span><br><span class="line">wget http://ftp.gnu.org/gnu/gcc/gcc-4.8.0/gcc-4.8.0.tar.bz2</span><br><span class="line">tar -jxvf  gcc-4.8.0.tar.bz2</span><br><span class="line"></span><br><span class="line">2.下载编译所需依赖库</span><br><span class="line">cd gcc-4.8.0</span><br><span class="line">./contrib/download_prerequisites</span><br><span class="line">cd ..</span><br><span class="line"></span><br><span class="line">3.建立编译输出目录</span><br><span class="line">mkdir gcc-build-4.8.0</span><br><span class="line"></span><br><span class="line">4.进入此目录，执行以下命令，生成makefile文件</span><br><span class="line">cd  gcc-build-4.8.0</span><br><span class="line">../gcc-4.8.0/configure --enable-checking=release --enable-languages=c,c++ --disable-multilib</span><br><span class="line"></span><br><span class="line">5.编译</span><br><span class="line">#j 后面的是核心数，编译速度会比较快</span><br><span class="line">make -j 4 #编译时间有点长，不到半个小时</span><br><span class="line"></span><br><span class="line">6.安装</span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line">7、替换当前gcc4.7版本</span><br><span class="line">update-alternatives --install /usr/bin/gcc gcc /usr/local/bin/x86_64-pc-linux-gnu-gcc 40</span><br><span class="line">#倒数第三个是名字，倒数第二个参数为新GCC路径，最后一个参数40为优先级</span><br><span class="line">mv /usr/bin/gcc /usr/bin/gcc.bak // 将原本的gcc重命名(删除亦可)</span><br><span class="line">ln -s /usr/local/bin/x86_64-pc-linux-gnu-gcc /usr/bin/gcc</span><br><span class="line">#使用gcc4.8版本</span><br><span class="line">参考地址:https://blog.csdn.net/qq_24849765/article/details/75893393</span><br><span class="line"></span><br><span class="line">报错信息:解决类似 /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21’ not found 的问题</span><br><span class="line">参考链接:https://blog.csdn.net/q936889811/article/details/79947796</span><br><span class="line">找到安装gcc安装位置:</span><br><span class="line">find 安装目录 -name &quot;libstdc++.so*&quot;</span><br><span class="line">列如:</span><br><span class="line">cp /kuaibao/software/gcc-build-4.8.0/prev-x86_64-unknown-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.18 /usr/lib64/</span><br><span class="line"></span><br><span class="line">mv libstdc++.so.6 libstdc++.so.6.old</span><br><span class="line">ln -s libstdc++.so.6.0.18 libstdc++.so.6</span><br><span class="line">strings /usr/lib64/libstdc++.so.6 | grep GLIBC</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+        <h2 id="docker-参数详解"><a href="#docker-参数详解" class="headerlink" title="docker 参数详解"></a>docker 参数详解</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">docker-daemon.json各配置详解</span><br><span class="line">&#123;</span><br><span class="line">“api-cors-header”:&quot;&quot;, ——————在引擎API中设置CORS标头</span><br><span class="line">“authorization-plugins”:[], ——————要加载的授权插件</span><br><span class="line">“bridge”:&quot;&quot;, ————将容器附加到网桥</span><br><span class="line">“cgroup-parent”:&quot;&quot;, ——————为所有容器设置父cgroup</span><br><span class="line">“cluster-store”:&quot;&quot;, ——————分布式存储后端的URL</span><br><span class="line">“cluster-store-opts”:&#123;&#125;, ————————设置集群存储选项（默认map []）</span><br><span class="line">“cluster-advertise”:&quot;&quot;, ————————要通告的地址或接口名称</span><br><span class="line">“debug”: true, ————————启用调试模式，启用后，可以看到很多的启动信息。默认false</span><br><span class="line">“default-gateway”:&quot;&quot;, ——————容器默认网关IPv4地址</span><br><span class="line">“default-gateway-v6”:&quot;&quot;, ——————容器默认网关IPv6地址</span><br><span class="line">“default-runtime”:“runc”, ————————容器的默认OCI运行时（默认为“ runc”）</span><br><span class="line">“default-ulimits”:&#123;&#125;, ——————容器的默认ulimit（默认[]）</span><br><span class="line">“dns”: [“192.168.1.1”], ——————设定容器DNS的地址，在容器的 /etc/resolv.conf文件中可查看。</span><br><span class="line">“dns-opts”: [], ————————容器 /etc/resolv.conf 文件，其他设置</span><br><span class="line">“dns-search”: [], ————————设定容器的搜索域，当设定搜索域为 .example.com 时，在搜索一个名为 host 的 主机时，DNS不仅搜索host，还会搜</span><br><span class="line">索host.example.com 。 注意：如果不设置， Docker 会默认用主机上的 /etc/resolv.conf 来配置容器。</span><br><span class="line">“exec-opts”: [], ————————运行时执行选项</span><br><span class="line">“exec-root”:&quot;&quot;, ————————执行状态文件的根目录（默认为’/var/run/docker‘）</span><br><span class="line">“fixed-cidr”:&quot;&quot;, ————————固定IP的IPv4子网</span><br><span class="line">“fixed-cidr-v6”:&quot;&quot;, ————————固定IP的IPv6子网</span><br><span class="line">“data-root”:&quot;/var/lib/docker&quot;, ————-Docker运行时使用的根路径，默认/var/lib/docker</span><br><span class="line">“group”: “”, ——————UNIX套接字的组（默认为“docker”）</span><br><span class="line">“hosts”: [], ——————设置容器hosts</span><br><span class="line">“icc”: false, ——————启用容器间通信（默认为true）</span><br><span class="line">“ip”:“0.0.0.0”, ————————绑定容器端口时的默认IP（默认0.0.0.0）</span><br><span class="line">“iptables”: false, ———————启用iptables规则添加（默认为true）</span><br><span class="line">“ipv6”: false, ——————启用IPv6网络</span><br><span class="line">“ip-forward”: false, ————————默认true, 启用 net.ipv4.ip_forward ,进入容器后使用 sysctl -a | grepnet.ipv4.ip_forward 查看</span><br><span class="line">“ip-masq”:false, ——————启用IP伪装（默认为true）</span><br><span class="line">“labels”:[“nodeName=node-121”], ————————docker主机的标签，很实用的功能,例如定义：–label nodeName=host-121</span><br><span class="line">“live-restore”: true, ——————在容器仍在运行时启用docker的实时还原</span><br><span class="line">“log-driver”:&quot;&quot;, ——————容器日志的默认驱动程序（默认为“ json-file”）</span><br><span class="line">“log-level”:&quot;&quot;, ——————设置日志记录级别（“调试”，“信息”，“警告”，“错误”，“致命”）（默认为“信息”）</span><br><span class="line">“max-concurrent-downloads”:3, ——————设置每个请求的最大并发下载量（默认为3）</span><br><span class="line">“max-concurrent-uploads”:5, ——————设置每次推送的最大同时上传数（默认为5）</span><br><span class="line">“mtu”: 0, ——————设置容器网络MTU</span><br><span class="line">“oom-score-adjust”:-500, ——————设置守护程序的oom_score_adj（默认值为-500）</span><br><span class="line">“pidfile”: “”, ——————Docker守护进程的PID文件</span><br><span class="line">“raw-logs”: false, ——————全时间戳机制</span><br><span class="line">“selinux-enabled”: false, ——————默认 false，启用selinux支持</span><br><span class="line">“storage-driver”:&quot;&quot;, ——————要使用的存储驱动程序</span><br><span class="line">“swarm-default-advertise-addr”:&quot;&quot;, ——————设置默认地址或群集广告地址的接口</span><br><span class="line">“tls”: true, ————————默认 false, 启动TLS认证开关</span><br><span class="line">“tlscacert”: “”, ——————默认 ~/.docker/ca.pem，通过CA认证过的的certificate文件路径</span><br><span class="line">“tlscert”: “”, ————————默认 ~/.docker/cert.pem ，TLS的certificate文件路径</span><br><span class="line">“tlskey”: “”, ————————默认~/.docker/key.pem，TLS的key文件路径</span><br><span class="line">“tlsverify”: true, ————————默认false，使用TLS并做后台进程与客户端通讯的验证</span><br><span class="line">“userland-proxy”:false, ——————使用userland代理进行环回流量（默认为true）</span><br><span class="line">“userns-remap”:&quot;&quot;, ————————用户名称空间的用户/组设置</span><br><span class="line">“bip”:“192.168.88.0/22”, ——————————指定网桥IP</span><br><span class="line">“registry-mirrors”: [“https://192.498.89.232:89”], ————————设置镜像加速</span><br><span class="line">“insecure-registries”: [“120.123.122.123:12312”], ———————设置私有仓库地址可以设为http</span><br><span class="line">“storage-opts”: [</span><br><span class="line">“overlay2.override_kernel_check=true”,</span><br><span class="line">“overlay2.size=15G”</span><br><span class="line">], ————————存储驱动程序选项</span><br><span class="line">“log-opts”: &#123;</span><br><span class="line">“max-file”: “3”,</span><br><span class="line">“max-size”: “10m”,</span><br><span class="line">&#125;, ————————容器默认日志驱动程序选项</span><br><span class="line">“iptables”: false ————————启用iptables规则添加（默认为true）</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
     </div>
 
     
@@ -349,7 +344,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://github.mansoncui.com/2019/06/19/services/update_gcc/" title="update gcc">https://github.mansoncui.com/2019/06/19/services/update_gcc/</a>
+      <a href="https://github.mansoncui.com/2021/08/04/kubernetes/docker/" title="docker 参数详解">https://github.mansoncui.com/2021/08/04/kubernetes/docker/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -358,21 +353,18 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/gcc/" rel="tag"># gcc</a>
+              <a href="/tags/docker/" rel="tag"># docker</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/06/19/services/nginx/" rel="prev" title="nginx">
-                  <i class="fa fa-chevron-left"></i> nginx
+                <a href="/2021/08/04/problem/problem/" rel="prev" title="守护进程的文件数量限制">
+                  <i class="fa fa-chevron-left"></i> 守护进程的文件数量限制
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2019/06/19/services/nfs/" rel="next" title="nfs">
-                  nfs <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -444,7 +436,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{&quot;enable&quot;:true,&quot;github_id&quot;:&quot;mansoncui&quot;,&quot;repo&quot;:&quot;gitalk-comment&quot;,&quot;client_id&quot;:&quot;79a88520b0dde363b1f8&quot;,&quot;client_secret&quot;:&quot;01934d9d6031fc1d3dfe48a445d41cf03ae53c7e&quot;,&quot;admin_user&quot;:&quot;mansoncui&quot;,&quot;distraction_free_mode&quot;:true,&quot;proxy&quot;:&quot;https:&#x2F;&#x2F;cors-anywhere.azm.workers.dev&#x2F;https:&#x2F;&#x2F;github.com&#x2F;login&#x2F;oauth&#x2F;access_token&quot;,&quot;language&quot;:null,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;gitalk@1.7.2&#x2F;dist&#x2F;gitalk.min.js&quot;,&quot;integrity&quot;:&quot;sha256-Pmj85ojLaPOWwRtlMJwmezB&#x2F;Qg8BzvJp5eTzvXaYAfA&#x3D;&quot;},&quot;path_md5&quot;:&quot;2f8ce7770e334ce3201b64e585c55d7b&quot;}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{&quot;enable&quot;:true,&quot;github_id&quot;:&quot;mansoncui&quot;,&quot;repo&quot;:&quot;gitalk-comment&quot;,&quot;client_id&quot;:&quot;79a88520b0dde363b1f8&quot;,&quot;client_secret&quot;:&quot;01934d9d6031fc1d3dfe48a445d41cf03ae53c7e&quot;,&quot;admin_user&quot;:&quot;mansoncui&quot;,&quot;distraction_free_mode&quot;:true,&quot;proxy&quot;:&quot;https:&#x2F;&#x2F;cors-anywhere.azm.workers.dev&#x2F;https:&#x2F;&#x2F;github.com&#x2F;login&#x2F;oauth&#x2F;access_token&quot;,&quot;language&quot;:null,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;gitalk@1.7.2&#x2F;dist&#x2F;gitalk.min.js&quot;,&quot;integrity&quot;:&quot;sha256-Pmj85ojLaPOWwRtlMJwmezB&#x2F;Qg8BzvJp5eTzvXaYAfA&#x3D;&quot;},&quot;path_md5&quot;:&quot;645861607fd6c69f4de0ec3a2d8be212&quot;}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>

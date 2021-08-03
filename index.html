@@ -89,7 +89,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,7 +162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -233,6 +233,88 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2021/08/04/kubernetes/docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/04/kubernetes/docker/" class="post-title-link" itemprop="url">docker 参数详解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-03 16:42:04 / 修改时间：10:22:31" itemprop="dateCreated datePublished" datetime="2021-08-03T16:42:04Z">2021-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/08/04/kubernetes/docker/" class="post-meta-item leancloud_visitors" data-flag-title="docker 参数详解" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="docker-参数详解"><a href="#docker-参数详解" class="headerlink" title="docker 参数详解"></a>docker 参数详解</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">docker-daemon.json各配置详解</span><br><span class="line">&#123;</span><br><span class="line">“api-cors-header”:&quot;&quot;, ——————在引擎API中设置CORS标头</span><br><span class="line">“authorization-plugins”:[], ——————要加载的授权插件</span><br><span class="line">“bridge”:&quot;&quot;, ————将容器附加到网桥</span><br><span class="line">“cgroup-parent”:&quot;&quot;, ——————为所有容器设置父cgroup</span><br><span class="line">“cluster-store”:&quot;&quot;, ——————分布式存储后端的URL</span><br><span class="line">“cluster-store-opts”:&#123;&#125;, ————————设置集群存储选项（默认map []）</span><br><span class="line">“cluster-advertise”:&quot;&quot;, ————————要通告的地址或接口名称</span><br><span class="line">“debug”: true, ————————启用调试模式，启用后，可以看到很多的启动信息。默认false</span><br><span class="line">“default-gateway”:&quot;&quot;, ——————容器默认网关IPv4地址</span><br><span class="line">“default-gateway-v6”:&quot;&quot;, ——————容器默认网关IPv6地址</span><br><span class="line">“default-runtime”:“runc”, ————————容器的默认OCI运行时（默认为“ runc”）</span><br><span class="line">“default-ulimits”:&#123;&#125;, ——————容器的默认ulimit（默认[]）</span><br><span class="line">“dns”: [“192.168.1.1”], ——————设定容器DNS的地址，在容器的 /etc/resolv.conf文件中可查看。</span><br><span class="line">“dns-opts”: [], ————————容器 /etc/resolv.conf 文件，其他设置</span><br><span class="line">“dns-search”: [], ————————设定容器的搜索域，当设定搜索域为 .example.com 时，在搜索一个名为 host 的 主机时，DNS不仅搜索host，还会搜</span><br><span class="line">索host.example.com 。 注意：如果不设置， Docker 会默认用主机上的 /etc/resolv.conf 来配置容器。</span><br><span class="line">“exec-opts”: [], ————————运行时执行选项</span><br><span class="line">“exec-root”:&quot;&quot;, ————————执行状态文件的根目录（默认为’/var/run/docker‘）</span><br><span class="line">“fixed-cidr”:&quot;&quot;, ————————固定IP的IPv4子网</span><br><span class="line">“fixed-cidr-v6”:&quot;&quot;, ————————固定IP的IPv6子网</span><br><span class="line">“data-root”:&quot;/var/lib/docker&quot;, ————-Docker运行时使用的根路径，默认/var/lib/docker</span><br><span class="line">“group”: “”, ——————UNIX套接字的组（默认为“docker”）</span><br><span class="line">“hosts”: [], ——————设置容器hosts</span><br><span class="line">“icc”: false, ——————启用容器间通信（默认为true）</span><br><span class="line">“ip”:“0.0.0.0”, ————————绑定容器端口时的默认IP（默认0.0.0.0）</span><br><span class="line">“iptables”: false, ———————启用iptables规则添加（默认为true）</span><br><span class="line">“ipv6”: false, ——————启用IPv6网络</span><br><span class="line">“ip-forward”: false, ————————默认true, 启用 net.ipv4.ip_forward ,进入容器后使用 sysctl -a | grepnet.ipv4.ip_forward 查看</span><br><span class="line">“ip-masq”:false, ——————启用IP伪装（默认为true）</span><br><span class="line">“labels”:[“nodeName=node-121”], ————————docker主机的标签，很实用的功能,例如定义：–label nodeName=host-121</span><br><span class="line">“live-restore”: true, ——————在容器仍在运行时启用docker的实时还原</span><br><span class="line">“log-driver”:&quot;&quot;, ——————容器日志的默认驱动程序（默认为“ json-file”）</span><br><span class="line">“log-level”:&quot;&quot;, ——————设置日志记录级别（“调试”，“信息”，“警告”，“错误”，“致命”）（默认为“信息”）</span><br><span class="line">“max-concurrent-downloads”:3, ——————设置每个请求的最大并发下载量（默认为3）</span><br><span class="line">“max-concurrent-uploads”:5, ——————设置每次推送的最大同时上传数（默认为5）</span><br><span class="line">“mtu”: 0, ——————设置容器网络MTU</span><br><span class="line">“oom-score-adjust”:-500, ——————设置守护程序的oom_score_adj（默认值为-500）</span><br><span class="line">“pidfile”: “”, ——————Docker守护进程的PID文件</span><br><span class="line">“raw-logs”: false, ——————全时间戳机制</span><br><span class="line">“selinux-enabled”: false, ——————默认 false，启用selinux支持</span><br><span class="line">“storage-driver”:&quot;&quot;, ——————要使用的存储驱动程序</span><br><span class="line">“swarm-default-advertise-addr”:&quot;&quot;, ——————设置默认地址或群集广告地址的接口</span><br><span class="line">“tls”: true, ————————默认 false, 启动TLS认证开关</span><br><span class="line">“tlscacert”: “”, ——————默认 ~/.docker/ca.pem，通过CA认证过的的certificate文件路径</span><br><span class="line">“tlscert”: “”, ————————默认 ~/.docker/cert.pem ，TLS的certificate文件路径</span><br><span class="line">“tlskey”: “”, ————————默认~/.docker/key.pem，TLS的key文件路径</span><br><span class="line">“tlsverify”: true, ————————默认false，使用TLS并做后台进程与客户端通讯的验证</span><br><span class="line">“userland-proxy”:false, ——————使用userland代理进行环回流量（默认为true）</span><br><span class="line">“userns-remap”:&quot;&quot;, ————————用户名称空间的用户/组设置</span><br><span class="line">“bip”:“192.168.88.0/22”, ——————————指定网桥IP</span><br><span class="line">“registry-mirrors”: [“https://192.498.89.232:89”], ————————设置镜像加速</span><br><span class="line">“insecure-registries”: [“120.123.122.123:12312”], ———————设置私有仓库地址可以设为http</span><br><span class="line">“storage-opts”: [</span><br><span class="line">“overlay2.override_kernel_check=true”,</span><br><span class="line">“overlay2.size=15G”</span><br><span class="line">], ————————存储驱动程序选项</span><br><span class="line">“log-opts”: &#123;</span><br><span class="line">“max-file”: “3”,</span><br><span class="line">“max-size”: “10m”,</span><br><span class="line">&#125;, ————————容器默认日志驱动程序选项</span><br><span class="line">“iptables”: false ————————启用iptables规则添加（默认为true）</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -798,100 +880,6 @@
 
 <p>参考链接: </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/</span><br><span class="line">https://blog.csdn.net/mshxuyi/article/details/110942969</span><br></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/08/22/shell/shell/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/08/22/shell/shell/" class="post-title-link" itemprop="url">shell 脚本总结</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-08-22 10:41:18" itemprop="dateCreated datePublished" datetime="2019-08-22T10:41:18Z">2019-08-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/shell/" itemprop="url" rel="index"><span itemprop="name">shell</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/08/22/shell/shell/" class="post-meta-item leancloud_visitors" data-flag-title="shell 脚本总结" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="shell-判断当前用户和传参个数"><a href="#shell-判断当前用户和传参个数" class="headerlink" title="shell 判断当前用户和传参个数"></a>shell 判断当前用户和传参个数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">##Judge user root</span><br><span class="line">if [ $UID -ne 0 ];then</span><br><span class="line">    echo &quot;You are not support user,Please call root&quot;</span><br><span class="line">    exit 1;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">##Judge arg number</span><br><span class="line">if [ $# -ne 1 ];then</span><br><span class="line">    echo $&quot;Usage: $0 &#123;start|stop&#125;&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<h4 id="case配置和使用"><a href="#case配置和使用" class="headerlink" title="case配置和使用"></a>case配置和使用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function usage() &#123;</span><br><span class="line">    packge=$1</span><br><span class="line">    case $packge in</span><br><span class="line">    stop)</span><br><span class="line">       echo &quot;Stop Elk Cluster Service&quot;</span><br><span class="line">       elk_stop</span><br><span class="line">       ;;</span><br><span class="line">    start)</span><br><span class="line">       echo &quot;Start Elk Cluster Service&quot;</span><br><span class="line">       elk_start</span><br><span class="line">       ;;</span><br><span class="line">    status)</span><br><span class="line">       echo &quot;Elk Cluster Status&quot;</span><br><span class="line">       elk_status</span><br><span class="line">       ;;</span><br><span class="line">    *)</span><br><span class="line">       echo -e &quot;\033[41;30m Usage: $0 $1 Incorrect parameter \033[0m&quot;</span><br><span class="line">       echo $&quot;Usage: $0 &#123;start|stop|status&#125;&quot;</span><br><span class="line">       exit 0</span><br><span class="line">       ;;</span><br><span class="line">  esac</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for arg in &quot;$*&quot;</span><br><span class="line">do</span><br><span class="line">        usage $arg</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-<h4 id="文件追加"><a href="#文件追加" class="headerlink" title="文件追加"></a>文件追加</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;124567890&quot; | tee -a /tmp/1.txt  #往/tmp/1.txt</span><br><span class="line"></span><br><span class="line">cat &gt;&gt; /tmp/1.txt &lt;&lt; EOF  #往/tmp/1.txt</span><br><span class="line">1111111111</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">cat &gt;/tmp/1.txt &lt;&lt; EOF   #覆盖/tmp/1.txt 原有文件内容</span><br><span class="line">11111</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">cat &lt;&lt; EOF &gt; /tmp/1.txt  #覆盖/tmp/1.txt 原有文件内容</span><br><span class="line">&gt; 22222222</span><br><span class="line">&gt; EOF</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF&gt;&gt;/tmp/1.txt  #往/tmp/1.txt 追加内容 </span><br><span class="line">&gt; 333333</span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-<h4 id="变量截取和替换"><a href="#变量截取和替换" class="headerlink" title="变量截取和替换"></a>变量截取和替换</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$&#123;变量#匹配规则&#125;	从头开始匹配，最短删除</span><br><span class="line">$&#123;变量##匹配规则&#125;	从头开始匹配，最长删除</span><br><span class="line">$&#123;变量%匹配规则&#125;	从尾开始匹配，最短删除</span><br><span class="line">$&#123;变量%%匹配规则&#125;	从尾开始匹配，最长删除</span><br><span class="line">$&#123;变量/旧字符/新字符&#125;	替换变量内的旧字符为新字符，只替换第一个</span><br><span class="line">$&#123;变量//旧字符/新字符&#125;	替换变量内的旧字符为新字符，全部替换</span><br><span class="line"></span><br><span class="line">案列:</span><br><span class="line">&quot;i love you, do you love me&quot;</span><br><span class="line">tmp=$&#123;var##*ove&#125;</span><br><span class="line">echo $tmp</span><br><span class="line">tmp=$&#123;var##*ove&#125;</span><br><span class="line">echo $tmp</span><br><span class="line">tmp=$&#123;var%ove*&#125;</span><br><span class="line">echo $tmp</span><br><span class="line">tmp=$&#123;var%%ove*&#125;</span><br><span class="line">echo $tmp</span><br><span class="line">tmp=$&#123;var/love/LOVE&#125;</span><br><span class="line">echo $tmp</span><br><span class="line">tmp=$&#123;var//love/LOVE&#125;</span><br><span class="line">echo $tmp</span><br></pre></td></tr></table></figure>
-<h5 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">计算字符串长度</span><br><span class="line">1、$&#123;#string&#125;</span><br><span class="line">2、expr length $string</span><br><span class="line">var=&quot;i love you&quot;</span><br><span class="line">echo $&#123;#var&#125;</span><br><span class="line">expr length $&#123;var&#125;</span><br><span class="line"></span><br><span class="line">获取字符串中的子串</span><br><span class="line">1、$&#123;string:pos&#125;</span><br><span class="line">2、$&#123;string:pos:len&#125;</span><br><span class="line">3、$&#123;string:(-pos)&#125;</span><br><span class="line">4、expr substr $string $pos $len</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="案列"><a href="#案列" class="headerlink" title="案列"></a>案列</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#!/bin/sh</span><br><span class="line">var=&quot;i love you&quot;</span><br><span class="line">tmp=$&#123;var:1&#125;</span><br><span class="line">echo &quot;$tmp&quot;</span><br><span class="line">tmp=$&#123;var:1:2&#125;   # 下标是从0开始的</span><br><span class="line">echo &quot;$&#123;tmp&#125;&quot;</span><br><span class="line">tmp=$&#123;var:(-5)&#125;</span><br><span class="line">echo &quot;$&#123;tmp&#125;&quot;</span><br><span class="line">tmp=`expr substr &quot;$&#123;var&#125;&quot; 1 10`  # 注意expr下标是从1开始的</span><br><span class="line">echo &quot;$&#123;tmp&#125;&quot;</span><br></pre></td></tr></table></figure>
-<h5 id="一个完整字符串处理案例"><a href="#一个完整字符串处理案例" class="headerlink" title="一个完整字符串处理案例"></a>一个完整字符串处理案例</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line">#</span><br><span class="line">string=&quot;Bigdata process framework is Hadoop,Hadoop is an open source project&quot;</span><br><span class="line">function tips_info</span><br><span class="line">&#123;</span><br><span class="line">	echo &quot;******************************************&quot;</span><br><span class="line">	echo &quot;***  (1) 打印string长度&quot;</span><br><span class="line">	echo &quot;***  (2) 在整个字符串中删除Hadoop&quot;</span><br><span class="line">	echo &quot;***  (3) 替换第一个Hadoop为Mapreduce&quot;</span><br><span class="line">	echo &quot;***  (4) 替换全部Hadoop为Mapreduce&quot;</span><br><span class="line">	echo &quot;******************************************&quot;</span><br><span class="line">&#125;</span><br><span class="line">function print_len</span><br><span class="line">&#123;</span><br><span class="line">	# -z表示判断字符串长度是否为0</span><br><span class="line">	if [ -z &quot;$string&quot; ];then</span><br><span class="line">		echo &quot;Error,string is null&quot;</span><br><span class="line">		exit 1</span><br><span class="line">	else</span><br><span class="line">		echo &quot;$&#123;#string&#125;&quot;</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line">function del_hadoop</span><br><span class="line">&#123;</span><br><span class="line">	if [ -z &quot;$string&quot; ];then</span><br><span class="line">		echo &quot;Error,string is null&quot;</span><br><span class="line">		exit 1</span><br><span class="line">	else</span><br><span class="line">		echo &quot;$&#123;string//Hadoop/&#125;&quot;</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line">function rep_hadoop_mapreduce_first</span><br><span class="line">&#123;</span><br><span class="line">	if [ -z &quot;$string&quot; ];then</span><br><span class="line">		echo &quot;Error,string is null&quot;</span><br><span class="line">		exit 1</span><br><span class="line">	else</span><br><span class="line">		echo &quot;$&#123;string/Hadoop/Mapreduce&#125;&quot;</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line">function rep_hadoop_mapreduce_all</span><br><span class="line">&#123;</span><br><span class="line">        if [ -z &quot;$string&quot; ];then</span><br><span class="line">                echo &quot;Error,string is null&quot;</span><br><span class="line">                exit 1</span><br><span class="line">        else</span><br><span class="line">                echo &quot;$&#123;string//Hadoop/Mapreduce&#125;&quot;</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">echo &quot;【string=\&quot;$string\&quot;】&quot;</span><br><span class="line">tips_info</span><br><span class="line">read -p &quot;Please Switch a Choice: &quot; choice</span><br><span class="line"># case, esac(反写esac); 相当于switch case break</span><br><span class="line">case &quot;$choice&quot; in</span><br><span class="line">	1)</span><br><span class="line">		echo</span><br><span class="line">		echo &quot;Length Of String is: `print_len`&quot;</span><br><span class="line">		echo</span><br><span class="line">		continue</span><br><span class="line">		;;</span><br><span class="line">	2)</span><br><span class="line">		echo</span><br><span class="line">		echo &quot;删除Hadoop后的字符串为：`del_hadoop`&quot;</span><br><span class="line">		echo</span><br><span class="line">		;;</span><br><span class="line">	3)</span><br><span class="line">		echo </span><br><span class="line">		echo &quot;替换第一个Hadoop的字符串为：`rep_hadoop_mapreduce_first`&quot;</span><br><span class="line">		echo</span><br><span class="line">		;;</span><br><span class="line">	4)</span><br><span class="line">		echo </span><br><span class="line">                echo &quot;替换第一个Hadoop的字符串为：`rep_hadoop_mapreduce_all`&quot;</span><br><span class="line">                echo</span><br><span class="line">		;;</span><br><span class="line">	q|Q)</span><br><span class="line">		exit 0</span><br><span class="line">		;;</span><br><span class="line">	*)</span><br><span class="line">		echo &quot;error,unlegal input,legal input only in &#123; 1|2|3|4|q|Q &#125;&quot;</span><br><span class="line">		continue	</span><br><span class="line">		;;</span><br><span class="line">esac</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>

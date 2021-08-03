@@ -89,7 +89,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,7 +162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -233,6 +233,96 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/26/services/pxe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/26/services/pxe/" class="post-title-link" itemprop="url">pxe</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-25 17:23:21" itemprop="dateCreated datePublished" datetime="2019-06-25T17:23:21Z">2019-06-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/26/services/pxe/" class="post-meta-item leancloud_visitors" data-flag-title="pxe" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="pxe批量部署服务器"><a href="#pxe批量部署服务器" class="headerlink" title="pxe批量部署服务器"></a>pxe批量部署服务器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">环境:准备两台机器(在虚拟机中操作)，先关闭iptables、selinux和NetworkManager</span><br><span class="line"></span><br><span class="line">1、配置dhcp</span><br><span class="line"></span><br><span class="line">yum -y install dhcp</span><br><span class="line"></span><br><span class="line">cp /usr/share/doc/dhcp-4.1.1/dhcpd.conf.sample  /etc/dhcp/dhcpd.conf</span><br><span class="line"></span><br><span class="line">vim  /etc/dhcp/dhcpd.conf</span><br><span class="line"></span><br><span class="line">default-lease-time 600;</span><br><span class="line">max-lease-time 7200;</span><br><span class="line">subnet 192.168.1.0 netmask 255.255.255.0 &#123;</span><br><span class="line">  range 192.168.1.20 192.168.1.80;</span><br><span class="line">  option routers 192.168.1.254;</span><br><span class="line"> next-server 192.168.1.101;</span><br><span class="line">filename &quot;pxelinux.0&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/etc/init.d/dhcpd  start</span><br><span class="line"></span><br><span class="line">chkconfig dhcpd on</span><br><span class="line"></span><br><span class="line">2、yum  -y install tftp-server   tftp   syslinux</span><br><span class="line"></span><br><span class="line">rpm -ql syslinux   #查看syslinux安装目录</span><br><span class="line"></span><br><span class="line">cd  /usr/share/syslinux/</span><br><span class="line"></span><br><span class="line">cp  -p pxelinux.0  /var/lib/tftpboot/</span><br><span class="line"></span><br><span class="line">vim /etc/xinetd.d/conf</span><br><span class="line"></span><br><span class="line">disable                 = no  #启用</span><br><span class="line"></span><br><span class="line">cd /media/isolinux/</span><br><span class="line"></span><br><span class="line">cp  -p  vmlinuz initrd.img splash.jpg   /var/lib/tftpboot/</span><br><span class="line"></span><br><span class="line"> mkdir /var/lib/mysql/pxelinux.cfg</span><br><span class="line"></span><br><span class="line">cp -p isolinux.cfg /var/lib/mysql/pxelinux.cfg/default</span><br><span class="line"></span><br><span class="line">vim   /var/lib/mysql/pxelinux.cfg/default  #修改配置文件</span><br><span class="line"></span><br><span class="line">default linux</span><br><span class="line"></span><br><span class="line">append initrd=initrd.img  ks=ftp://192.168.1.101/pub/ks.cfg</span><br><span class="line"></span><br><span class="line">services  xinetd start ;chkconfig   xinetd on </span><br><span class="line"></span><br><span class="line">3、yum -y install  vsftpd</span><br><span class="line"></span><br><span class="line">service vsftpd on</span><br><span class="line"></span><br><span class="line">mkdir  /var/ftp/pub/iso/</span><br><span class="line"></span><br><span class="line">cp -rp /media/*   /var/ftp/pub/iso/</span><br><span class="line"></span><br><span class="line"> chmod 644 /var/lib/tftpboot/pxelinux.cfg/default</span><br><span class="line"></span><br><span class="line">4、yum -y install system-config-kickstart</span><br><span class="line"></span><br><span class="line">system-config-kickstart</span><br><span class="line"></span><br><span class="line">(1)基本配置中设置语言:中文简体  时区：shanghai    密码,高级配置:给安装后重新引导系统和在文本模式中执行安装(默认为图形安装)打上勾，后者可以不打勾；</span><br><span class="line"></span><br><span class="line">(2)安装方法:选择ftp或是http。列如ftp: 第一个是写服务器地址，第二个是共享光盘镜像文件目录</span><br><span class="line"></span><br><span class="line">(3)主引导记录、分区和磁盘标签都选第一个；新建 “/” ,&quot;boot&quot;和&quot;swap&quot;</span><br><span class="line"></span><br><span class="line">(4)网卡配置:添加eth0网卡</span><br><span class="line"></span><br><span class="line">(5)防火墙z选择禁用</span><br><span class="line"></span><br><span class="line">(6)软件包安装:默认是最小化安装，可以选择包:</span><br><span class="line"></span><br><span class="line">基本系统中:基本和网络文件系统</span><br><span class="line"></span><br><span class="line">桌面:X窗口系统、字体、桌面、输入法和通用桌面</span><br><span class="line"></span><br><span class="line">语言支持:中文</span><br><span class="line"></span><br><span class="line">把文件保存到:/var/ftp/pub/</span><br><span class="line"></span><br><span class="line">chmod   644  /var/ftp/pub/ks.cfg  </span><br></pre></td></tr></table></figure>
+<h2 id="新建一台虚拟机-网络模式选为仅主机模式-测试看是否成功"><a href="#新建一台虚拟机-网络模式选为仅主机模式-测试看是否成功" class="headerlink" title="新建一台虚拟机(网络模式选为仅主机模式) 测试看是否成功"></a>新建一台虚拟机(网络模式选为仅主机模式) 测试看是否成功</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">ks文件：</span><br><span class="line"></span><br><span class="line">#platform=x86, AMD64, 或 Intel EM64T</span><br><span class="line">#version=DEVEL</span><br><span class="line"># Firewall configuration</span><br><span class="line">firewall --disabled</span><br><span class="line"># Install OS instead of upgrade</span><br><span class="line">install</span><br><span class="line"># Use network installation</span><br><span class="line">url --url=&quot;ftp://192.168.1.101/pub/iso/&quot;</span><br><span class="line"># Root password</span><br><span class="line">rootpw --iscrypted $1$KNdqC7g/$mVPG2RIICeyyECaglEkBy.</span><br><span class="line"># System authorization information</span><br><span class="line">auth  --useshadow  --passalgo=sha512</span><br><span class="line"># Use text mode install</span><br><span class="line">text</span><br><span class="line">firstboot --disable</span><br><span class="line"># System keyboard</span><br><span class="line">keyboard us</span><br><span class="line"># System language</span><br><span class="line">lang zh_CN</span><br><span class="line"># SELinux configuration</span><br><span class="line">selinux --disabled</span><br><span class="line"># Installation logging level</span><br><span class="line">logging --level=info</span><br><span class="line"># Reboot after installation</span><br><span class="line">reboot</span><br><span class="line"># System timezone</span><br><span class="line">timezone  Asia/Shanghai</span><br><span class="line"># Network information</span><br><span class="line">network  --bootproto=dhcp --device=eth0 --onboot=on</span><br><span class="line"># System bootloader configuration</span><br><span class="line">bootloader --location=mbr</span><br><span class="line"># Clear the Master Boot Record</span><br><span class="line">zerombr</span><br><span class="line"># Partition clearing information</span><br><span class="line">clearpart --all --initlabel</span><br><span class="line"># Disk partitioning information</span><br><span class="line"></span><br><span class="line">part / --fstype=&quot;ext4&quot; --size=50000 part /boot --fstype=&quot;ext4&quot; --size=200 part swap --fstype=&quot;swap&quot; --size=8129</span><br><span class="line"></span><br><span class="line">%packages @base @basic-desktop @chinese-support @fonts @general-desktop @input-methods @internet-browser @network-file-system-client @x11</span><br><span class="line"></span><br><span class="line">%end  </span><br></pre></td></tr></table></figure>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释:"></a>注释:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">boot.msg （显示“[enter]”启动提示信息）</span><br><span class="line"></span><br><span class="line">initrd.img（这是一个初始化文件，一个最小的系统镜像）</span><br><span class="line"></span><br><span class="line">pxelinux.0     （这文件是为legcay启动，它是legcay的启动镜像）</span><br><span class="line"></span><br><span class="line">pxelinux.cfg（该文件夹下放的是启动菜单，手动创建）</span><br><span class="line"></span><br><span class="line">splash.jpg（背景图片，可以不要）</span><br><span class="line"></span><br><span class="line">vesamenu.c32（legacy BIOS引导菜单工具，可从光盘或/usr/share/syslinux/中找到）</span><br><span class="line"></span><br><span class="line">vmlinuz（内核文件）</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -756,101 +846,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/06/20/services/svn/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/20/services/mysql-config/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/06/20/services/mysql-config/" class="post-title-link" itemprop="url">mysql_config</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-06-20 10:53:04" itemprop="dateCreated datePublished" datetime="2019-06-20T10:53:04Z">2019-06-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/services/" itemprop="url" rel="index"><span itemprop="name">services</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/06/20/services/mysql-config/" class="post-meta-item leancloud_visitors" data-flag-title="mysql_config" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/20/services/mysql-config/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

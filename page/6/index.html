@@ -89,7 +89,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,7 +162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -233,6 +233,143 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E8%BD%AF%E4%B8%AD%E6%96%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/12/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E8%BD%AF%E4%B8%AD%E6%96%AD/" class="post-title-link" itemprop="url">软中断</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-11 16:46:46" itemprop="dateCreated datePublished" datetime="2019-06-11T16:46:46Z">2019-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">linux操作性能优化</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/12/linux%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E8%BD%AF%E4%B8%AD%E6%96%AD/" class="post-meta-item leancloud_visitors" data-flag-title="软中断" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="软中断"><a href="#软中断" class="headerlink" title="软中断"></a>软中断</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">top -H -p XX 1 / pidstat -wut -p XX 1   #那个线程占用CPU</span><br><span class="line"></span><br><span class="line">perf report -g -p XX 是否可以定位到具体的系统调用函数.</span><br><span class="line"></span><br><span class="line">中断:系统用来响应硬件设备请求的一种机制，会打断进程的正常调度和执行，通过调用内核中的中断处理程序来响应设备的请求(中断是一种异步的事件处理机制，用来提高系统的并发处理能力。中断事件发生，会触发执行中断处理程序，而中断处理程序被分为上半部和下半部这两个部分)</span><br><span class="line"></span><br><span class="line">上半部对应硬中断，用来快速处理中断</span><br><span class="line"></span><br><span class="line">下半部对应软中断，用来异步处理上半部未完成的工作</span><br><span class="line"></span><br><span class="line">1.中断是一种异步的事件处理机制，能提高系统的并发处理能力</span><br><span class="line"></span><br><span class="line">2.为了减少对正常进程运行进行影响，中断处理程序需要尽快运行。</span><br><span class="line"></span><br><span class="line">3.中断分为上下两个部分</span><br><span class="line">(1)上部分用来快速处理中断，在中断禁止模式下，主要处理跟硬件紧密相关的或时间敏感的工作</span><br><span class="line">(2)下部分用来延迟处理上半部分未完成的工作，通常以内核线程的方式运行。</span><br><span class="line"></span><br><span class="line">小结:</span><br><span class="line">上半部分直接处理硬件请求，即硬中断，特点是快速执行</span><br><span class="line">下部分由内核触发，即软中断，特点是延迟执行</span><br><span class="line">软中断除了上面的下部分，还包括一些内核自定义的事件，如:内核调度 RCU锁 网络收发 定时等</span><br><span class="line">软中断内核线程的名字:ksoftirq/cpu编号</span><br><span class="line"></span><br><span class="line">4.proc文件系统是一种内核空间和用户空间进行通信的机制，可以同时用来查看内核的数据结构又能用了动态修改内核的配置，如:</span><br><span class="line">/proc/softirqs 提供软中断的运行情况</span><br><span class="line">/proc/interrupts 提供硬中断的运行情况```</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">## 进程状态</span><br></pre></td></tr></table></figure>
+<p>当iowait升高时，进程很可能因为得不到硬件的响应，而长时间处于不可中断状态。从ps或者top命令的输出中，你可以发现它们都处于D状态，也就是不可中断状态(Uninterruptible Sleep)。<br>进程状态有哪几种:<br>R 是Running 或 Runnable 的缩写，表示进程CPU的就绪队列中，正在运行或者正在等待运行</p>
+<p>D 是Disk Sleep 的缩写，也就是不可中断状态睡眠（Uninterruptible Sleep）,一般表示进程正在跟硬件交互，并且交互过程中不允许被其他进程或中断打断</p>
+<p>Z 是Zombie的缩写，也就是可中断状态的睡眠，表示进程因为等待某个事件而被系统挂起，当进程等待的时间发生时，它会被唤醒并进入R状态</p>
+<p>I 是idle的缩写，也就是空闲状态，用在不可中断睡眠的内核线程上，前面说了，硬件交互导致的不可中断进程D表示，但对某些内核线程会导致平均负载升高，I状态的进程却不会。</p>
+<p>T或者t 也就是Stopped和Traced的缩写，表示进程处于暂停或者跟踪状态<br>向一个进程发送SIGSTOP信号，它就会因为响应这个信号变成暂停状态(Stopped);再向它发送SIGCONF信号，进程又会恢复运行（如果进程是终端里直接启动的，则需要你用fg命令，恢复到前台运行）</p>
+<p>X 也是Dead的缩写，表示进程已经消亡，所以你不会再top或者ps命令中看到它</p>
+<p>总结:<br>不可中断状态，表示进程正在跟硬件交互，为了保护进程数据和硬件的一致性，系统不允许其他进程或中断<br>打断这个进程。进程长时间处于不可中断状态，通常表示系统I/O性能问题</p>
+<p>僵尸进程表示进程已经退出，但它的父进程还没有回收子进程占用的资源。短暂的僵尸状态我们通常不必理会<br>但进程长时间处于僵尸状态，就应该注意了，可能有应用程序没有正常处理子进程的退出</p>
+<p>总结:分析系统等待I/O的CPU使用率(也就是iowait%)升高的情况<br>iowait高并不一定代码I/O有性能瓶颈。当然系统中只有I/O类型的进程在运行时，iowait也会很高<br>但是实际上，磁盘的读写远没有达到性能瓶颈的程度<br>因此，碰到iowait升高时，需要先用dstat、pidstat等工具，确认是不是磁盘I/O问题，然后找是<br>那些进程导致了I/O升高</p>
+<p>等待I/O的进程一般是不可中断状态，所以用ps命令找到的D状态（即不可中断状态）的进程，多为<br>可以进程</p>
+<p>当一个进程执行到最后成僵尸进程，就不能用strace，因为当前进程已经不存在了<br>用ps查看该进程是D状态是可以用strace进行追踪，否则用另外一种方法:<br>perf record -g(执行15s)停止，用perf report 进行查看分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line">## 某个应用cpu使用率居然达到100%，该怎么处理</span><br></pre></td></tr></table></figure>
+<p>1、linux并发(任务并行)的实质：linux作为一个多任务操作系统，将每个CPU的时间划分为很短站的时间片，再通过调度器轮流分配给各个任务使用，再通过调度器轮流分配给各个任务使用</p>
+<p>2、CPU的维护，通过实现定义的节拍率(内核用赫兹HZ标示)，触发时间判断(全局变量jiffes)记录。</p>
+<p>3、节拍率的内核态运行，属于内核空间节拍率：用户空间节拍率（USER_HZ）是一个固定值</p>
+<p>4、/proc/stat 提供的就是系统的CPU核任务统计系统信息: /proc/[pid]/stat展示进程的CPU核任务统计信息</p>
+<p>5、CPU的使用率={1-(idle_time/total_cpu_time)}/sample_ti</p>
+<p>6、性能分析工具给出的都是间隔一段时间的平均CPU使用率，所以要注意间隔的设置。top默认为3s，ps使用的是进程运行时间</p>
+<p>7、top、vmstat、mpstat等命令关于CPU性能相关指标的含义</p>
+<p>8、pidstat命令指标的含义</p>
+<p>9、perf以前用到的一堆[n]trace分析工具，perf的直观易用，这是今天最大的收获，作为dba对数据库的分析很有用的</p>
+<p>perf top、perf record、perf report对进程进行跟踪分析其调用perf top -g -p <mysqlpid></mysqlpid></p>
+<p>10、今天用测试工具:ab (apache-utils centos安装包)</p>
+<p>如果碰到不好解释的CPU问题时，比如现象：<br>通过top观察CPU使用率很高，但是看下面的进程的CPU使用率好像很正常，通过pidstat命令查看cpu也很正常。但通过top查看task数量不正常，处于R状态的进程是可疑点。</p>
+<p>首先要想到可能是短时间的应用导致的问题，如下面的两个：<br>（1）应用里直接调用了其他二进制程序，这些程序通常运行时间比较短，通过top等工具发现不了<br>（2）应用本身在不停地崩溃重启，而启动过程的资源初始化，很可能会占用很多CPU资源</p>
+<p>对于这类进程就需要 pstree 或execsnoop命令查找父进程，再从父进程的应用入手，找原因。<br>我实战的问题：<br>（1）centos的系统，发现通过 yum install pstress命令或其他命令，总是说没有匹配的软件包，这个很头疼<br>①pstress装不上可以尝试 yum install psmisc<br>②execsnoop这个命令我没有装上，想请教下老师如何解决这种yum install命令报没有匹配包的情况<br>（2）然后就是通过perf命令只能看到十六进制符号，看不到具体函数名的问题，这个可以使用上篇文章中我的留言的方法，我在copy一份，供大家参考<br>分析：当没有看到函数名，只看到十六进制时，说明perf无法找到待分析进程所依赖的库。<br>解决办法：<br>在容器外面把分析记录保存，到容器里面查看结果<br>操作：<br>（1）在centos系统上运行 perf record -g ，执行一会儿按ctrl+c停止<br>（2）把生成的perf.data（通常文件生成在命令执行的当前目录下，当然可以通过find | grep perf.data或 find / -name perf.data查看路径）文件拷贝到容器里面分析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line">## CPU上下文切换</span><br><span class="line"></span><br><span class="line">##### CPU上下文切换(上篇)</span><br></pre></td></tr></table></figure>
+<p>cpu上下文切换分为:进程上下文切换，线程上线文切换和中断上下文切换<br>1、进程上线文切换<br>   Linux安装特权等级，把进程的运行空间分为内核空间和用户空间<br>   内核空间具有最高权限，可以直接访问所有资源<br>   用户空间只能访问受限资源，不能直接访问内存等硬件设备，必须通过系统调用陷入到内核中才能访问这些特权资源<br>   换个角度看，也就是说，进程既可以在用户空间运行，也可以在内核空间运行。进程在用户空间运行时，被称为进程的用户态，<br>   而陷入内核空间的时候，被称为进程的内核态<br>   从用户态和内核态的转变，需要通过系统调用来完成，比如：当我们查看文件内容时，就需要多次系统调用来完成，首先调用<br>   open()打开文件，然后调用read()读取文件内容，并调用write()将内容写到标准输出，最后调用close()关闭文件<br>   CPU寄存器里原来用户态的指令的位置，需要先保存起来，接着，为了执行内核态代码，CPU寄存器需要更新为内核态指令的新位置<br>   ，最后才跳转到内核态运行内核任务<br>   而系统调用结束后，CPU寄存器需要恢复原来保存的用户态，然后再切到用户空间，继续运行进程，所以，一次系统调用的过程，其实时发生了两次cpu上线文切换，不过需要注意的是，系统调用过程中，并不会涉及到虚拟内存等进程用户态的资源，也不会切换进程，这跟我们通常所说的进程上线文切换时不一样的<br>   (1) 进程上线文切换，是指一个进程切换到另一个进程运行<br>   (2) 而系统调用过程中一直是同一个进程在运行<br>   所以，系统调用过程通常为特权模式切换，而不是上下文切换。但实际上，系统调用过程中，CPU的上线文切换时无法避免的<br>   进程上下文切换跟系统调用有什么区别呢?<br>   首先，进程是由内核来管理和调度的，进程的切换只发生在内核。所以，进程的上下问不仅包括了虚拟内存、栈、全局变量等用户空间的资源，还包括了内核堆栈、寄存器等内核空间的状态</p>
+<p>   因此，进程的上下问切换就比系统调用时多了一步:在保存当前进程的内核状态和CPU寄存器之前，需要先把该进程的虚拟内存、栈等保存下来；而加载了下一个进程的内核后。还需要新进程的虚拟内存和用户栈</p>
+<p>   根据Tsuna测试报告，每次上下文切换都需要几十纳秒到数微妙的CPU的时间.这个时间还是相当可观的，特别是在进程上下文切换次数较多的情况下，很容易导致CPU将大量时间耗费在寄存器、内核栈以及虚拟内存等资源的保存和恢复上，进而大大缩短了真正运行进程的时间，这也正是上一节中我们所讲的，导致平均负载升高的一个重要因素</p>
+<p>另外 Linux是通过TLB(Translation Lookaside) 来管理虚拟内存到物理内存的映射关系。当虚拟内存更新后，TLB也需要刷新，内存的访问也会随之变慢，特别是在多处理器系统上，缓存是被多个处理器共享的，刷新缓存不仅会影响当前处理器的进程，还会影响共享缓存的其他处理器的进程</p>
+<p>进程在什么时候才会被调度到CPU上运行呢？</p>
+<p>最容易想到的一个时机，就是进程执行完终止了，它之前使用的CPU会释放出来，这个时候再从就绪队列，拿一个新的进程过来运行，其实还有很多其他场景，也会触发进程调度，如下:<br>    (1) 为了保证所有进程可以得到公平调度，CPU时间被划分为一段段的时间片，这些时间片再被轮流分配给各个进程。这样当某个进程的时间片耗尽了，就会被系统挂起，切到其它正在等待CPU的进程运行<br>    (2) 进程在系统资源不足(比如内存不足)时，要等到资源满足后才可以运行，这个时候进程也会被挂起，并由系统调度其他进程运行。<br>    (3) 当进程通过睡眠函数sleep这样的方法将自己主动挂起时，自然也会重新调度<br>    (4) 当有优先级更高的进程运行时，为了保证高优先级进程的运行，当前进程会被挂起，由高优先级进程运行<br>    最后一个，发生硬件中断时，CPU上的进程会被中断挂起，转而执行内核中的中断服务程序</p>
+<p>2、线程上线文切换<br>   线程和进程最大区别在于，线程是调度的基本单位，而进程则是资源拥有的基本单位。说白了，所谓内核中的任务调度，实际上的调度对象是线程；而进程只是给线程提供了虚拟内存、全局变量等资源。所以对于线程和进程，我们可以这样理解:<br>   (1) 当进程只有一个线程时，可以认为进程就等于线程<br>   (2) 当进程拥有多个线程时，这些线程会共享</p>
+<p>3、中断上下文切换<br>   为了快速响应硬件的事件，中断处理会打断进程的正常调度和执行，转而调用中断处理程序，响应设备事件。而在打断其他进程时，就需要将进程当前的状态保存下来，这样在中断结束后，进程仍然可以从原来的状态恢复运行。<br>   跟进程上下文不同，中断上下文切换并不涉及到进程的用户态。所以即便中断过程打断一个正处在用户态的进程，也不需要保存和恢复这个进程的虚拟内存、全局变量等用户态资源。中断上下文，其实只包括内核态中断服务程序执行所必须的状态，包括CPU寄存器、内核堆栈和硬件中断参数等。<br>   对同一个CPU来说，中断处理比进程拥有更高的优先级，所以中断上下文切换并不会与进程上下文切换同时发生。同样道理，由于中断会打断正常进程的调度和执行，所以大部分中断处理程序都短小精悍，以便尽可能快的执行结束。<br>  另外，跟进程上下文切换一样，中断上下文切换也需要消耗CPU，切换次数过多也会消耗大量CPU，甚至严重降低系统的整体性能，所以，当你发现中断次数过多时，就需要注意去排查它是否会给你的系统带来严重的性能问题</p>
+<p>场景:<br>cpu上下文切换，是保证Linux系统正常工作的核心功能之一，一般情况下不需要我们特别关注</p>
+<p>但过多的上下文切换，会把CPU时间消耗在寄存器、内核栈以及虚拟内存等数据的保存和恢复上，从而缩短进程真正运行的时间，导致系统的整体性能答复下降</p>
+<p>总结:<br>1、多任务竞争CPU，CPU变换任务时进行cpu上下文切换（context switch）。CPU执行任务4中方式:进程、线程、或者硬件通过触发信号导致cpu中断的调用</p>
+<p>2、当切换任务的时候，需要记得任务当前的状态和获取下一任务信息和地址(指针)，这就是上下文的内容，因此，上下文是指某一时间CPU寄存器(CPU register)和程序计数器(PC)的内容，广义上还包括内存中进程的虚拟地址映射信息</p>
+<p>3、上下文切换的过程<br>   (1) 记录当前任务的上下文(即寄存器和计算器等所有的状态)<br>   (2) 找到新任务的上下文并加载<br>   (3) 切换到新任务的程序计算器位置，恢复期任务<br>4、根据任务的执行形式，相互的下上文切换，有进程上下文切换、线程上下文切换以及中断上下文切换三类<br>5、进程和线程区别：进程是资源分配合执行的基本单位；线程是任务调度和运行的基本单位。线程没有资源，进程给指针提供虚拟内存、栈和变量等共享资源，而线程可以共享进程的资源</p>
+<p>6、进程上线文切换:是指从一个进程切换到另一个进程。<br>  (1) 进程运行态为内核运行态和进程运行态，内核空间态资源包括内核的堆栈、寄存器等；用户空间态资源包括虚拟内存、栈、变量、正文和数据等<br>  (2) 系统调用(软中断)在内核态完成的，需要进行2次CPU上下文切换(用户空间-&gt;内核空间-&gt;用户空间)，不涉及用户资源，也不会切换进程<br>  (3) 进程是由内核来管理和调度的，进程的切换只能发生在内核态，所以，进程的上下文切换不仅包括了用户空间的资源，也包括内核空间的资源<br>  (4) 进程的上下文切换过程:<br>      (a) 接收到切换信号，挂起进程，记录当前进程虚拟内存、栈等资源存储<br>      (b) 将这个进程在CPU中的上下文状态存储起来<br>      (c) 然后在内存中检索下一个进程的上下文<br>      (d) 并将其加载到CPU的寄存器中恢复<br>      (e) 还需要刷新新进程的虚拟内存和用户栈<br>      (f) 最后跳转到程序计数器所指向的位置(即跳转搭配进程被中断时的代码行)，以恢复改进程<br>  (5) 下列将会触发进程上下文切换的场景:<br>      (a) 根据调度策略，将CPU时间划分为对应的时间片，当时间片耗尽时，当前进程必须挂起<br>      (b) 资源不足的，在获取到足够资源之前进程挂起<br>      (c) 进程sleep挂起进程<br>      (d) 高优先级进程导致当前进度挂起<br>      (e) 硬件中断，导致当前进程挂起<br>7、线程上下文切换<br>(1) 不通进程之前的线程上下文切换，其过程和进程上下文切换大致相同<br>(2) 进程内部的线程上下文切换，不需要切换进程用户资源，只需要切换线程私有的数据和寄存器等，这会比进程上下文进程切换消耗的资源少，所以多线程相比多线程优势</p>
+<p>8、中断上下文切换<br>快速响应硬件的事件，中断处理会打断进程的正常调度和执行，同一CPU内，硬件中断优先级高于进程。切换过程类似于系统调用，不涉及到用户运行态资源，但大量的中断上下文切换同样可能引发性能问题<br>备注:系统调用属于上下文切换，分别是CPU用来存储指令和下一条要执行指令的寄存器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">##### CPU上下文切换(下篇)</span><br></pre></td></tr></table></figure>
+<p>查看系统上下文切换情况:系统分析工具vmstat(vmstat是只给出了系统总体上下文切换情况，要想查看每个进程的详细情况，要向)<br><img src="https://i.loli.net/2019/03/05/5c7dd70b7cfc3.jpg" alt="vmstat_5"></p>
+<p>cs（context switch）是每秒上下文切换的次数。<br>in（interrupt）则是每秒中断的次数。<br>r（Running or Runnable）是就绪队列的长度，也就是正在运行和等待 CPU 的进程数。<br>b（Blocked）则是处于不可中断睡眠状态的进程数。</p>
+<p>###pidstat是查看每个进程上下文切换情况:（-w）每隔5秒输出1组数据<br><img src="https://i.loli.net/2019/03/05/5c7e40eb19730.jpg" alt="pidstat_5.jpg"></p>
+<p>解释:一个是 cswch ，表示每秒自愿上下文切换（voluntary context switches）的次数，<br>    另一个则是 nvcswch ，表示每秒非自愿上下文切换（non voluntary context switches）的次数。<br>所谓自愿上下文切换，是指进程无法获取所需资源，导致的上下文切换。比如说， I/O、内存等系统资源不足时，就会发生自愿上下文切换。<br>而非自愿上下文切换，则是指进程由于时间片已到等原因，被系统强制调度，进而发生的上下文切换。比如说，大量进程都在争抢 CPU 时，就容易发生非自愿上下文切换。</p>
+<pre><code>---
+</code></pre>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -730,96 +867,6 @@
 <h2 id="Saltstack-错误总结"><a href="#Saltstack-错误总结" class="headerlink" title="Saltstack 错误总结"></a>Saltstack 错误总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、错误信息 Minion did not return. [Not connected]</span><br><span class="line">删除客户端公钥:rm -rf /etc/salt/pki/minion/minion_master.pub</span><br><span class="line">service salt-minion restart #重启client服务  </span><br><span class="line"></span><br><span class="line">2、错误信息:Failed building wheel for uwsgi</span><br><span class="line">yum -y install python-devel（python2.7）</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="Pdsh"><a href="#Pdsh" class="headerlink" title="Pdsh"></a>Pdsh</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">##pdsh安装##</span><br><span class="line">yum  -y  install  gcc gcc-c++ perl-devel readline-devel bzip2 #安装依赖</span><br><span class="line"></span><br><span class="line">下载源码包:https://sourceforge.net/projects/pdsh/files/latest/download</span><br><span class="line"></span><br><span class="line">tar -xjvf pdsh-2.26.tar.bz2</span><br><span class="line"></span><br><span class="line">cd  pdsh-2.26 </span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/globle/softs/tools/pdsh/2.26/ --with-timeout=60 --with-ssh --with-exec --with-nodeupdown --with-readline --with-machines=/etc/pdsh/machines  --with-dshgroups </span><br><span class="line"></span><br><span class="line">make  &amp;&amp;  make  install</span><br><span class="line"></span><br><span class="line">参数详解:</span><br><span class="line">   选项	                    解释</span><br><span class="line">--prefix	            指定安装目录</span><br><span class="line">--with-timeout=60	    指定pdsh默认执行超时时间</span><br><span class="line">--with-ssh	            编译ssh模块</span><br><span class="line">--with-exec	            编译exec模块</span><br><span class="line">--with-nodeupdown	    编译节点宕机功能</span><br><span class="line">--with-readline	            编译readline功能</span><br><span class="line">--with-rcmd-rank-list	    指定默认模式为ssh</span><br><span class="line">--with-machines	            指定默认主机列表</span><br><span class="line">--with-dshgroups            调用组-g选项(默认文件位置:/root/.dsh/group/userhosts or /etc/dsh/group/userhosts)</span><br><span class="line"></span><br><span class="line">把pdsh安装机器公钥存放到个远端服务器/root/.ssh/authorized_keys </span><br><span class="line"></span><br><span class="line">ln -s /usr/local/pdsh/bin/pdsh /usr/sbin/pdsh #设置软连接</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/kubernetes/k8s/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/06/12/kubernetes/k8s/" class="post-title-link" itemprop="url">kubernetes</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-06-11 16:42:04" itemprop="dateCreated datePublished" datetime="2019-06-11T16:42:04Z">2019-06-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/06/12/kubernetes/k8s/" class="post-meta-item leancloud_visitors" data-flag-title="kubernetes" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="kubernetes-工作原理"><a href="#kubernetes-工作原理" class="headerlink" title="kubernetes 工作原理"></a>kubernetes 工作原理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、Master节点包括API Server、Scheduler、Controller manager、etcd</span><br><span class="line"></span><br><span class="line">API Server是整个系统的对外接口，供客户端和其它组件调用，相当于“营业厅”</span><br><span class="line">Scheduler负责对集群内部的资源进行调度，相当于“调度室”</span><br><span class="line">Controller manager负责管理控制器，相当于“大总管</span><br><span class="line"></span><br><span class="line">2、Node节点包括Docker、kubelet、kube-proxy、Fluentd、kube-dns（可选）、pod</span><br><span class="line"></span><br><span class="line">Pod是Kubernetes最基本的操作单元。一个Pod代表着集群中运行的一个进程，它内部封装了一个或多个紧密相关的容器。除了Pod之外，K8S还有一个Service的概念，一个Service可以看作一组提供相同服务的Pod的对外访问接口</span><br><span class="line"></span><br><span class="line">Docker 创建容器的</span><br><span class="line">Kubelet，主要负责监视指派到它所在Node上的Pod，包括创建、修改、监控、删除等</span><br><span class="line">Kube-proxy，主要负责为Pod对象提供代理</span><br><span class="line">Fluentd，主要负责日志收集、存储与查询</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="kubernetes-kubeadm-部署"><a href="#kubernetes-kubeadm-部署" class="headerlink" title="kubernetes kubeadm 部署"></a>kubernetes kubeadm 部署</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">[镜像地址](https://download.csdn.net/download/qq_33432713/10775173) :https://download.csdn.net/download/qq_33432713/10775173</span><br><span class="line"></span><br><span class="line">系统环境:CentOS Linux release 7.3.1611 (Core)</span><br><span class="line"></span><br><span class="line">1、关闭selinux，关闭firewalld，关闭swap</span><br><span class="line">systemctl  stop   firewalld  `&amp;&amp;`   systemctl  disable   firewalld</span><br><span class="line"></span><br><span class="line">swapoff  -a</span><br><span class="line"></span><br><span class="line">2、配置主机映射和修改主机名</span><br><span class="line"></span><br><span class="line">hostnamectl   set-hostname  k8s-master</span><br><span class="line"></span><br><span class="line">3、yum  -y  install   docker   `&amp;&amp;`  systemctl  start  docker  `&amp;&amp;`  systemctl enable docker </span><br><span class="line"></span><br><span class="line">4、 yum  -y  install   kubectl kubelet kubernetes-cni kubeadm    (这几个软件需要去google的yum源下载，建议下本地vpnFQ，把软件包下载下来)</span><br><span class="line"></span><br><span class="line">5、systemctl  start  kubelet  `&amp;&amp;`    systemctl  enable  kubelet</span><br><span class="line"></span><br><span class="line">6、master端导入需要镜像（详细见软件包）</span><br><span class="line"></span><br><span class="line">7、kubeadm进行初始化：</span><br><span class="line"></span><br><span class="line">kubeadm init --kubernetes-version=v1.9.1 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=0.0.0.0 --apiserver-cert-extra-sans=10.2.0.35,127.0.0.1,k8s-master </span><br><span class="line"></span><br><span class="line"> --apiserver-cert-extra-sans   #该参数指定自己内网地址和映射</span><br><span class="line"></span><br><span class="line">在执行过程中，要等几分钟,然后执行以下命令：</span><br><span class="line"></span><br><span class="line">然后执行如下命令：</span><br><span class="line">  mkdir -p $HOME/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line">成功以后可以指定一下命令进行查看：</span><br><span class="line"></span><br><span class="line">kubectl  get  cs</span><br><span class="line"></span><br><span class="line">kubectl  get nodes</span><br><span class="line"></span><br><span class="line">8、注意：</span><br><span class="line"></span><br><span class="line">记住该条命令：kubeadm join --token d506ef.63c05fa829529565 10.2.0.37:6443 --discovery-token-ca-cert-hash sha256:4cd1954bf2a1c0904f92328d33bc25471604abd918e019b3c1905289fb8130f2   #在node节点执行该条命令，--token是有有效期的，默认是24小时</span><br><span class="line"></span><br><span class="line"> 9、部署 flannel</span><br><span class="line"></span><br><span class="line">mkdir -p ~/k8s/</span><br><span class="line">wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</span><br><span class="line">kubectl apply -f kube-flannel.yml   #执行会输出一下内容：</span><br><span class="line"></span><br><span class="line">10、kubectl  get pod -n kube-system   #注意红框内出现Running状态然后在node节点</span><br><span class="line"></span><br><span class="line">在node节点部署</span><br><span class="line"></span><br><span class="line">1、同master节点前五步一样部署</span><br><span class="line"></span><br><span class="line">2、导入镜像：其实我导入多了，只需要导入一下几个就可以了:gcr.io/google_containers/kube-apiserver-amd64、gcr.io/google_containers/etcd-amd64、quay.io/coreos/flannel、gcr.io/google_containers/etcd-amd64</span><br><span class="line"></span><br><span class="line">3、执行master的第8步，就可以了，然后在master上执行：kubectl  get  nodes,看到如下图：</span><br><span class="line"></span><br><span class="line">注意：要想在node节点执行该条命令，需要再node上执行以下命令：</span><br><span class="line"></span><br><span class="line">sudo cp /etc/kubernetes/admin.conf $HOME/</span><br><span class="line"></span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/admin.conf</span><br><span class="line"></span><br><span class="line">export KUBECONFIG=$HOME/admin.conf</span><br><span class="line">不然会出现以下错误:The connection to the server localhost:8080 was refused - did you specify the right host or port?(单独开终端也会出现）</span><br><span class="line">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">最后是版本对应:</span><br><span class="line">master:</span><br><span class="line">REPOSITORY                                                         TAG             IMAGE ID           CREATED      SIZE</span><br><span class="line">gcr.io/google_containers/kube-apiserver-amd64     v1.9.1       e313a3e9d78d     7 days ago     210.4 MB</span><br><span class="line">gcr.io/google_containers/kube-scheduler-amd64    v1.9.1       677911f7ae8f        7 days ago     62.7 MB</span><br><span class="line">gcr.io/google_containers/kube-proxy-amd64           v1.9.1       e470f20528f9        7 days ago     109.1 MB</span><br><span class="line">gcr.io/google_containers/kube-controller-manager-amd64     v1.9.1    4978f9a64966    7 days ago    137.8 MB</span><br><span class="line">quay.io/coreos/flannel     v0.9.1-amd64     2b736d06ca4c     8 weeks ago     51.31 MB</span><br><span class="line">gcr.io/google_containers/k8s-dns-sidecar-amd64   1.14.7       db76ee297b85      11 weeks ago   42.03 MB</span><br><span class="line">gcr.io/google_containers/k8s-dns-kube-dns-amd64   1.14.7    5d049a8c4eec      11 weeks ago          50.27 MB</span><br><span class="line">gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64      1.14.7    5feec37454f4    11 weeks ago    40.95 MB</span><br><span class="line">gcr.io/google_containers/etcd-amd64    3.1.10    1406502a6459          4 months ago    192.7 MB</span><br><span class="line">gcr.io/google_containers/pause-amd64   3.0     99e59f495ffa     20 months ago     746.9 kB</span><br><span class="line"></span><br><span class="line">node节点对应:</span><br><span class="line"></span><br><span class="line">REPOSITORY                                               TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"></span><br><span class="line">gcr.io/google_containers/kube-apiserver-amd64            v1.9.1              e313a3e9d78d        7 days ago          210.4 MB</span><br><span class="line"></span><br><span class="line">quay.io/coreos/flannel                                   v0.9.1-amd64        2b736d06ca4c        8 weeks ago         51.31 MB</span><br><span class="line"></span><br><span class="line">gcr.io/google_containers/etcd-amd64                      3.1.10              1406502a6459        4 months ago        192.7 MB</span><br><span class="line"></span><br><span class="line">gcr.io/google_containers/pause-amd64                     3.0                 99e59f495ffa        20 months ago       746.9 kB</span><br><span class="line"></span><br><span class="line">#以下是另一种网络版本对应:</span><br><span class="line"></span><br><span class="line">REPOSITORY                                               TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"></span><br><span class="line">quay.io/calico/node                                      v2.6.2              6763a667e3ba        12 weeks ago        281.6 MB</span><br><span class="line"></span><br><span class="line">quay.io/calico/cni                                       v1.11.0             c3482541970f        3 months ago        70.88 MB</span><br><span class="line"></span><br><span class="line">错误信息总结:</span><br><span class="line"></span><br><span class="line">1、错误:Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of &quot;crypto/rsa: verification error&quot; while trying to verify candidate authority certificate &quot;kubernetes&quot;)</span><br><span class="line"></span><br><span class="line">解决方案：设置环境变量：</span><br><span class="line"></span><br><span class="line">sudo cp /etc/kubernetes/admin.conf $HOME/</span><br><span class="line"></span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/admin.conf</span><br><span class="line">export $KUBECONFIG=$HOME/.kube/admin.conf</span><br><span class="line"></span><br><span class="line">2、错误：[ERROR FileContent--proc-sys-net-bridge-bridge-nf-call-iptables]: /proc/sys/net/bridge/bridge-nf-call-iptables contents are not set to 1</span><br><span class="line"></span><br><span class="line">解决方案：cat /etc/sysctl.conf　　　　</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line"></span><br><span class="line">3、获取登录token</span><br><span class="line">kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk &#x27;/dashboard-admin/&#123;print $1&#125;&#x27;)</span><br></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
