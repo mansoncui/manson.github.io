@@ -175,9 +175,9 @@ links_settings:
 
 links:
   #Title: https://example.com
-  张馆长: https://zhangguanzhang.github.io/
-  邵欢庆: https://kuboard.cn/
-  云原生实验室: https://yangcs.net/
+  zhangguanzhang: https://zhangguanzhang.github.io/
+  kuboard: https://kuboard.cn/
+  yangcs: https://yangcs.net/
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
