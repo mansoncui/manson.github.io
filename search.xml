@@ -854,4 +854,29 @@
         <tag>docker</tag>
       </tags>
   </entry>
+  <entry>
+    <title>容器应用优雅关闭</title>
+    <url>/2021/08/05/kubernetes/%E5%AE%B9%E5%99%A8%E5%BA%94%E7%94%A8%E4%BC%98%E9%9B%85%E5%85%B3%E9%97%AD/</url>
+    <content><![CDATA[<h2 id="通过Prestop参数调用"><a href="#通过Prestop参数调用" class="headerlink" title="通过Prestop参数调用"></a>通过Prestop参数调用</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定义一个优雅关闭的脚本，通过 k8s-prestop 在关闭 POD 前调用优雅关闭脚本，实现 pod 优雅关闭。</span><br></pre></td></tr></table></figure>
+<img src="/images/k8s/cmd/cmd-prestop.jpg" width="100%" height="10%" align="left/">
+<img src="/images/k8s/cmd/cmd-start.jpg" width="100%" height="10%" align="left/">
+<img src="/images/k8s/cmd/lifecycle-stop.jpg" width="100%" height="10%" align="left/">
+
+<h2 id="shell脚本修改为exec执行"><a href="#shell脚本修改为exec执行" class="headerlink" title="shell脚本修改为exec执行"></a>shell脚本修改为exec执行</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shell 中添加一个 exec 即可让应用进程替代当前 shell 进程,可将 SIGTERM 信号传递到业务层，让业务实现优雅关闭</span><br></pre></td></tr></table></figure>
+<img src="/images/k8s/cmd/容器优雅关闭.jpg" width="100%" height="10%" align="left/">
+
+<h2 id="通过init工具启动"><a href="#通过init工具启动" class="headerlink" title="通过init工具启动"></a>通过init工具启动</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用 dump-init 或 tini 做为容器的主进程，在收到退出信号的时候，会将退出信号转发给进程组所有进程。，主要适用应用本身无关闭信号处理的场景。docker –init 本身也是集成的 tini</span><br><span class="line">使用 tini 或 dump-init 做为应用启动的主进程。tini 和 dumb-init 会将关闭信号向子进程传递，但不会等待子进程完全退出后自己在退出。而是传递完后直接就退出了。</span><br></pre></td></tr></table></figure>
+<img src="/images/k8s/cmd/cmd-tini.jpg" width="100%" height="10%" align="left/">
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">对于容器化应用启动命令建议使用 EXEC 模式。</span><br><span class="line">对于应用本身代码层面已经实现了优雅关闭的业务，但有 shell 启动脚本，容器化后部署到 k8s 上建议使方案一和方案二。</span><br><span class="line">对于应用本身代码层面没有实现优雅关闭的业务，建议使用方案三。</span><br></pre></td></tr></table></figure>
+<p>参考地址:<br><a href="https://mp.weixin.qq.com/s/C5BIEIetZKthVPgbmFhaAw">https://mp.weixin.qq.com/s/C5BIEIetZKthVPgbmFhaAw</a></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      <categories>
+        <category>kuberneters</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>kuberneters</tag>
+      </tags>
+  </entry>
 </search>
