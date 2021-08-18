@@ -89,7 +89,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">46</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">47</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,7 +162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -233,6 +233,101 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/17/git/git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Apollo">
+      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
+">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Apollo 运维之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/17/git/git/" class="post-title-link" itemprop="url">git</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-17 15:50:21" itemprop="dateCreated datePublished" datetime="2019-06-17T15:50:21Z">2019-06-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/17/git/git/" class="post-meta-item leancloud_visitors" data-flag-title="git" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">1、解决文件已经添加到暂存区进行回退</span><br><span class="line"></span><br><span class="line">   git reset HEAD readme.txt(文件)  #取消暂存区文件修改</span><br><span class="line">   git status  #查看当前文件状态</span><br><span class="line">   git checkout -- readme.txt #回退到git add之前状态</span><br><span class="line"></span><br><span class="line">   git log -n10 --oneline  #显示最近十次提交日志</span><br><span class="line">   git diff old_id new_id --name-status #对比两次提交和文件修改及状态</span><br><span class="line"></span><br><span class="line">2、查看git提交日志</span><br><span class="line"></span><br><span class="line">   git log参数详解:</span><br><span class="line">   -p  按补丁格式显示每个更新之间的差异。</span><br><span class="line"></span><br><span class="line">   --stat   显示每次更新的文件修改统计信息。</span><br><span class="line"></span><br><span class="line">   --shortstat   只显示 --stat 中最后的行数修改添加移除统计。</span><br><span class="line"></span><br><span class="line">   --name-only   仅在提交信息后显示已修改的文件清单。</span><br><span class="line"></span><br><span class="line">   --name-status   显示新增、修改、删除的文件清单。</span><br><span class="line"></span><br><span class="line">   --abbrev-commit   仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。</span><br><span class="line"></span><br><span class="line">   --relative-date  使用较短的相对时间显示（比如，“2 weeks ago”）。</span><br><span class="line"></span><br><span class="line">   --graph    显示 ASCII 图形表示的分支合并历史。</span><br><span class="line"></span><br><span class="line">   --pretty  使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。</span><br><span class="line"></span><br><span class="line">   -(n)   仅显示最近的 n 条提交</span><br><span class="line"></span><br><span class="line">   --since, --after   仅显示指定时间之后的提交。</span><br><span class="line"></span><br><span class="line">   --until, --before   仅显示指定时间之前的提交。</span><br><span class="line"></span><br><span class="line">   --author   仅显示指定作者相关的提交。</span><br><span class="line"></span><br><span class="line">   --committer  仅显示指定提交者相关的提交。</span><br><span class="line"></span><br><span class="line">   --grep  仅显示含指定关键字的提交</span><br><span class="line"></span><br><span class="line">   -S  仅显示添加或移除了某个关键字的提交</span><br><span class="line">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">   git log filename  #查看filename文件commit记录</span><br><span class="line"></span><br><span class="line">   git log -p filename  #显示每次提交的diff</span><br><span class="line"></span><br><span class="line">   git log  --pretty=format:&quot;%cn committed %h on %cd&quot;  #指定日志格式(%cn作者名字，%h缩略标识，%cd提交日期)</span><br><span class="line"></span><br><span class="line">   git log  --author=&quot;manson&quot;</span><br><span class="line"></span><br><span class="line">   git log --pretty=&quot;%an - %s&quot; --author=cuibobo --since=&quot;2018-10-01&quot; --before=&quot;2018-12-27&quot; --oneline #指定格式和日期进行日志查询</span><br><span class="line"> </span><br><span class="line">   git log #命令显示从最近到最远的提交日志，如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline</span><br><span class="line"></span><br><span class="line">   git reset --hard HEAD^ #用HEAD表示当前版本（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100</span><br><span class="line"></span><br><span class="line">  git reset --hard commit_id   #通过commit id来回溯</span><br><span class="line"></span><br><span class="line">  git reflog #Git提供了一个命令git reflog用来记录你的每一次命令</span><br><span class="line"></span><br><span class="line">  HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。</span><br><span class="line"></span><br><span class="line">  穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</span><br><span class="line"></span><br><span class="line">  要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</span><br><span class="line"></span><br><span class="line">  git remote add origin git@server-name:path/repo-name.git  #添加远程仓库</span><br><span class="line"> </span><br><span class="line">  git push -u origin master #第一次推送master分支的所有内容；</span><br><span class="line"></span><br><span class="line">  git push origin master #提交以后，推送最新修改</span><br><span class="line"></span><br><span class="line">3、git使用分支</span><br><span class="line"></span><br><span class="line">  Git鼓励大量使用分支：</span><br><span class="line"></span><br><span class="line">  查看分支：git branch</span><br><span class="line"></span><br><span class="line">  创建分支：git branch &lt;name&gt;</span><br><span class="line"></span><br><span class="line">  切换分支：git checkout &lt;name&gt;</span><br><span class="line"></span><br><span class="line">  创建+切换分支：git checkout -b &lt;name&gt;</span><br><span class="line"></span><br><span class="line">  合并某分支到当前分支：git merge &lt;name&gt;</span><br><span class="line"></span><br><span class="line">  删除分支：git branch -d &lt;name&gt;</span><br><span class="line"></span><br><span class="line">4、合并和解决冲突</span><br><span class="line"></span><br><span class="line">  git log —-graph —-pretty=oneline —abbrev-commit #查看执行日志</span><br><span class="line"></span><br><span class="line">  git merge abort #放弃合并</span><br><span class="line"></span><br><span class="line">  git merge —-no-ff -m “描述信息” 分支名  #解决Fast forward删除分支会丢失commit id信息，加-m选项描述信息，因为会产生新commit id</span><br><span class="line"></span><br><span class="line">  总结:合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</span><br><span class="line"></span><br><span class="line">5、解决bug分支前隐藏当前工作目录</span><br><span class="line"></span><br><span class="line">  工作场景:当前某个分支还未提交，需要解决线上bug:</span><br><span class="line">  git stash  #把当前工作现场&quot;储藏&quot;起来,然后就可以修改bug</span><br><span class="line"></span><br><span class="line">  git stash  list  #查看工作现场</span><br><span class="line"></span><br><span class="line">  git stash apply  #恢复工作现场，恢复以后stash内容不删除，使用git stash drop来删除</span><br><span class="line"></span><br><span class="line">  git stash pop #恢复工作目录同时并把stash内容也删除</span><br><span class="line"></span><br><span class="line">  git stash apply stash@&#123;0&#125; #恢复指定stash</span><br><span class="line"> </span><br><span class="line">6、git log --pretty=format:&quot;%h - %an, %ar : %s&quot;</span><br><span class="line"></span><br><span class="line">   %H		提交对象（commit）的完整哈希字串</span><br><span class="line">   %h		提交对象的简短哈希字串</span><br><span class="line">   %T		树对象（tree）的完整哈希字串</span><br><span class="line">   %t		树对象的简短哈希字串</span><br><span class="line">   %P		父对象（parent）的完整哈希字串</span><br><span class="line">   %p		父对象的简短哈希字串</span><br><span class="line">   %an		作者（author）的名字</span><br><span class="line">   %ae		作者的电子邮件地址</span><br><span class="line">   %ad		作者修订日期（可以用 -date= 选项定制格式）</span><br><span class="line">   %ar		作者修订日期，按多久以前的方式显示</span><br><span class="line">   %cn		提交者(committer)的名字</span><br><span class="line">   %ce		提交者的电子邮件地址</span><br><span class="line">   %cd		提交日期</span><br><span class="line">   %cr		提交日期，按多久以前的方式显示</span><br><span class="line">   %s		提交说明</span><br><span class="line"></span><br><span class="line">   -(n)	仅显示最近的 n 条提交</span><br><span class="line">   --since, --after	仅显示指定时间之后的提交。</span><br><span class="line">   --until, --before	仅显示指定时间之前的提交。</span><br><span class="line">   --author	仅显示指定作者相关的提交。</span><br><span class="line">   --committer	仅显示指定提交者相关的提交。</span><br><span class="line"></span><br><span class="line">   git log --pretty=&quot;%h - %s&quot; --author=gitster --since=&quot;2008-10-01&quot; --before=&quot;2008-12-27&quot; --no-merges -- t/</span><br><span class="line">   git log  --pretty=format:&quot;%cn committed %h on %cd&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">7、分支作用</span><br><span class="line"></span><br><span class="line">  分支策略</span><br><span class="line"></span><br><span class="line">  在实际开发中，我们应该按照几个基本原则进行分支管理：</span><br><span class="line"></span><br><span class="line">  首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</span><br><span class="line"></span><br><span class="line">  那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；</span><br><span class="line"></span><br><span class="line">  你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</span><br><span class="line"></span><br><span class="line">8、tags创建和推送</span><br><span class="line"></span><br><span class="line">git tag &lt;tagname&gt;用于新建一个标签，默认为HEAD，也可以指定一个commit id；</span><br><span class="line"></span><br><span class="line">git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;可以指定标签信息；</span><br><span class="line"></span><br><span class="line">git tag可以查看所有标签。</span><br><span class="line"></span><br><span class="line">git push origin &lt;tagname&gt;可以推送一个本地标签；</span><br><span class="line"></span><br><span class="line">git push origin --tags可以推送全部未推送过的本地标签；</span><br><span class="line"></span><br><span class="line">git tag -d &lt;tagname&gt;可以删除一个本地标签；</span><br><span class="line"></span><br><span class="line">git push origin :refs/tags/&lt;tagname&gt;可以删除一个远程标签</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/17/git/git/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -790,92 +885,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/06/12/lua/lua/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.mansoncui.com/2019/06/12/go/go/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Apollo">
-      <meta itemprop="description" content="不要轻易给自己人生设限，努力就完事了。
-">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Apollo 运维之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/06/12/go/go/" class="post-title-link" itemprop="url">go</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-06-11 16:43:11" itemprop="dateCreated datePublished" datetime="2019-06-11T16:43:11Z">2019-06-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-14 05:03:41" itemprop="dateModified" datetime="2021-07-14T05:03:41Z">2021-07-14</time>
-      </span>
-
-  
-    <span id="/2019/06/12/go/go/" class="post-meta-item leancloud_visitors" data-flag-title="go" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/12/go/go/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
